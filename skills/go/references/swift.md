@@ -156,7 +156,7 @@ Mirrors Node's app-factory model exactly. Use `app.test()`, in-process, fakes fo
 - **Bridge layer** (e.g. Swift ↔ JS via `WKWebView`): contract test the message schema, both sides separately.
 - **End-to-end** via XCUITest: keep small, only critical paths.
 
-The HALF macOS client is a typical case where extracting non-UI logic to a SwiftPM module would make the bulk of it testable in seconds rather than via Xcode.
+A typical macOS client is a case where extracting non-UI logic to a SwiftPM module would make the bulk of it testable in seconds rather than via Xcode.
 
 ## Writing-time signals — Swift
 

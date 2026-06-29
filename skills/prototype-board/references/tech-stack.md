@@ -44,7 +44,7 @@ These were considered, tried, or seriously evaluated for prototype boards and ra
 
 ### framer-motion, react-spring, motion-one
 
-**Why usually rejected**: CSS transitions are sufficient for most prototype animations (fade-in, slide-in, scale on hover). Animation libraries add bundle weight and slow HMR cold starts. The xhs-poster-demo README explicitly avoids them; experience confirms.
+**Why usually rejected**: CSS transitions are sufficient for most prototype animations (fade-in, slide-in, scale on hover). Animation libraries add bundle weight and slow HMR cold starts. At least one shipped board's README explicitly avoids them; experience confirms.
 
 **Reconsider when**: A specific scene requires complex coordinated animation (FLIP transitions across mount/unmount, drag-to-reorder, layout animations). Even then, prefer CSS view transitions API first.
 
@@ -68,7 +68,7 @@ These were considered, tried, or seriously evaluated for prototype boards and ra
 
 ### daisyUI, MUI, Ant Design, Chakra (UI kit libraries)
 
-**Why usually rejected**: These libraries are designed for "套主题" (套用现成主题) — quickly skinning an app with someone else's visual vocabulary. Prototype boards typically do the opposite: they're where the team builds *its own* visual vocabulary. Adopting a UI kit dilutes the design judgment you're trying to develop, and "primary / secondary / accent" tokens rarely map cleanly to project-specific semantics (like half-law's "stamp" or xhs-poster-demo's "mention chip").
+**Why usually rejected**: These libraries are designed for "套主题" (套用现成主题) — quickly skinning an app with someone else's visual vocabulary. Prototype boards typically do the opposite: they're where the team builds *its own* visual vocabulary. Adopting a UI kit dilutes the design judgment you're trying to develop, and "primary / secondary / accent" tokens rarely map cleanly to project-specific semantics (like a legal workbench's "stamp" or a content board's "mention chip").
 
 **Reconsider when**: The prototype is intentionally for a feature that ships inside an existing product using one of these kits, and visual consistency with that product is required.
 

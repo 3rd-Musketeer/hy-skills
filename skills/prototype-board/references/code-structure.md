@@ -75,7 +75,7 @@ Pure TypeScript data. No JSX. No React imports. No functions beyond simple build
 export type Poster = { id: string; title: string; thumbUrl: string; source: string };
 
 export const posters: Poster[] = [
-  { id: "p1", title: "红色劳动节工人海报", thumbUrl: "/mock/p1.jpg", source: "xhs:1234" },
+  { id: "p1", title: "红色劳动节工人海报", thumbUrl: "/mock/p1.jpg", source: "feed:1234" },
   // ...
 ];
 ```
@@ -147,7 +147,7 @@ Import path stays `views/Workbench`. Sub-files are private to the workbench (no 
 - ❌ Index files (`components/index.ts`) re-exporting everything. They make grep slower and add a layer of indirection. Import from the real file path.
 - ❌ Barrel files in `fixtures/`. Same reason.
 - ❌ A `data/` folder mixing real data and mock data. Either it's all mock (call it `fixtures/`) or you're building the wrong thing.
-- ❌ Two files with mutual deps. xhs-poster-demo had `chatItems.tsx` ↔ `useCase.tsx` cycles that made type errors appear in unrelated files; the only fix was reorganizing to a single direction (`chatItems` becomes data consumed by `useCase`).
-- ❌ A "data" folder owned by one tab but read by another. xhs-poster-demo had `playground/data/` that prototype scenes ended up importing — the folder name no longer reflected actual ownership, and refactoring became impossible. Fix: shared mock data lives at top level (`src/fixtures/`), not inside a tab folder.
-- ❌ Mixing schema + fixture + scene composition + runtime in one file. xhs-poster-demo had a 1062-line `chatStream.tsx` doing all four; any edit risked breaking 12 dependents. Fix: the layered split above is what prevents this — schema in dedicated file (or co-located), data in `fixtures/`, JSX composition in `fixtures/*.tsx`, runtime in components.
+- ❌ Two files with mutual deps. One Shape A board had `chatItems.tsx` ↔ `useCase.tsx` cycles that made type errors appear in unrelated files; the only fix was reorganizing to a single direction (`chatItems` becomes data consumed by `useCase`).
+- ❌ A "data" folder owned by one tab but read by another. The same board had a `playground/data/` that prototype scenes ended up importing — the folder name no longer reflected actual ownership, and refactoring became impossible. Fix: shared mock data lives at top level (`src/fixtures/`), not inside a tab folder.
+- ❌ Mixing schema + fixture + scene composition + runtime in one file. That board had a 1062-line `chatStream.tsx` doing all four; any edit risked breaking 12 dependents. Fix: the layered split above is what prevents this — schema in dedicated file (or co-located), data in `fixtures/`, JSX composition in `fixtures/*.tsx`, runtime in components.
 - ❌ Status-by-filename (e.g. `Composer.draft-serif.tsx` mixed into `components/`). Folder boundaries are visible in import statements and IDE trees; filename suffixes are easy to miss. Use `drafts/` as a separate folder.

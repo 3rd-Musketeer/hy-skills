@@ -1,6 +1,6 @@
 ---
 name: prototype-board
-description: Build a feel-first interactive prototype board for a new product — a small React SPA where the team can experience the design before any of it is real. Encodes lessons from xhs-poster-demo and half-law on the five flows that make a prototype board work, the two product shapes it serves (sequence-of-moments vs continuous-workbench), and the stage-gated tech choices that keep it maintainable.
+description: Build a feel-first interactive prototype board for a new product — a small React SPA where the team can experience the design before any of it is real. Encodes lessons from building real prototype boards (both fully-scripted and live-LLM shapes) on the five flows that make a prototype board work, the two product shapes it serves (sequence-of-moments vs continuous-workbench), and the stage-gated tech choices that keep it maintainable.
 when_to_use: When the user wants to start a new prototype board for an unbuilt product, scaffold a "storybook-like" interaction sandbox, or extend an existing one. Triggers include "做一个 prototype / storybook", "搭交互原型", "先把感觉做出来 / 验证交互手感". Also use when extending an existing prototype board (add a tab, add a scene, promote a draft, set up theme A/B). NOT for production component libraries, real Storybook setups, or business-feature implementation.
 ---
 
@@ -122,7 +122,7 @@ Before scaffolding, identify which shape you're building. The shape determines w
 - 5–15 independent moments to demo (each is a discrete story beat)
 - Many small visual decisions that benefit from side-by-side comparison
 - Variant comparison is a real activity (icon styles, mention chips, list densities)
-- Examples: xhs-poster-demo
+- Example: a fully-scripted content-creation board — variant-heavy, discrete demo moments
 
 ```
 views/
@@ -139,7 +139,7 @@ App.tsx renders two top-level tabs. Each variant lives in `drafts/` (in-flight) 
 - One connected interactive surface the user "lives in"
 - Every design decision is "feel in context" — isolated comparison adds little signal
 - Theme axes (color / typography / interaction style) are the unit of A/B
-- Examples: half-law
+- Example: a live-LLM workbench — one connected surface driven by real model behavior
 
 ```
 views/
@@ -241,21 +241,21 @@ Don't write project-specific rules into this skill. Don't write method into the 
 
 ## §7 · Real-world adoption notes
 
-Living record of which projects used this skill and what they pushed back on. Keep additions short — three lines per project.
+Living record of what real boards validated and where they pushed back on this skill. Keep additions short — three lines per case. Names don't matter; the friction and the fix do.
 
-### xhs-poster-demo (2025) — Shape A, fully scripted
+### Shape A board — fully scripted
 
 - Validated: scene registry, PropEditor pattern, the promote flow.
 - Exposed: a 1062-line `chatStream.tsx` that mixed schema + fixture + scene composition + runtime — drove the four-layer mock-data split.
 - Stress-tested: Story tab cost (~2000 lines of orchestration); led to the "Story tab is earned, not default" rule.
 
-### half-law (2026) — Shape B, live LLM
+### Shape B board — live LLM
 
 - Validated: theme axis as the A/B substrate, drafts/ + components/ folder separation, ThemePanel FAB pattern.
 - Pushed back on: mandatory two-tab default, "Mock everything" absolutism, scene independence as universal rule, URL-hash persistence as default.
 - Drove changes: this skill's Shape A/B fork, the Five Flows reframing, the control flow spectrum, theme-system.md.
 
-When you adopt this skill on a new project and find yourself fighting it, add a line here describing what didn't fit. The friction is the signal.
+When you adopt this skill on a new project and find yourself fighting it, add a case here describing what didn't fit. The friction is the signal.
 
 ---
 

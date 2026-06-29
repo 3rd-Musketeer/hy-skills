@@ -2,7 +2,7 @@
 
 The Story tab is for **auto-playing walkthroughs of a specific use case** — a continuous one-take where state visibly accumulates from beginning to end. Used for video recording or live stakeholder demos.
 
-**This is the earned third tab.** Most prototype boards don't need it. Read this entire file before adding it; if you adopt it, follow the implementation rules below to avoid the cost overruns documented from xhs-poster-demo.
+**This is the earned third tab.** Most prototype boards don't need it. Read this entire file before adding it; if you adopt it, follow the implementation rules below to avoid the cost overruns documented from a real Shape A board.
 
 ## Story tab vs Prototype tab — keep them separate
 
@@ -30,11 +30,11 @@ If only the first two are true, the Prototype tab covers it (just navigate manua
 - "It would be nice to see what the next scene looks like with this state" — just navigate the Prototype tab
 - "I want a cleaner story for the demo deck" — use video editing
 - "Let's add it for completeness" — KISS
-- "We had it in xhs-poster-demo" — that was a specific recording requirement, not a defaults pattern
+- "We had it in the last board" — that was a specific recording requirement, not a defaults pattern
 
 ## What it costs
 
-A Story tab is a **major complexity upgrade**. The xhs-poster-demo's Story-equivalent (the `demo/` subsystem) grew to **~2000 lines** of orchestration code:
+A Story tab is a **major complexity upgrade**. One Shape A board's Story-equivalent (the `demo/` subsystem) grew to **~2000 lines** of orchestration code:
 
 - 800-line `useCase.tsx` god component
 - 600-line `runtimePlan.ts` event scheduler
@@ -54,13 +54,13 @@ Story tab state never fits in `useState` because it accumulates across long-live
 
 ### Rule 3 · Steps are declarative, not procedural
 
-The orchestrator drives a **declarative step list** (which step is current, transitions on `next` action). It does **not** contain a procedural script ("do A, then wait, then do B"). Procedural orchestration was xhs-poster-demo's biggest cost — every step change required touching 6 files.
+The orchestrator drives a **declarative step list** (which step is current, transitions on `next` action). It does **not** contain a procedural script ("do A, then wait, then do B"). Procedural orchestration was that board's biggest cost — every step change required touching 6 files.
 
 ### Rule 4 · Latency / playback runtime is OPT-IN, not default
 
 Manual user-driven advance (press → to go to next step) covers ~90% of Story tab needs. Automated playback with realistic latency simulation is a **separate, project-specific layer** to add only when video recording explicitly requires it.
 
-The xhs-poster-demo's latency runtime was an agent-system requirement (making agent thinking feel real for video) that got generalized into a "demo subsystem" feature. That generalization was a mistake. Keep latency simulation scoped to the project that needs it.
+That board's latency runtime was an agent-system requirement (making agent thinking feel real for video) that got generalized into a "demo subsystem" feature. That generalization was a mistake. Keep latency simulation scoped to the project that needs it.
 
 ### Rule 5 · Reset and rewind
 

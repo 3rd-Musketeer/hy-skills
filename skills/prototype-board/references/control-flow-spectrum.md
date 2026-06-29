@@ -130,7 +130,7 @@ Q4. Are you about to do a stakeholder demo / record a video?
     → Tier 1 or Tier 2. Determinism beats realism for demos.
 ```
 
-Most boards start at Tier 1, drift to Tier 2 for specific scenarios, and only adopt Tier 3 when the design judgment genuinely requires it. half-law went straight to Tier 3 because the agent's actual reasoning behavior was the design surface being evaluated. xhs-poster-demo stayed at Tier 1 because the design surface was the UI scaffolding around the agent, not the agent itself.
+Most boards start at Tier 1, drift to Tier 2 for specific scenarios, and only adopt Tier 3 when the design judgment genuinely requires it. One live-LLM Shape B board went straight to Tier 3 because the agent's actual reasoning behavior was the design surface being evaluated. A fully-scripted Shape A board stayed at Tier 1 because the design surface was the UI scaffolding around the agent, not the agent itself.
 
 ## Mixing tiers in one board
 

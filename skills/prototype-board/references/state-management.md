@@ -40,7 +40,7 @@ useState  →  Zustand (+ devtools)  →  XState
    90%             ~10%                  rare
 ```
 
-Most prototype boards live their entire life in the first column. The xhs-poster-demo only needed Zustand because it grew a Story tab with one-take walkthrough — and even there XState would have been overreach.
+Most prototype boards live their entire life in the first column. One fully-scripted Shape A board only needed Zustand because it grew a Story tab with one-take walkthrough — and even there XState would have been overreach.
 
 ## Stage 1 · useState (default)
 
@@ -170,9 +170,9 @@ React Context is sometimes proposed as a Zustand alternative. Two specific probl
 
 Context is the right tool for **theme, locale, current-user** — values that change rarely and where a global re-render on change is actually wanted. For mutable shared state with frequent updates, Zustand wins.
 
-## The lesson from xhs-poster-demo
+## A lesson from a real board
 
-The xhs-poster-demo's `demo/useCase.tsx` accumulated **20 useState hooks in a single 800-line component**. The cause: a one-take Story walkthrough with state that accumulates across visible "steps". Each addition felt small; cumulative cost was severe.
+One Shape A board's `demo/useCase.tsx` accumulated **20 useState hooks in a single 800-line component**. The cause: a one-take Story walkthrough with state that accumulates across visible "steps". Each addition felt small; cumulative cost was severe.
 
 What should have happened earlier:
 
