@@ -1,0 +1,22 @@
+erDiagram
+    USER ||--o{ PAGE : visits
+    PAGE ||--o{ NOTE : contains
+    USER ||--o{ NOTE : authors
+    USER {
+        uuid id PK
+        string email
+        timestamp created_at
+    }
+    PAGE {
+        uuid id PK
+        string url
+        string title
+        uuid user_id FK
+    }
+    NOTE {
+        uuid id PK
+        text body
+        string color
+        uuid page_id FK
+        uuid user_id FK
+    }

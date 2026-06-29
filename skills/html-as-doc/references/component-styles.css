@@ -1,0 +1,638 @@
+/* ============================================================
+   html-as-doc · component-styles.css
+   The skill's design system in one paste-able block.
+
+   THREE OWNERSHIP BANDS (do not let one clobber another):
+   - TOKENS          : palette (light-dark) / --s-* spacing / --t-* type
+                       (content-first ladder + --t-eyebrow) / --lh-* / --ls-* /
+                       --grad-* semantic gradients / single reading column
+                       (--max-content). Source of truth for the embed.
+   - T2 · PRIMITIVES : structural rules that make a class of bugs
+                       UNREPRESENTABLE rather than caught after —
+                       • gap-stack     container owns block rhythm via flex+gap;
+                                       children write no block margin → adjacent
+                                       blocks can't collapse to 0
+                       • type-roles    each role locks size+leading+tracking as
+                                       one unit (apply a role, never set
+                                       font-size alone) → no bad pairing
+                       • grid-collapse [data-cols] carries desktop count AND
+                                       mobile collapse via one --cols var →
+                                       can't forget the mobile twin
+                       The cheapest authoring move (write nothing / apply a
+                       role / set data-cols) is the correct one.
+   - T1 · COMPONENTS : apple.com-empirical rules that can't be structurally
+                       forced — mark = white bold (no tint), eyebrow = gray,
+                       table numerics right-aligned + tabular-nums + thead
+                       gray-uppercase + no row hairlines, inline <code> chip,
+                       stat 三段式, surfaces (.note/.figure/.dialog/.qa-card),
+                       .grad gradient-text focus, .scene/.capcard media cards.
+
+   SHIKI: the .shiki dual-theme switching rules live in this file. Per-token
+   colors come from build-time highlighting (T3); this file only provides the
+   light/dark switch — do not delete.
+   ============================================================ */
+
+    :root {
+      color-scheme: light dark;
+
+      --bg:             light-dark(#FFFFFF, #000000);
+      --bg-section:     light-dark(#F5F5F7, #1D1D1F);
+      --surface:        light-dark(#FFFFFF, #1D1D1F);
+
+      --text-primary:   light-dark(#1D1D1F, #F5F5F7);
+      --text-secondary: light-dark(#6E6E73, rgba(245, 245, 247, 0.72));
+      --text-tertiary:  light-dark(#86868B, rgba(245, 245, 247, 0.48));
+
+      --accent:         light-dark(#0066CC, #2997FF);
+      --accent-hover:   light-dark(#0077E6, #56AFFF);
+
+      --border:         light-dark(#D2D2D7, rgba(245, 245, 247, 0.16));
+      --border-subtle:  light-dark(#F5F5F7, rgba(245, 245, 247, 0.06));
+
+      --success:        #34C759;
+      --warning:        #FF9500;
+      --danger:         #FF3B30;
+    }
+
+    :root {
+      --t-xs:      13px;
+      --t-sm:      15px;
+      --t-base:    18px;
+      --t-md:      20px;
+      --t-lg:      21px;
+      --t-xl:      23px;
+      --t-2xl:     26px;
+      --t-3xl:     29px;
+      --t-display: 40px;
+      --t-eyebrow: 22px;
+
+      --lh-tight:   1.1;
+      --lh-snug:    1.25;
+      --lh-normal:  1.5;
+      --lh-relaxed: 1.6;
+
+      --ls-tight:  -.018em;
+      --ls-snug:   -.01em;
+      --ls-normal: -.005em;
+      --ls-wide:   .06em;
+
+      --s-1:   4px;
+      --s-2:   8px;
+      --s-3:   12px;
+      --s-4:   16px;
+      --s-5:   20px;
+      --s-6:   24px;
+      --s-7:   28px;
+      --s-8:   32px;
+      --s-10:  40px;
+      --s-12:  48px;
+      --s-16:  64px;
+      --s-20:  80px;
+      --s-24:  96px;
+      --s-32:  128px;
+
+      /* Single reading column. Content == this minus the main side padding
+         (≈720). Every block — text, stat, table, figure, grid — fills the
+         SAME width so left+right edges align. Content-first docs read in a
+         measure, not the 1040 marketing column. */
+      --max-content: 800px;
+
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "SF Pro Text", "PingFang SC", "Hiragino Sans GB",
+                   system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo,
+                   Consolas, monospace;
+
+      /* ── Semantic gradient palette ───────────────────────────────
+         The color layer. Color rides three channels only — gradient-text
+         focus (one per screen), glyph stroke, imagery — over a grayscale +
+         single-blue skeleton. Wide hue arcs use `in oklch` so they don't
+         pass through a muddy grey midpoint. Apply via .grad[data-grad="…"];
+         body text never gradients. */
+      --grad-focus:      linear-gradient(115deg in oklch, #0A0E27, #1E5AC8, #45C2FF);
+      --grad-tech:       linear-gradient(115deg in oklch, #30CFD0, #330867);
+      --grad-tech-alt:   linear-gradient(115deg in oklch, #1FD0A3, #10A37F, #0B6B62);
+      --grad-growth:     linear-gradient(115deg in oklch, #4FFFB0, #3ECF8E, #11765A);
+      --grad-innovation: linear-gradient(115deg in oklch, #3D3393, #35EB93);
+      --grad-creative:   linear-gradient(115deg, #515BD4, #8134AF, #DD2A7B, #FEDA77);
+      --grad-electric:   linear-gradient(115deg in oklch, #00DBDE, #FC00FF);
+      --grad-rainbow:    linear-gradient(115deg, #5FB53C, #F6B500, #F37021, #E03A3E, #963D97, #0093D0);
+      --grad-friendly:   linear-gradient(115deg, #4285F4, #EA4335, #FBBC05, #34A853);
+      --grad-energy:     linear-gradient(115deg in oklch, #F9D423, #FF4E50);
+      --grad-passion:    linear-gradient(115deg in oklch, #FF8177, #B12A5B);
+      --grad-attention:  linear-gradient(115deg in oklch, #FFD200, #FFB300, #FF8A00);
+      --grad-attn-soft:  linear-gradient(115deg in oklch, #FA709A, #FEE140);
+      --grad-critical:   linear-gradient(115deg in oklch, #FF5E5E, #E82127, #A30C18);
+      --grad-warm:       linear-gradient(115deg in oklch, #E8A87C, #DA7756, #B8563A);
+      --grad-neutral:    linear-gradient(115deg in oklch, #0B0B0E, #2A2A30, #6A6A76);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--bg); }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: var(--t-base);
+      line-height: var(--lh-relaxed);
+      letter-spacing: var(--ls-normal);
+      color: var(--text-primary);
+      background: var(--bg);
+    }
+
+    main {
+      max-width: var(--max-content);
+      margin: 0 auto;
+      padding: var(--s-20) var(--s-10) var(--s-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-16);
+    }
+
+    /* Vertical stacks own their rhythm via gap. Children declare no
+       block margins; the parent always inserts gap between siblings,
+       so a "0 gap between two adjacent blocks" state is unrepresentable. */
+    header,
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-6);
+    }
+
+    h1, h2, h3, p, figure { margin: 0; }
+
+    /* ── Type roles ──────────────────────────────────────────────
+       Each role locks font-size + line-height + letter-spacing (+ weight)
+       as ONE unit. Apply a role; never set font-size alone. Bigger roles
+       carry tighter leading + tracking. A bad pairing (display size with
+       body leading) is unrepresentable: the triplet exists only here, as a
+       unit. New content opts into a role via the .t-* class — free + correct. */
+    h1, .stat strong, .t-display {
+      font-size: var(--t-display);
+      line-height: var(--lh-tight);
+      letter-spacing: var(--ls-tight);
+    }
+    h2, .t-title {
+      font-size: var(--t-3xl);
+      line-height: var(--lh-snug);
+      letter-spacing: var(--ls-snug);
+    }
+    h3, .trio article h3, .t-subtitle {
+      font-size: var(--t-xl);
+      line-height: var(--lh-snug);
+      letter-spacing: var(--ls-snug);
+    }
+    .lead, .t-lead {
+      font-size: var(--t-xl);
+      line-height: var(--lh-normal);
+      letter-spacing: var(--ls-normal);
+    }
+    .caption, .stat span, .trio article p, .t-caption {
+      font-size: var(--t-sm);
+      line-height: var(--lh-normal);
+      letter-spacing: var(--ls-normal);
+    }
+    .eyebrow, .eyebrow-sm, .stat-label-row, .t-eyebrow {
+      font-size: var(--t-xs);
+      line-height: var(--lh-snug);
+      letter-spacing: var(--ls-wide);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    /* The section overline carries its own size so it can grow without
+       dragging stat labels / table heads (which stay at --t-xs). */
+    .eyebrow, .t-eyebrow { font-size: var(--t-eyebrow); }
+
+    h1 { max-width: 820px; }
+    h2 .h2-sub {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* A section-level heading binds tighter to the element it
+       introduces than the default --s-6 stack gap. Scoped to direct
+       section children only; h3 inside .snippet / .trio uses its own
+       container spacing and must not be touched. */
+    section > h3 + * { margin-top: calc(var(--s-3) - var(--s-6)); }
+
+    mark {
+      background: none;
+      color: var(--text-primary);
+      font-weight: 600;
+      padding: 0;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: var(--s-2);
+      align-items: center;
+      color: var(--text-secondary);
+    }
+
+    .lead {
+      color: var(--text-secondary);
+    }
+
+    /* ── Equal-column grid primitive (Option A) ──────────────────
+       [data-cols] carries BOTH desktop count AND intrinsic collapse.
+       The count lives in one --cols var; the responsive rule flips
+       --cols to 1 for every data-cols grid (and .trio) at once. A new
+       grid gets mobile collapse for free just by using data-cols — the
+       "forgot the mobile twin" failure is removed for anything on this
+       primitive. Semantic column count (4 systems / 3 concepts) stays
+       explicit: it is content signal, not noise to auto-fit away. */
+    .grid {
+      display: grid;
+      gap: var(--s-5);
+    }
+    .grid[data-cols] { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); }
+    .grid[data-cols="2"] { --cols: 2; }
+    .grid[data-cols="3"] { --cols: 3; }
+    .grid[data-cols="4"] { --cols: 4; }
+
+    .stat {
+      padding: var(--s-6) 0 var(--s-3);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: var(--s-2);
+      color: var(--text-secondary);
+    }
+
+    .stat-label-row {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: calc(var(--s-2) * -1);
+    }
+
+    .note {
+      padding: var(--s-6);
+      background: var(--bg-section);
+      border-radius: 18px;
+      color: var(--text-secondary);
+    }
+
+    .note strong { color: var(--text-primary); }
+
+    .flow {
+      display: grid;
+      gap: var(--s-5);
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: var(--s-6);
+      padding: var(--s-3) 0;
+      align-items: start;
+    }
+
+    .step b {
+      display: inline-flex;
+      gap: var(--s-2);
+      align-items: center;
+      font-size: var(--t-md);
+      line-height: var(--lh-snug);
+    }
+
+    .step p {
+      color: var(--text-secondary);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 var(--s-3);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-secondary);
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+    }
+
+    /* Content card is itself a gap stack: heading -> intro -> block. */
+    .snippet {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+    }
+
+    .snippet h3 {
+      display: flex;
+      gap: var(--s-3);
+      align-items: center;
+    }
+
+    .snippet p {
+      color: var(--text-secondary);
+    }
+
+    pre {
+      margin: 0;
+      padding: var(--s-5);
+      overflow: auto;
+      border-radius: 16px;
+      background: light-dark(#F5F5F7, #111113);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    pre.shiki { background: light-dark(#F5F5F7, #111113); }
+    .shiki, .shiki span { color: var(--shiki-light); }
+    @media (prefers-color-scheme: dark) {
+      .shiki, .shiki span { color: var(--shiki-dark); }
+    }
+
+    code { font-family: var(--font-mono); }
+
+    :not(pre) > code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: light-dark(#F5F5F7, rgba(245, 245, 247, 0.08));
+      border: 1px solid var(--border-subtle);
+      font-size: .92em;
+      color: var(--text-primary);
+    }
+
+    .quote {
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--accent);
+      color: var(--text-secondary);
+      font-size: var(--t-lg);
+      line-height: var(--lh-normal);
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--t-sm);
+      display: block;
+      overflow-x: auto;
+    }
+
+    .compare th,
+    .compare td {
+      padding: var(--s-3) var(--s-3);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .compare thead th {
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-size: var(--t-xs);
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+    }
+
+    .compare tbody tr td {
+      padding-top: var(--s-3);
+      padding-bottom: var(--s-3);
+    }
+
+    .compare th[data-align="right"],
+    .compare td[data-align="right"] {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .compare th[data-align="center"],
+    .compare td[data-align="center"] {
+      text-align: center;
+    }
+    .compare td[data-align="right"] strong {
+      color: var(--text-primary);
+    }
+
+    .figure {
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--bg-section);
+    }
+
+    .figure img, .figure svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .figure figcaption {
+      padding: var(--s-4) var(--s-5);
+      color: var(--text-secondary);
+      font-size: var(--t-sm);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* ── Gradient-text focus ──────────────────────────────────────
+       Clips a semantic gradient into text. One focus per screen (a
+       headline word or the single key stat) — never body text. Variant
+       via data-grad; default is --grad-focus. */
+    .grad {
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-image: var(--grad-focus);
+    }
+    .grad[data-grad="tech"]       { background-image: var(--grad-tech); }
+    .grad[data-grad="tech-alt"]   { background-image: var(--grad-tech-alt); }
+    .grad[data-grad="growth"]     { background-image: var(--grad-growth); }
+    .grad[data-grad="innovation"] { background-image: var(--grad-innovation); }
+    .grad[data-grad="creative"]   { background-image: var(--grad-creative); }
+    .grad[data-grad="electric"]   { background-image: var(--grad-electric); }
+    .grad[data-grad="rainbow"]    { background-image: var(--grad-rainbow); }
+    .grad[data-grad="friendly"]   { background-image: var(--grad-friendly); }
+    .grad[data-grad="energy"]     { background-image: var(--grad-energy); }
+    .grad[data-grad="passion"]    { background-image: var(--grad-passion); }
+    .grad[data-grad="attention"]  { background-image: var(--grad-attention); }
+    .grad[data-grad="attn-soft"]  { background-image: var(--grad-attn-soft); }
+    .grad[data-grad="critical"]   { background-image: var(--grad-critical); }
+    .grad[data-grad="warm"]       { background-image: var(--grad-warm); }
+    .grad[data-grad="neutral"]    { background-image: var(--grad-neutral); }
+
+    /* ── Media overview cards (use ONLY with real images) ─────────
+       Drop inside .grid[data-cols]. .scene = image fills the card with a
+       scrim + overlaid label (photos with no baked-in text); .capcard =
+       image on top, label below (images that already carry a caption).
+       An overview the prose below still fully covers — never the sole home
+       of the info, never a gradient panel standing in for a missing image. */
+    .scene {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 280px;
+      background: #0B0B0E;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .scene img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.12) 52%, transparent);
+    }
+    .scene .label { position: relative; z-index: 1; padding: var(--s-6); display: flex; flex-direction: column; gap: 6px; }
+    .scene .label h3 { color: #fff; }
+    .scene .label p { color: rgba(255, 255, 255, .86); font-size: var(--t-sm); }
+
+    .capcard {
+      background: var(--bg-section);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .capcard img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+    .capcard .b { padding: var(--s-5) var(--s-6) var(--s-6); display: flex; flex-direction: column; gap: 6px; }
+    .capcard h3 { font-size: var(--t-md); line-height: var(--lh-snug); }
+    .capcard p { color: var(--text-secondary); font-size: var(--t-sm); }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-2);
+    }
+
+    .meta a, .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px var(--s-3);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-secondary);
+      font-size: var(--t-xs);
+      font-weight: 700;
+      letter-spacing: var(--ls-wide);
+      text-transform: uppercase;
+    }
+    .meta a {
+      color: var(--accent);
+      border-color: color-mix(in oklch, var(--accent), transparent 65%);
+      background: color-mix(in oklch, var(--accent), transparent 94%);
+      text-transform: none;
+      letter-spacing: var(--ls-snug);
+      font-weight: 600;
+    }
+    .meta a:hover {
+      border-color: var(--accent);
+      background: color-mix(in oklch, var(--accent), transparent 86%);
+    }
+    .meta a svg.brand {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+    .meta a .ext {
+      margin-left: 2px;
+      opacity: 0.55;
+      font-size: 11px;
+      letter-spacing: 0;
+    }
+
+    /* The pull-quote wants a touch more breath after the meta pill row
+       than the default --s-6 header gap. Expressed intentionally as a
+       per-pair gap delta, not a defensive patch: the flex stack already
+       guarantees a non-zero gap here, this only widens it by 8px. */
+    header .quote { margin-top: calc(var(--s-8) - var(--s-6)); }
+
+    .dialog {
+      padding: var(--s-5);
+      background: var(--bg-section);
+      border-radius: 14px;
+      font-size: var(--t-sm);
+      line-height: var(--lh-relaxed);
+    }
+    .dialog .turn { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: var(--s-4); padding: 4px 0; }
+    .dialog .speaker { color: var(--text-tertiary); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .dialog .content { color: var(--text-primary); }
+    .dialog .meta-line { color: var(--text-tertiary); font-size: var(--t-xs); margin-bottom: var(--s-3); letter-spacing: var(--ls-wide); text-transform: uppercase; font-weight: 700; }
+
+    .qa-card {
+      padding: var(--s-6);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-section);
+      border-radius: 16px;
+    }
+    .qa-card .qa-header { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-bottom: var(--s-4); }
+    .qa-card .qa-header span { display: inline-flex; padding: 2px var(--s-2); background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 6px; color: var(--text-secondary); font-size: var(--t-xs); font-weight: 600; letter-spacing: var(--ls-wide); text-transform: uppercase; }
+    .qa-card .qa-q { color: var(--text-primary); font-size: var(--t-md); line-height: var(--lh-snug); margin-bottom: var(--s-4); }
+    .qa-card ol { margin: 0; padding-left: 0; list-style: none; }
+    .qa-card li { padding: 6px 0; color: var(--text-secondary); }
+    .qa-card li.correct { color: var(--text-primary); font-weight: 600; }
+    .qa-card li.correct::before { content: "✓ "; color: var(--success); font-weight: 700; }
+    .qa-card .qa-meta { margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--border-subtle); color: var(--text-tertiary); font-size: var(--t-xs); }
+
+    .trio {
+      display: grid;
+      grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+      gap: var(--s-10);
+      --cols: 3;
+    }
+    .trio article h3 {
+      margin-bottom: var(--s-3);
+    }
+    .trio article .eyebrow-sm {
+      display: block;
+      color: var(--text-secondary);
+      margin-bottom: var(--s-2);
+    }
+    .trio article p {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+
+    .caption {
+      padding: 0 var(--s-6) var(--s-6);
+      color: var(--text-secondary);
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      fill: none;
+      flex: 0 0 auto;
+    }
+
+    .source {
+      padding-top: var(--s-6);
+      border-top: 1px solid var(--border);
+      color: var(--text-tertiary);
+      font-size: var(--t-sm);
+    }
+
+    @media (max-width: 780px) {
+      main {
+        padding: var(--s-16) var(--s-6) var(--s-20);
+        gap: var(--s-12);
+      }
+      /* Display role scales down as a unit — one place, no per-element
+         magic number (the old `h1 { font-size: 42px }` is gone). */
+      h1, .stat strong, .t-display { font-size: var(--t-3xl); }
+      /* One rule collapses every data-cols grid + trio (Option A). */
+      .grid[data-cols], .trio { --cols: 1; }
+      .trio { gap: var(--s-6); }
+      .step { grid-template-columns: 1fr; gap: var(--s-3); }
+    }
+

@@ -1,0 +1,15 @@
+flowchart TD
+    A[User clicks Highlight] --> B{In cache?}
+    B -->|yes| C[Local write ~5ms]
+    B -->|no| D[Create page record]
+    D --> C
+    C --> E[Broadcast to UI]
+    subgraph reconcile [async reconcile · background]
+        F[Upsert page] --> G[Insert note]
+        G --> H{Server ack?}
+        H -->|ok| I[Mark synced]
+        H -->|timeout| J[Queue retry]
+        J --> F
+    end
+    E -.-> F
+    I --> K([Done])

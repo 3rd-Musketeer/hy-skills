@@ -1,0 +1,18 @@
+{
+  "name": "html-as-doc-build",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional post-author build pipeline for /html-as-doc: shiki highlight + image compress + inline, light-source -> self-contained share.",
+  "bin": {
+    "html-as-doc-build": "./build.mjs"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0",
+    "shiki": "^1.0.0"
+  }
+}

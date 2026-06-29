@@ -1,0 +1,4 @@
+interface:
+  display_name: "Open Worktree"
+  short_description: "Plan or create one new task worktree"
+  default_prompt: "Use $open-worktree to plan or create a new task worktree for this task."

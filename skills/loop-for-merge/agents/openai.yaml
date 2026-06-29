@@ -1,0 +1,4 @@
+interface:
+  display_name: "Loop for Merge"
+  short_description: "Watch one PR, self-heal small bot review, and auto-merge the happy path"
+  default_prompt: "Use $loop-for-merge to watch this PR every 5 minutes, self-heal small actionable bot review, wait for bot re-review on self-heal commits, merge the approved or quiet happy path, and hand off larger review with a concise summary plus proposed fix."

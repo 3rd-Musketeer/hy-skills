@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use Portless"
+  short_description: "Expose dev servers with stable URLs"
+  default_prompt: "Use $use-portless to start this dev server with a stable Portless URL."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Close Worktree"
+  short_description: "Inspect or retire one finished task worktree"
+  default_prompt: "Use $close-worktree to inspect or clean up this finished task worktree."

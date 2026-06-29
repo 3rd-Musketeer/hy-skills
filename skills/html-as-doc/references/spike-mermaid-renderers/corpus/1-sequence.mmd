@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant U as User
+    participant C as Content
+    participant B as Background
+    participant S as Supabase
+    U->>C: click Highlight
+    C->>B: create-note
+    Note over B: local write to cache
+    B-->>C: broadcast
+    Note over U: 用户看到高亮 · < 5 ms
+    rect rgba(52,199,89,0.06)
+    Note over B,S: async reconcile（后台）
+    B-)S: upsert page
+    S--)B: ok
+    B-)S: insert note
+    S--)B: ok
+    end

@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>D2 能画什么 · showcase</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#FFFFFF, #0B0B0C);
+  --surface: light-dark(#F5F5F7, #1D1D1F);
+  --text: light-dark(#1D1D1F, #F5F5F7);
+  --muted: light-dark(#6E6E73, rgba(245,245,247,.6));
+  --border: light-dark(#D2D2D7, rgba(245,245,247,.16));
+  --accent: light-dark(#0066CC, #2997FF);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 56px 32px; }
+h1 { font-size: 32px; margin: 0 0 8px; letter-spacing: -.01em; font-weight: 600; }
+.lede { color: var(--muted); font-size: 17px; margin: 0 0 40px; }
+section {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+section header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+section header h2 { margin: 0; font-size: 19px; font-weight: 600; }
+section header .tag {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: color-mix(in oklch, var(--accent), transparent 90%);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+section header .meta { font-size: 13px; color: var(--muted); margin-left: auto; font-family: ui-monospace, monospace; }
+section .desc { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+.split { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+@media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+.preview {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+.preview img { max-width: 100%; height: auto; display: block; }
+.preview > svg { width: 100%; height: auto; display: block; }
+.cmp { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+@media (max-width: 1000px) { .cmp { grid-template-columns: 1fr; } }
+.preview { min-height: 200px; padding: 14px; }
+.cmp-col { display: flex; flex-direction: column; gap: 8px; }
+.cmp-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+.cmp-label .size { font-family: ui-monospace, monospace; font-weight: 400; }
+details summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+}
+details summary:hover { color: var(--accent); }
+details pre { margin-top: 8px; }
+pre {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 11.5px;
+  line-height: 1.55;
+  background: light-dark(#FFFFFF, #000);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  overflow: auto;
+  max-height: 360px;
+  color: var(--text);
+}
+.notwell {
+  background: color-mix(in oklch, #FF3B30, transparent 92%);
+  border-left: 3px solid #FF3B30;
+}
+.notwell h2 { color: #FF3B30; }
+.notwell ul { margin: 0; padding-left: 20px; }
+.notwell li { margin-bottom: 6px; color: var(--text); }
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>D2 能画什么</h1>
+<p class="lede">同一张图三种画法横向对比：<strong>D2</strong>（自定义 DSL，最贴近"diagram-as-code"思路）· <strong>Mermaid</strong>（mmdc 离线编译，配了 Apple 调色板的 themeVariables）· <strong>手写 inline SVG</strong>（v4.1 那一套）。下面折叠了 D2 源码。</p>
+
+<section>
+<header>
+  <h2>1. Sequence diagram</h2>
+  <span class="tag">shape: sequence_diagram</span>
+  <span class="meta">30 行 / 29 KB</span>
+</header>
+<p class="desc">时序图。actor 自动竖向 lifeline + 横向 arrow，message 顺序写就是渲染顺序。我们 v4.1 用的就是这种。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">29 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/d2.svg" alt="D2 sequence"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc)</span><span class="size">25 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-seq.svg" alt="Mermaid sequence"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~30 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="s1am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86868B"/></marker>
+          <marker id="s1ab" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#0066CC"/></marker>
+        </defs>
+        <text x="45" y="20" font-size="11" font-weight="600" fill="#6E6E73" text-anchor="middle">User</text>
+        <text x="125" y="20" font-size="11" font-weight="600" fill="#6E6E73" text-anchor="middle">Content</text>
+        <text x="210" y="20" font-size="11" font-weight="600" fill="#6E6E73" text-anchor="middle">Background</text>
+        <text x="305" y="20" font-size="11" font-weight="600" fill="#6E6E73" text-anchor="middle">Supabase</text>
+        <line x1="45" y1="30" x2="45" y2="340" stroke="#86868B" stroke-opacity=".3" stroke-dasharray="2 3"/>
+        <line x1="125" y1="30" x2="125" y2="340" stroke="#86868B" stroke-opacity=".3" stroke-dasharray="2 3"/>
+        <line x1="210" y1="30" x2="210" y2="340" stroke="#86868B" stroke-opacity=".3" stroke-dasharray="2 3"/>
+        <line x1="305" y1="30" x2="305" y2="340" stroke="#86868B" stroke-opacity=".3" stroke-dasharray="2 3"/>
+        <line x1="45" y1="50" x2="125" y2="50" stroke="#86868B" stroke-width="1.4" marker-end="url(#s1am)"/>
+        <text x="55" y="44" font-size="10" fill="#6E6E73">click Highlight</text>
+        <line x1="125" y1="74" x2="210" y2="74" stroke="#86868B" stroke-width="1.4" marker-end="url(#s1am)"/>
+        <text x="135" y="68" font-size="10" fill="#6E6E73">create-note</text>
+        <circle cx="210" cy="92" r="3" fill="#0066CC"/>
+        <text x="218" y="96" font-size="10" fill="#86868B">local write to cache</text>
+        <line x1="210" y1="108" x2="125" y2="108" stroke="#0066CC" stroke-width="2" marker-end="url(#s1ab)"/>
+        <text x="135" y="102" font-size="10" font-weight="600" fill="#0066CC">broadcast</text>
+        <line x1="10" y1="124" x2="350" y2="124" stroke="#0066CC" stroke-width="1" stroke-dasharray="1 2" opacity=".6"/>
+        <circle cx="45" cy="124" r="5" fill="#0066CC" stroke="#FFFFFF" stroke-width="2"/>
+        <text x="55" y="128" font-size="11" font-weight="600" fill="#0066CC">用户看到高亮 · &lt; 5 ms</text>
+        <rect x="216" y="148" width="84" height="178" rx="3" fill="#34C759" fill-opacity=".06"/>
+        <text x="258" y="174" font-size="10" fill="#34C759" text-anchor="middle">async reconcile</text>
+        <text x="258" y="188" font-size="10" fill="#34C759" text-anchor="middle">(后台进行)</text>
+        <line x1="210" y1="170" x2="305" y2="170" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" opacity=".65" marker-end="url(#s1am)"/>
+        <line x1="305" y1="232" x2="210" y2="232" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" opacity=".65" marker-end="url(#s1am)"/>
+        <line x1="210" y1="252" x2="305" y2="252" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" opacity=".65" marker-end="url(#s1am)"/>
+        <line x1="305" y1="314" x2="210" y2="314" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" opacity=".65" marker-end="url(#s1am)"/>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>shape: sequence_diagram
+User
+Content
+Background
+Supabase
+
+User -&gt; Content: click Highlight
+Content -&gt; Background: create-note
+Background -&gt; Content: broadcast {
+  style.stroke: "#0066CC"
+  style.bold: true
+}
+Background -&gt; Supabase: upsert page {
+  style.stroke-dash: 3
+}
+...</pre>
+</details>
+</section>
+
+<section>
+<header>
+  <h2>2. Architecture / container diagram</h2>
+  <span class="tag">嵌套 + shape</span>
+  <span class="meta">24 行 / 28 KB</span>
+</header>
+<p class="desc">用嵌套表示系统边界（浏览器、Supabase），用 shape（person / hexagon / cylinder）区分角色。<strong>handoff 第一节"系统概览"最适合这种</strong>。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">28 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/arch.svg" alt="D2 architecture"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc)</span><span class="size">19 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-arch.svg" alt="Mermaid architecture"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~50 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="s2gm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86868B"/></marker>
+          <marker id="s2bm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#0066CC"/></marker>
+        </defs>
+        <circle cx="30" cy="120" r="11" fill="none" stroke="#1D1D1F" stroke-width="1.5"/>
+        <path d="M14 168 Q14 144 30 144 Q46 144 46 168" fill="none" stroke="#1D1D1F" stroke-width="1.5"/>
+        <text x="30" y="195" font-size="11" fill="#1D1D1F" text-anchor="middle">用户</text>
+        <rect x="80" y="40" width="320" height="220" rx="10" fill="none" stroke="#86868B" stroke-dasharray="4 3"/>
+        <text x="92" y="32" font-size="11" font-weight="600" fill="#86868B">Chrome</text>
+        <rect x="100" y="60" width="130" height="44" rx="6" fill="#E5F0FF" stroke="#0066CC"/>
+        <text x="165" y="87" font-size="12" font-weight="600" fill="#0066CC" text-anchor="middle">Content Script</text>
+        <rect x="250" y="60" width="130" height="44" rx="6" fill="#E5F0FF" stroke="#0066CC"/>
+        <text x="315" y="87" font-size="12" font-weight="600" fill="#0066CC" text-anchor="middle">Sidepanel</text>
+        <polygon points="180,170 300,170 320,190 300,210 180,210 160,190" fill="#FFF4E0" stroke="#FF9500"/>
+        <text x="240" y="194" font-size="12" font-weight="600" fill="#FF9500" text-anchor="middle">Background SW</text>
+        <ellipse cx="470" cy="70" rx="40" ry="10" fill="#E8F5E9" stroke="#34C759"/>
+        <path d="M430 70 V210 A40 10 0 0 0 510 210 V70" fill="#E8F5E9" stroke="#34C759"/>
+        <ellipse cx="470" cy="70" rx="40" ry="10" fill="#E8F5E9" stroke="#34C759"/>
+        <text x="470" y="100" font-size="11" fill="#34C759" text-anchor="middle">pages</text>
+        <text x="470" y="120" font-size="11" fill="#34C759" text-anchor="middle">notes</text>
+        <text x="470" y="140" font-size="11" fill="#34C759" text-anchor="middle">annotations</text>
+        <text x="470" y="240" font-size="11" font-weight="600" fill="#34C759" text-anchor="middle">Supabase</text>
+        <path d="M46 132 C70 132 80 86 100 86" fill="none" stroke="#86868B" stroke-width="1.4" marker-end="url(#s2gm)"/>
+        <text x="56" y="112" font-size="10" fill="#6E6E73">选择文字</text>
+        <line x1="165" y1="104" x2="200" y2="170" stroke="#86868B" stroke-width="1.4" marker-end="url(#s2gm)"/>
+        <text x="170" y="142" font-size="10" fill="#6E6E73">create-note</text>
+        <line x1="220" y1="170" x2="185" y2="104" stroke="#0066CC" stroke-width="2" marker-end="url(#s2bm)"/>
+        <text x="125" y="142" font-size="10" font-weight="600" fill="#0066CC">broadcast</text>
+        <line x1="280" y1="170" x2="315" y2="104" stroke="#0066CC" stroke-width="2" marker-end="url(#s2bm)"/>
+        <text x="305" y="142" font-size="10" font-weight="600" fill="#0066CC">state-changed</text>
+        <line x1="320" y1="190" x2="430" y2="125" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#s2gm)"/>
+        <text x="340" y="148" font-size="10" fill="#6E6E73">reconcile (async)</text>
+        <line x1="430" y1="155" x2="320" y2="200" stroke="#86868B" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#s2gm)"/>
+        <text x="340" y="195" font-size="10" fill="#6E6E73">Realtime push</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>direction: right
+
+user: 用户 { shape: person }
+
+browser: Chrome {
+  content: Content Script
+  sidepanel: Sidepanel
+  bg: Background SW { shape: hexagon }
+}
+
+supabase: Supabase {
+  pages
+  notes
+  annotations
+  shape: cylinder
+}
+
+user -&gt; browser.content: 选择文字
+browser.content -&gt; browser.bg: create-note
+browser.bg -&gt; browser.content: broadcast (即时)
+browser.bg -&gt; browser.sidepanel: state-changed
+browser.bg -&gt; supabase: reconcile (async)
+supabase -&gt; browser.bg: Realtime push</pre>
+</details>
+</section>
+
+<section>
+<header>
+  <h2>3. State machine</h2>
+  <span class="tag">generic graph</span>
+  <span class="meta">18 行 / 19 KB</span>
+</header>
+<p class="desc">D2 没有 dedicated state-machine shape，但 generic graph + 边标签 + style.fill 完全能表达。我们 SyncIndicator 的三态切换就是这种。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">19 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/state.svg" alt="D2 state machine"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc)</span><span class="size">13 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-state.svg" alt="Mermaid state"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~20 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 540 230" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="s3gm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86868B"/></marker>
+        </defs>
+        <rect x="20" y="60" width="120" height="56" rx="10" fill="#F5F5F7" stroke="#86868B"/>
+        <text x="80" y="93" font-size="14" font-weight="600" fill="#1D1D1F" text-anchor="middle">Hidden</text>
+        <rect x="210" y="60" width="120" height="56" rx="10" fill="#E5F0FF" stroke="#0066CC"/>
+        <text x="270" y="93" font-size="14" font-weight="600" fill="#0066CC" text-anchor="middle">Syncing</text>
+        <rect x="400" y="60" width="120" height="56" rx="10" fill="#FFF0E5" stroke="#FF9500"/>
+        <text x="460" y="93" font-size="14" font-weight="600" fill="#FF9500" text-anchor="middle">Warning</text>
+        <line x1="140" y1="88" x2="210" y2="88" stroke="#86868B" stroke-width="1.4" marker-end="url(#s3gm)"/>
+        <text x="175" y="80" font-size="10" fill="#6E6E73" text-anchor="middle">queue 非空 ≥ 3s</text>
+        <line x1="330" y1="88" x2="400" y2="88" stroke="#86868B" stroke-width="1.4" marker-end="url(#s3gm)"/>
+        <text x="365" y="80" font-size="10" fill="#6E6E73" text-anchor="middle">最老一笔 ≥ 60s</text>
+        <path d="M260 116 Q170 175 90 120" fill="none" stroke="#86868B" stroke-width="1.4" marker-end="url(#s3gm)"/>
+        <text x="170" y="166" font-size="10" fill="#6E6E73" text-anchor="middle">drain 完成</text>
+        <path d="M450 116 Q260 220 80 122" fill="none" stroke="#86868B" stroke-width="1.4" marker-end="url(#s3gm)"/>
+        <text x="270" y="210" font-size="10" fill="#6E6E73" text-anchor="middle">drain 完成</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>direction: right
+
+hidden: Hidden
+syncing: Syncing
+warning: Warning
+
+hidden.style.fill: "#F5F5F7"
+syncing.style.fill: "#E5F0FF"
+syncing.style.stroke: "#0066CC"
+warning.style.fill: "#FFF0E5"
+warning.style.stroke: "#FF9500"
+
+hidden -&gt; syncing: queue 非空 ≥ 3s
+syncing -&gt; warning: 最老一笔 ≥ 60s
+syncing -&gt; hidden: drain 完成
+warning -&gt; hidden: drain 完成</pre>
+</details>
+</section>
+
+<section>
+<header>
+  <h2>4. ER diagram (SQL table)</h2>
+  <span class="tag">shape: sql_table</span>
+  <span class="meta">25 行 / 22 KB</span>
+</header>
+<p class="desc">数据库表 + 主外键关系。<code>{constraint: primary_key}</code> 自动渲染 PK 标识；arrow 自动画出 FK 引用线。<strong>handoff 提"shape 变化"最合适</strong>。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">22 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/er.svg" alt="D2 ER"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc)</span><span class="size">62 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-er.svg" alt="Mermaid ER"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~70 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="s4gm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86868B"/></marker>
+          <g id="row" font-size="10" fill="#1D1D1F"></g>
+        </defs>
+        <rect x="20" y="20" width="160" height="156" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <rect x="20" y="20" width="160" height="22" rx="4" fill="#0066CC"/>
+        <text x="100" y="36" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">pages</text>
+        <text x="30" y="58" font-size="10" fill="#1D1D1F">id</text>
+        <text x="170" y="58" font-size="9" fill="#0066CC" text-anchor="end" font-weight="600">PK · uuid</text>
+        <line x1="20" y1="64" x2="180" y2="64" stroke="#F0F0F0"/>
+        <text x="30" y="80" font-size="10" fill="#1D1D1F">user_id</text>
+        <text x="170" y="80" font-size="9" fill="#86868B" text-anchor="end">FK · uuid</text>
+        <line x1="20" y1="86" x2="180" y2="86" stroke="#F0F0F0"/>
+        <text x="30" y="102" font-size="10" fill="#1D1D1F">url</text>
+        <text x="170" y="102" font-size="9" fill="#86868B" text-anchor="end">text</text>
+        <line x1="20" y1="108" x2="180" y2="108" stroke="#F0F0F0"/>
+        <text x="30" y="124" font-size="10" fill="#1D1D1F">title</text>
+        <text x="170" y="124" font-size="9" fill="#86868B" text-anchor="end">text</text>
+        <line x1="20" y1="130" x2="180" y2="130" stroke="#F0F0F0"/>
+        <text x="30" y="146" font-size="10" fill="#1D1D1F">host</text>
+        <text x="170" y="146" font-size="9" fill="#86868B" text-anchor="end">text</text>
+        <line x1="20" y1="152" x2="180" y2="152" stroke="#F0F0F0"/>
+        <text x="30" y="168" font-size="10" fill="#1D1D1F">created_at</text>
+        <text x="170" y="168" font-size="9" fill="#86868B" text-anchor="end">timestamptz</text>
+
+        <rect x="220" y="20" width="160" height="134" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <rect x="220" y="20" width="160" height="22" rx="4" fill="#0066CC"/>
+        <text x="300" y="36" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">annotations</text>
+        <text x="230" y="58" font-size="10">id</text>
+        <text x="370" y="58" font-size="9" fill="#0066CC" text-anchor="end" font-weight="600">PK · uuid</text>
+        <line x1="220" y1="64" x2="380" y2="64" stroke="#F0F0F0"/>
+        <text x="230" y="80" font-size="10">page_id</text>
+        <text x="370" y="80" font-size="9" fill="#86868B" text-anchor="end">FK · uuid</text>
+        <line x1="220" y1="86" x2="380" y2="86" stroke="#F0F0F0"/>
+        <text x="230" y="102" font-size="10">quote</text>
+        <text x="370" y="102" font-size="9" fill="#86868B" text-anchor="end">text</text>
+        <line x1="220" y1="108" x2="380" y2="108" stroke="#F0F0F0"/>
+        <text x="230" y="124" font-size="10">anchor</text>
+        <text x="370" y="124" font-size="9" fill="#86868B" text-anchor="end">jsonb</text>
+        <line x1="220" y1="130" x2="380" y2="130" stroke="#F0F0F0"/>
+        <text x="230" y="146" font-size="10">created_at</text>
+        <text x="370" y="146" font-size="9" fill="#86868B" text-anchor="end">timestamptz</text>
+
+        <rect x="420" y="20" width="160" height="134" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <rect x="420" y="20" width="160" height="22" rx="4" fill="#0066CC"/>
+        <text x="500" y="36" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">notes</text>
+        <text x="430" y="58" font-size="10">id</text>
+        <text x="570" y="58" font-size="9" fill="#0066CC" text-anchor="end" font-weight="600">PK · uuid</text>
+        <line x1="420" y1="64" x2="580" y2="64" stroke="#F0F0F0"/>
+        <text x="430" y="80" font-size="10">page_id</text>
+        <text x="570" y="80" font-size="9" fill="#86868B" text-anchor="end">FK · uuid</text>
+        <line x1="420" y1="86" x2="580" y2="86" stroke="#F0F0F0"/>
+        <text x="430" y="102" font-size="10">annotation_id</text>
+        <text x="570" y="102" font-size="9" fill="#86868B" text-anchor="end">FK · uuid</text>
+        <line x1="420" y1="108" x2="580" y2="108" stroke="#F0F0F0"/>
+        <text x="430" y="124" font-size="10">comment</text>
+        <text x="570" y="124" font-size="9" fill="#86868B" text-anchor="end">text</text>
+        <line x1="420" y1="130" x2="580" y2="130" stroke="#F0F0F0"/>
+        <text x="430" y="146" font-size="10">created_at</text>
+        <text x="570" y="146" font-size="9" fill="#86868B" text-anchor="end">timestamptz</text>
+
+        <path d="M180 55 H200 V77 H220" fill="none" stroke="#86868B" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#s4gm)"/>
+        <path d="M180 55 Q300 0 420 77" fill="none" stroke="#86868B" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#s4gm)"/>
+        <path d="M380 55 Q400 80 420 99" fill="none" stroke="#86868B" stroke-width="1.2" stroke-dasharray="3 2" marker-end="url(#s4gm)"/>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>direction: right
+
+pages: {
+  shape: sql_table
+  id: uuid {constraint: primary_key}
+  user_id: uuid {constraint: foreign_key}
+  url: text
+  title: text
+  host: text
+  created_at: timestamptz
+}
+
+annotations: {
+  shape: sql_table
+  id: uuid {constraint: primary_key}
+  page_id: uuid {constraint: foreign_key}
+  quote: text
+  anchor: jsonb
+  created_at: timestamptz
+}
+
+pages.id -&gt; annotations.page_id
+pages.id -&gt; notes.page_id
+annotations.id -&gt; notes.annotation_id</pre>
+</details>
+</section>
+
+<section>
+<header>
+  <h2>5. Class diagram</h2>
+  <span class="tag">shape: class</span>
+  <span class="meta">20 行 / 27 KB</span>
+</header>
+<p class="desc">UML class 表达。<code>+</code> 表 public，<code>-</code> 表 private，<code>:</code> 后跟类型。<strong>需要展开关键模块的方法签名时用这种</strong>。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">27 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/class.svg" alt="D2 class"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc)</span><span class="size">24 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-class.svg" alt="Mermaid class"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~55 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="s5gm" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#86868B"/></marker>
+        </defs>
+
+        <rect x="20" y="20" width="240" height="140" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <rect x="20" y="20" width="240" height="24" rx="4" fill="#0066CC"/>
+        <text x="140" y="37" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">QueuedOp</text>
+        <text x="30" y="62" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> id: string</text>
+        <text x="30" y="80" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> kind: insert-note | upsert-page | delete-note</text>
+        <text x="30" y="98" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> payload: object</text>
+        <text x="30" y="116" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> enqueuedAt: number</text>
+        <text x="30" y="134" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> consecutiveFailures: number</text>
+
+        <rect x="300" y="20" width="240" height="160" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <rect x="300" y="20" width="240" height="24" rx="4" fill="#0066CC"/>
+        <text x="420" y="37" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">Drainer</text>
+        <text x="310" y="62" font-size="11" fill="#1D1D1F"><tspan fill="#FF3B30">-</tspan> timer: number?</text>
+        <line x1="300" y1="72" x2="540" y2="72" stroke="#D2D2D7"/>
+        <text x="310" y="90" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> schedule(delayMs)</text>
+        <text x="310" y="108" font-size="11" fill="#1D1D1F"><tspan fill="#34C759">+</tspan> drain()</text>
+        <text x="310" y="126" font-size="11" fill="#1D1D1F"><tspan fill="#FF3B30">-</tspan> executeOp(op): Promise</text>
+        <text x="310" y="144" font-size="11" fill="#1D1D1F"><tspan fill="#FF3B30">-</tspan> nextDelayMs(failures): number</text>
+
+        <rect x="300" y="200" width="240" height="34" rx="4" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="310" y="221" font-size="11" font-weight="600" fill="#0066CC">QueueState</text>
+        <text x="540" y="221" font-size="10" fill="#86868B" text-anchor="end">+count, +oldestEnqueuedAt</text>
+
+        <line x1="300" y1="90" x2="260" y2="90" stroke="#86868B" stroke-width="1.4" marker-end="url(#s5gm)"/>
+        <text x="266" y="84" font-size="10" fill="#6E6E73" text-anchor="end">取队头执行</text>
+        <line x1="420" y1="180" x2="420" y2="200" stroke="#86868B" stroke-width="1.4" marker-end="url(#s5gm)"/>
+        <text x="428" y="194" font-size="10" fill="#6E6E73">广播 queue-state</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>QueuedOp: {
+  shape: class
+  +id: string
+  +kind: "insert-note | upsert-page | delete-note"
+  +payload: object
+  +enqueuedAt: number
+  +consecutiveFailures: number
+}
+
+Drainer: {
+  shape: class
+  -timer: number?
+  +schedule(delayMs)
+  +drain()
+  -executeOp(op): Promise
+  -nextDelayMs(failures): number
+}
+
+Drainer -&gt; QueuedOp: 取队头执行
+Drainer -&gt; QueueState: 广播 rinote:queue-state</pre>
+</details>
+</section>
+
+<section>
+<header>
+  <h2>6. Grid (网格对比)</h2>
+  <span class="tag">grid-columns</span>
+  <span class="meta">28 行 / 15 KB</span>
+</header>
+<p class="desc">非传统 diagram，是"用 D2 画对比表格"的玩法。Grid 自动布局成 N 列。<strong>handoff 里"改动前 vs 改动后"那种并排对比可以用</strong>，但说实话用 HTML table 通常更好。</p>
+<div class="cmp">
+  <div class="cmp-col">
+    <div class="cmp-label"><span>D2 渲染</span><span class="size">15 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/grid.svg" alt="D2 grid"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>Mermaid (mmdc) · block-beta</span><span class="size">12 KB</span></div>
+    <div class="preview"><img src="./svg-tools-cmp/m-grid.svg" alt="Mermaid grid"/></div>
+  </div>
+  <div class="cmp-col">
+    <div class="cmp-label"><span>手写 inline SVG</span><span class="size">~40 行</span></div>
+    <div class="preview">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+        <rect x="20"  y="20" width="170" height="56" rx="6" fill="#FFF0E5" stroke="#FF9500"/>
+        <text x="105" y="46" font-size="12" font-weight="600" fill="#FF9500" text-anchor="middle">改动前</text>
+        <text x="105" y="64" font-size="11" fill="#1D1D1F" text-anchor="middle">2 × RTT 阻塞</text>
+        <rect x="200" y="20" width="170" height="56" rx="6" fill="#E5F0FF" stroke="#0066CC"/>
+        <text x="285" y="46" font-size="12" font-weight="600" fill="#0066CC" text-anchor="middle">改动后</text>
+        <text x="285" y="64" font-size="11" fill="#1D1D1F" text-anchor="middle">broadcast 在前</text>
+        <rect x="380" y="20" width="170" height="56" rx="6" fill="#E8F5E9" stroke="#34C759"/>
+        <text x="465" y="46" font-size="12" font-weight="600" fill="#34C759" text-anchor="middle">节省</text>
+        <text x="465" y="64" font-size="11" fill="#1D1D1F" text-anchor="middle">~400 ms</text>
+
+        <rect x="20"  y="90" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="105" y="114" font-size="11" fill="#1D1D1F" text-anchor="middle">upsert-page · ~200ms</text>
+        <rect x="200" y="90" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="285" y="114" font-size="11" fill="#86868B" text-anchor="middle">(skipped, 异步进行)</text>
+        <rect x="380" y="90" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="465" y="114" font-size="13" font-weight="600" fill="#34C759" text-anchor="middle">&lt; 5 ms</text>
+
+        <rect x="20"  y="138" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="105" y="162" font-size="11" fill="#1D1D1F" text-anchor="middle">insert-note · ~200ms</text>
+        <rect x="200" y="138" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="285" y="162" font-size="11" fill="#86868B" text-anchor="middle">(skipped, 异步进行)</text>
+        <rect x="380" y="138" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="465" y="162" font-size="11" fill="#86868B" text-anchor="middle">—</text>
+
+        <rect x="20"  y="186" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="105" y="210" font-size="11" fill="#1D1D1F" text-anchor="middle">broadcast</text>
+        <rect x="200" y="186" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#0066CC"/>
+        <text x="285" y="210" font-size="11" font-weight="600" fill="#0066CC" text-anchor="middle">broadcast (在前)</text>
+        <rect x="380" y="186" width="170" height="38" rx="6" fill="#FFFFFF" stroke="#D2D2D7"/>
+        <text x="465" y="210" font-size="11" fill="#86868B" text-anchor="middle">—</text>
+      </svg>
+    </div>
+  </div>
+</div>
+<details><summary>查看 D2 源 DSL</summary>
+<pre>grid-columns: 3
+grid-gap: 12
+
+cell1: { label: "改动前\n2 × RTT 阻塞"
+  style.fill: "#FFF0E5" }
+cell2: { label: "改动后\nbroadcast 在前"
+  style.fill: "#E5F0FF" }
+cell3: { label: "节省\n~400ms"
+  style.fill: "#E8F5E9" }
+
+a1: "upsert-page · ~200ms"
+a2: "(skipped, 异步进行)"
+a3: "&lt;5ms"
+...</pre>
+</details>
+</section>
+
+<section class="notwell">
+<header><h2>D2 不擅长的 / 不该用的</h2></header>
+<ul>
+  <li><strong>数据图表（bar / line / scatter / histogram）</strong> —— 没有数据轴概念。走 Vega-Lite。</li>
+  <li><strong>Gantt / timeline / 甘特图</strong> —— Mermaid 有原生支持，D2 没有。</li>
+  <li><strong>Mind map / 思维导图</strong> —— 能凑活画成树，但 Mermaid / PlantUML 有专门语法更省事。</li>
+  <li><strong>UI mock（侧栏、卡片、按钮的视觉摹仿）</strong> —— D2 的 shape primitive 太抽象，画不出真实 UI 质感。走 Satori 或直接写 HTML/CSS。</li>
+  <li><strong>需要跟 CSS 主题色实时联动的图</strong> —— D2 输出颜色编译时固定。要 dark mode 得跑两次或写 sed 脚本。继续走"手写 SVG + data-k" 方案。</li>
+  <li><strong>自由插画 / 手绘风</strong> —— 走 Excalidraw / tldraw。</li>
+</ul>
+</section>
+
+<section>
+<header><h2>额外能力（懒得各开一节）</h2></header>
+<ul style="margin: 0; padding-left: 20px; color: var(--muted);">
+  <li><strong>主题 / themeID</strong> —— <code>d2 --theme=200 file.d2 file.svg</code>，内建几十套，包括 dark / sketch 风。</li>
+  <li><strong>布局引擎切换</strong> —— <code>--layout=elk</code>（精确） vs dagre vs tala（付费），同一 DSL 不同审美。</li>
+  <li><strong>tooltips</strong> —— <code>nodeX.tooltip: "解释文字"</code>，SVG 输出自带 hover 气泡，不需要外部 JS。</li>
+  <li><strong>links</strong> —— <code>nodeX.link: "https://..."</code>，节点变可点击锚链接。</li>
+  <li><strong>icon</strong> —— <code>nodeX.icon: https://icons.example/aws-s3.svg</code>，自动嵌入。AWS / GCP / Kubernetes icon pack 现成。</li>
+  <li><strong>animated arrow</strong> —— <code>style.animated: true</code>，SVG SMIL 动画自动加。handoff 里可以让数据流动起来。</li>
+  <li><strong>多张图共享变量</strong> —— <code>vars: { primary: "#0066CC" }</code> 后所有 fill 引用 <code>${primary}</code>。换主题改一处。</li>
+  <li><strong>compose</strong> —— D2 文件可以 import 其它 D2 文件做组件复用，适合大型架构图。</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

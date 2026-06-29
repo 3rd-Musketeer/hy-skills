@@ -1,0 +1,31 @@
+{
+  "theme": "neutral",
+  "themeVariables": {
+    "fontFamily": "-apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#E5F0FF",
+    "primaryTextColor": "#0066CC",
+    "primaryBorderColor": "#0066CC",
+    "secondaryColor": "#FFF4E0",
+    "secondaryTextColor": "#FF9500",
+    "secondaryBorderColor": "#FF9500",
+    "tertiaryColor": "#E8F5E9",
+    "tertiaryTextColor": "#34C759",
+    "tertiaryBorderColor": "#34C759",
+    "lineColor": "#86868B",
+    "textColor": "#1D1D1F",
+    "mainBkg": "#FFFFFF",
+    "noteBkgColor": "#F5F5F7",
+    "noteBorderColor": "#D2D2D7",
+    "noteTextColor": "#1D1D1F",
+    "activationBkgColor": "#E5F0FF",
+    "activationBorderColor": "#0066CC",
+    "actorBkg": "#F5F5F7",
+    "actorBorder": "#D2D2D7",
+    "actorTextColor": "#1D1D1F",
+    "signalColor": "#86868B",
+    "signalTextColor": "#1D1D1F"
+  },
+  "flowchart": { "curve": "basis", "padding": 14 },
+  "sequence": { "actorMargin": 60, "boxMargin": 12, "messageMargin": 32, "mirrorActors": false }
+}

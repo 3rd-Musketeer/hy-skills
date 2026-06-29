@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant U as User
+    participant C as Content
+    participant B as Background
+    participant S as Supabase
+    U->>C: click Highlight
+    C->>B: create-note
+    B->>S: await upsert page (~200ms)
+    S-->>B: ok
+    B->>S: await insert note (~200ms)
+    S-->>B: ok
+    B-->>C: broadcast
+    Note over U: 用户看到高亮 · ~400 ms

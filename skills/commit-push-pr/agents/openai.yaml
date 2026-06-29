@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Push PR"
+  short_description: "Commit, push, and open or update a ready PR"
+  default_prompt: "Use $commit-push-pr to publish the current task branch into a ready-for-review PR."

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 369.95849999999996 1139.1999999999998" width="369.95849999999996" height="1139.1999999999998" style="--bg:#FFFFFF;--fg:#27272A;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="Reconciling" data-label="Reconciling">
+  <rect x="40" y="40" width="125.82" height="470.40000000000003" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="40" width="125.82" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="52" y="54" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Reconciling</text>
+</g>
+<polyline class="edge" data-from="_start" data-to="Idle" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="207.68949999999998,731.9 207.68949999999998,743.9 160.1640833333333,743.9 160.1640833333333,755.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Idle" data-to="Recording" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="start()" points="144.48958333333331,792.8 144.48958333333331,897.0999999999999 114.82749999999999,897.0999999999999 114.82749999999999,909.0999999999999" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Recording" data-to="Paused" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="pause()" points="80.09616666666665,945.9999999999999 80.09616666666665,981.9999999999999 73.18249999999999,981.9999999999999 73.18249999999999,1050.2999999999997 82.81316666666665,1050.2999999999997 82.81316666666665,1062.2999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Paused" data-to="Recording" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="resume()" points="112.11049999999997,1062.2999999999997 112.11049999999997,1050.2999999999997 133.47249999999997,1050.2999999999997 133.47249999999997,981.9999999999999 114.82749999999999,981.9999999999999 114.82749999999999,945.9999999999999" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Recording" data-to="Reconciling" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="stop()" points="80.09616666666665,909.0999999999999 80.09616666666665,897.0999999999999 67.87249999999999,897.0999999999999 67.87249999999999,828.8 71.455,828.8 71.455,510.40000000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Reconciling" data-to="Idle" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="done" points="102.91,510.40000000000003 102.91,675.6 95.96183333333332,675.6 95.96183333333332,743.9 128.81508333333332,743.9 128.81508333333332,755.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Reconciling" data-to="Error" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="timeout" points="134.365,510.40000000000003 134.365,522.4000000000001 209.90266666666665,522.4000000000001 209.90266666666665,602.7" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Error" data-to="Idle" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="retry()" points="197.22999999999996,639.6 197.22999999999996,675.6 146.3395,675.6 146.3395,743.9 144.48958333333331,743.9 144.48958333333331,755.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Error" data-to="_end2" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="abort()" points="222.5753333333333,639.6 222.5753333333333,675.6 270.18949999999995,675.6 270.18949999999995,755.9" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="_start2" data-to="Flushing" data-style="solid" data-arrow-start="false" data-arrow-end="true" points="102.91,112 102.91,160" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Flushing" data-to="Syncing" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="cache drained" points="102.91,196.9 102.91,313.20000000000005" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Syncing" data-to="_end" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="server ack" points="102.91,350.1 102.91,466.40000000000003" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<g class="edge-label" data-from="Idle" data-to="Recording" data-label="start()">
+  <rect x="121.98958333333331" y="835.8" width="44.974" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="144.4765833333333" y="850.9499999999999" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">start()</text>
+</g>
+<g class="edge-label" data-from="Recording" data-to="Paused" data-label="pause()">
+  <rect x="46.18249999999999" y="988.9999999999999" width="53.29" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="72.82749999999999" y="1004.1499999999999" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">pause()</text>
+</g>
+<g class="edge-label" data-from="Paused" data-to="Recording" data-label="resume()">
+  <rect x="103.47249999999997" y="988.9999999999999" width="59.230000000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="133.08749999999998" y="1004.1499999999999" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">resume()</text>
+</g>
+<g class="edge-label" data-from="Recording" data-to="Reconciling" data-label="stop()">
+  <rect x="45.87249999999999" y="835.8" width="43.786" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="67.76549999999999" y="850.9499999999999" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">stop()</text>
+</g>
+<g class="edge-label" data-from="Reconciling" data-to="Idle" data-label="done">
+  <rect x="74.96183333333332" y="682.6" width="41.41" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="95.66683333333332" y="697.75" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">done</text>
+</g>
+<g class="edge-label" data-from="Reconciling" data-to="Error" data-label="timeout">
+  <rect x="184.90266666666665" y="529.4000000000001" width="49.726000000000006" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="209.76566666666665" y="544.5500000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">timeout</text>
+</g>
+<g class="edge-label" data-from="Error" data-to="Idle" data-label="retry()">
+  <rect x="122.3395" y="682.6" width="47.35" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="146.0145" y="697.75" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">retry()</text>
+</g>
+<g class="edge-label" data-from="Error" data-to="_end2" data-label="abort()">
+  <rect x="245.68949999999995" y="682.6" width="48.538000000000004" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="269.95849999999996" y="697.75" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">abort()</text>
+</g>
+<g class="edge-label" data-from="Flushing" data-to="Syncing" data-label="cache drained">
+  <rect x="59.91" y="239.9" width="85.96000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="102.89" y="255.05" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">cache drained</text>
+</g>
+<g class="edge-label" data-from="Syncing" data-to="_end" data-label="server ack">
+  <rect x="67.41" y="393.1" width="70.51599999999999" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="102.66799999999999" y="408.25" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">server ack</text>
+</g>
+<g class="node" data-id="_start" data-label="" data-shape="state-start">
+  <circle cx="207.68949999999998" cy="717.9" r="12" fill="var(--_text)" stroke="none" />
+</g>
+<g class="node" data-id="Idle" data-label="Idle" data-shape="rounded">
+  <rect x="113.14058333333331" y="755.9" width="62.69799999999999" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="144.48958333333331" y="774.35" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Idle</text>
+</g>
+<g class="node" data-id="Recording" data-label="Recording" data-shape="rounded">
+  <rect x="45.36483333333331" y="909.0999999999999" width="104.194" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="97.46183333333332" y="927.55" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Recording</text>
+</g>
+<g class="node" data-id="Paused" data-label="Paused" data-shape="rounded">
+  <rect x="53.51583333333332" y="1062.2999999999997" width="87.892" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="97.46183333333332" y="1080.7499999999998" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Paused</text>
+</g>
+<g class="node" data-id="Error" data-label="Error" data-shape="rounded">
+  <rect x="171.88466666666665" y="602.7" width="76.036" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="209.90266666666665" y="621.1500000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Error</text>
+</g>
+<g class="node" data-id="_end2" data-label="" data-shape="state-end">
+  <circle cx="270.18949999999995" cy="769.9" r="12" fill="none" stroke="var(--_text)" stroke-width="1.5" />
+  <circle cx="270.18949999999995" cy="769.9" r="8" fill="var(--_text)" stroke="none" />
+</g>
+<g class="node" data-id="_start2" data-label="" data-shape="state-start">
+  <circle cx="102.91" cy="98" r="12" fill="var(--_text)" stroke="none" />
+</g>
+<g class="node" data-id="Flushing" data-label="Flushing" data-shape="rounded">
+  <rect x="56" y="160" width="93.82" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="102.91" y="178.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Flushing</text>
+</g>
+<g class="node" data-id="Syncing" data-label="Syncing" data-shape="rounded">
+  <rect x="57.482" y="313.20000000000005" width="90.856" height="36.900000000000006" rx="6" ry="6" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="102.91" y="331.65000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Syncing</text>
+</g>
+<g class="node" data-id="_end" data-label="" data-shape="state-end">
+  <circle cx="102.91" cy="480.40000000000003" r="12" fill="none" stroke="var(--_text)" stroke-width="1.5" />
+  <circle cx="102.91" cy="480.40000000000003" r="8" fill="var(--_text)" stroke="none" />
+</g>
+</svg>

@@ -1,0 +1,15 @@
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Recording: start()
+    Recording --> Paused: pause()
+    Paused --> Recording: resume()
+    Recording --> Reconciling: stop()
+    state Reconciling {
+        [*] --> Flushing
+        Flushing --> Syncing: cache drained
+        Syncing --> [*]: server ack
+    }
+    Reconciling --> Idle: done
+    Reconciling --> Error: timeout
+    Error --> Idle: retry()
+    Error --> [*]: abort()

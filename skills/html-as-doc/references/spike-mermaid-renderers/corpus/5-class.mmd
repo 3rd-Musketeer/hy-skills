@@ -1,0 +1,25 @@
+classDiagram
+    class Store {
+        <<abstract>>
+        +get(key) Value
+        +set(key, val) void
+        #flush() Promise
+    }
+    class CacheStore {
+        -Map data
+        +get(key) Value
+        +set(key, val) void
+    }
+    class RemoteStore {
+        -Client client
+        +get(key) Value
+        +set(key, val) void
+        #flush() Promise
+    }
+    Store <|-- CacheStore
+    Store <|-- RemoteStore
+    RemoteStore o-- Client : uses
+    class Client {
+        +upsert(row) Promise
+        +insert(row) Promise
+    }

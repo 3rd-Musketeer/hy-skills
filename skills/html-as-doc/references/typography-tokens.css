@@ -1,0 +1,44 @@
+:root {
+  --t-xs:      11px;
+  --t-sm:      13px;
+  --t-base:    15px;
+  --t-md:      17px;
+  --t-lg:      19px;
+  --t-xl:      22px;
+  --t-2xl:     28px;
+  --t-3xl:     36px;
+  --t-display: 56px;
+
+  --lh-tight:   1.08;
+  --lh-snug:    1.25;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  --ls-tight:  -.018em;
+  --ls-snug:   -.01em;
+  --ls-normal: -.005em;
+  --ls-wide:   .06em;
+
+  --s-1:   4px;
+  --s-2:   8px;
+  --s-3:   12px;
+  --s-4:   16px;
+  --s-5:   20px;
+  --s-6:   24px;
+  --s-7:   28px;
+  --s-8:   32px;
+  --s-10:  40px;
+  --s-12:  48px;
+  --s-16:  64px;
+  --s-20:  80px;
+  --s-24:  96px;
+  --s-32:  128px;
+
+  --max-content: 1040px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "SF Pro Text", "PingFang SC", "Hiragino Sans GB",
+               system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo,
+               Consolas, monospace;
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor"
+  short_description: "Friction-driven maintainability and architecture coherence audit"
+  default_prompt: "Audit this code for maintainability, naming, boundaries, and refactor ROI."

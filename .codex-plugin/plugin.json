@@ -1,0 +1,41 @@
+{
+  "name": "hy-skills",
+  "version": "0.1.0",
+  "description": "Personal methodology skills for AI-assisted development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, prototype-board, goal-shaper, gdd, explain, html-as-doc, infisical-secrets, use-portless. Same skills run under Claude Code, Codex, and any skill-only agent.",
+  "author": {
+    "name": "Haoyang Wu"
+  },
+  "keywords": [
+    "methodology",
+    "git",
+    "worktree",
+    "tdd",
+    "simplify",
+    "refactor",
+    "pr-review",
+    "prototype",
+    "storybook",
+    "goal-docs",
+    "planning",
+    "portless",
+    "dev-server"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Hy Skills",
+    "shortDescription": "Worktree workflow, feature delivery, goal shaping, env staging, and Portless dev URLs",
+    "longDescription": "Personal methodology skills grown from day-to-day practice using AI across many codebases and products. Covers task kickoff (open-worktree), feature implementation with light TDD (go), fallback simplification review when native Simplify is unavailable (my-simplify), friction-driven maintainability and architecture-coherence refactor audits (refactor), branch publishing (commit-push-pr), happy-path PR watching (loop-for-merge), post-merge cleanup (close-worktree), feel-first interactive prototype boards for validating UX before implementation (prototype-board), section-by-section milestone goal shaping before agents start implementation (goal-shaper), goal-driven development that shapes goals from backlog candidates through a drafting gate (gdd), user-tailored explanations across question types with a consistent expression discipline (explain), rendering converged content as single-file self-contained HTML docs under an apple.com-inspired design discipline (html-as-doc), explicit Infisical secret discovery for local agent/model-provider env files (infisical-secrets), and Portless-backed local dev server URLs for previews, APIs, OAuth/MCP callbacks, mobile/LAN checks, and browser verification (use-portless). Same skill files run under Claude Code plugins, Codex plugins, and plain skill-only agents.",
+    "developerName": "Haoyang Wu",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Open a worktree for a new task.",
+      "Implement this feature end-to-end and let me try it.",
+      "Shape this milestone into an agent-executable GOAL.md.",
+      "Start this dev server with a stable Portless URL."
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+gantt
+    title Build pipeline rollout
+    dateFormat YYYY-MM-DD
+    axisFormat %m-%d
+    section Authoring
+        Light source mode      :done,    a1, 2026-05-01, 7d
+        Primitive extraction   :done,    a2, after a1, 5d
+    section Build
+        Highlight transform    :active,  b1, 2026-05-13, 4d
+        WebP compress          :         b2, after b1, 3d
+        Inline + orchestrate   :         b3, after b2, 4d
+    section Ship
+        Dogfood validation     :         c1, after b3, 3d
+        Merge to main          :milestone, c2, after c1, 0d
