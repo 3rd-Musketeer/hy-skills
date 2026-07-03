@@ -52,7 +52,7 @@ See `gallery.html` (open in a browser) and `png/` for the visual comparison. Cor
 
 ```bash
 # baseline (cached chromium)
-npx @mermaid-js/mermaid-cli -i corpus/N.mmd -o out-mmdc/N.svg -c ../mermaid-theme.json -b transparent
+npx @mermaid-js/mermaid-cli -i corpus/N.mmd -o out-mmdc/N.svg -c ../../../../skills/html-as-doc/references/mermaid-theme.json -b transparent
 # mmdr (after: cargo install mermaid-rs-renderer)
 mmdr -i corpus/N.mmd -o out-rs-themed/N.svg -c theme-mmdr.json
 # beautiful-mermaid (npm i beautiful-mermaid; renderMermaidSVG(code))

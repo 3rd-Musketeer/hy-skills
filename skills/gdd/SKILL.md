@@ -1,11 +1,11 @@
 ---
 name: gdd
-description: Shape a goal from a backlog item through drafting, then refine into an executable goal document. Use when the human wants to create, refine, or assess a goal in a project using the goal-driven development methodology under .gdd/.
+description: Shape a goal from a backlog item through drafting, then refine into an executable goal document. Stages working artifacts under .tmp/gdd/ during shaping and asks the human where to place them as the final decision before promotion. Use when the human wants to create, refine, or assess a goal using the goal-driven development methodology.
 ---
 
 # gdd
 
-Shape goals from backlog candidates through human-agent discussion. Operates on the `.gdd/` layout.
+Shape goals from backlog candidates through human-agent discussion. The canonical layout lives under `.gdd/` (see `../references/goal-driven-dev.md`), but **where** an artifact belongs is a human decision — not assumed from cwd or repo count.
 
 The methodology this skill implements is defined in `../references/goal-driven-dev.md`. Read it before operating if it is not already in context.
 
@@ -22,9 +22,58 @@ The skill operates in one of three modes. The human signals the mode by intent; 
 Across all modes — note `gdd` operates under the **co-author contract** (see `../references/goal-driven-dev.md` § Roles): the human is an active participant in decisions, not a downstream consumer.
 
 - Coaching, not authoring. Lead the human to a decision. Do not draft prose ahead of decisions.
-- One decision at a time. Surface options, explain consequences, recommend a direction, let the human choose.
+- One decision at a time. Surface options, explain consequences, recommend a direction, let the human choose (see § Decision support).
 - Stay at artifact level. Push implementation detail (commands, file paths, library choices) to `/go`.
-- Discussion mode does not produce files. Write to `.gdd/` only when the human explicitly asks.
+- **Stage first, place last.** While shaping, write working artifacts under `.tmp/gdd/` (create the directory if needed). Do not promote to a permanent path until content is converged **and** the human has chosen placement (see § Staging and placement).
+
+## Decision support
+
+How to present each decision, in any mode. An option proposal carries the reasoning that matters at section level:
+
+- where the framing takes the section, and its ROI / leverage
+- how it constrains later Scope, Design, DoD, and Decisions
+- the commitments, risks, and follow-on work it implies
+
+When recommending a direction, state the basis: why it fits the current milestone, which signals make it stronger, and what boundary must hold after choosing it. Use the most concise shape that serves the decision — bullets, a short comparison, a direct recommendation note. If the human asks for decision support only, stay at option / consequence / recommendation level; no prose drafting.
+
+### Intervention granularity
+
+Bring to the human the decisions that affect: overall goal and release intent · product experience and mental model · milestone scope and explicit exclusions · public UX/DX contracts · source of truth and responsibility boundaries · acceptance scenarios and the acceptance bar · high-risk product or architecture tradeoffs.
+
+Do not bring to the human during shaping — these belong to `/go` at execution time: implementation order · test runner and command details · file layout below module level · library choices within the accepted tech boundary · helper naming · small adapters and fallback mechanics.
+
+## Staging and placement
+
+Artifact location is a **load-bearing decision** — especially for cross-repo work where `.gdd/` may live in a repo, a service group, a workspace topic, or nowhere yet.
+
+### While shaping (default)
+
+- Write drafts and converged goal/backlog bodies to **`.tmp/gdd/`** under cwd.
+- Use descriptive filenames: `goal-YYYYMMDD-slug.md`, `backlog-YYYYMMDD-slug.md`.
+- Updating the staged file as sections converge is fine; tmp is disposable until promotion.
+- If `.tmp/` already exists at workspace root and cwd is inside that workspace, prefer `<workspace>/.tmp/gdd/` — same intent, follows local convention.
+
+### Placement is the **last** decision before promotion
+
+After Outcome, Scope, DoD, Pickup, and Decisions are stable, **stop and ask** where the artifact should live permanently. Present options with tradeoffs; recommend one based on scope discovered during shaping. Do not pick silently.
+
+Typical options (adapt to what you found in the tree):
+
+| Target | When it fits |
+|--------|----------------|
+| `<repo>/.gdd/goals/…` or `backlogs/…` | Single-repo milestone; executing agent's cwd will be that repo |
+| `<service-group>/.gdd/goals/…` | Cross-repo under one deploy/product boundary (a directory grouping the repos of one service or product) |
+| `topics/<slug>/goal.md` (or `GDD.md`) | Cross-repo exploratory work, design memos, or scope spans repos/topics/refs |
+| Custom path the human names | Monorepo layouts, vendored copies, or project-specific conventions |
+
+For each option, state: who will run `/go` from where, whether an index file (`goal.md`, `backlog.md`) must be updated, and whether the path already exists.
+
+**Only after the human confirms placement:** move (or copy) from `.tmp/gdd/` to the chosen path, apply the file-or-folder invariant, update any index, and report the final paths. If the human revises placement, adjust before treating the artifact as authoritative.
+
+### When not to ask
+
+- **Assessing** an existing goal at a known path — placement is already decided.
+- The human **already specified** the destination path when asking to write ("put it in `topics/foo/GDD.md`"). Confirm briefly, then promote directly.
 
 ## Drafting
 
@@ -38,7 +87,7 @@ A draft minimally answers:
 
 A draft is mature when these three are stable and complete.
 
-Output: `.gdd/backlogs/backlog-YYYYMMDD-slug.md` with `status: drafted` in frontmatter. Upgrade to a folder (`backlog-YYYYMMDD-slug/backlog.md` + assets) when non-markdown companions are needed, per the file-or-folder invariant in `../references/goal-driven-dev.md`. See `references/draft-template.md`.
+Output: stage as `.tmp/gdd/backlog-YYYYMMDD-slug.md` while drafting; after maturity + placement decision, promote to `.gdd/backlogs/backlog-YYYYMMDD-slug.md` with `status: drafted` in frontmatter. Upgrade to a folder (`backlog-YYYYMMDD-slug/backlog.md` + assets) when non-markdown companions are needed, per the file-or-folder invariant in `../references/goal-driven-dev.md`. See `references/draft-template.md`.
 
 ## Shaping
 
@@ -65,7 +114,7 @@ Pickup is the dimension `/go` reads to honor the role contract — sloppy Pickup
 
 Decisions default to inline in the goal's Decisions section. Decisions that affect more than one goal are flagged as ref candidates and promoted to `.gdd/refs/` per the rules in `../references/goal-driven-dev.md`.
 
-Output: `.gdd/goals/goal-YYYYMMDD-slug.md`. Upgrade to a folder (`goal-YYYYMMDD-slug/goal.md` + assets) when the goal carries mockups, screenshots, or other non-markdown companions, per the file-or-folder invariant in `../references/goal-driven-dev.md`. The goal index `.gdd/goal.md` is updated to point at it (citation omits `.md` so the file → folder upgrade is transparent). See `references/goal-template.md`.
+Output: stage as `.tmp/gdd/goal-YYYYMMDD-slug.md` while shaping; after Pickup + placement decision, promote to the human-chosen path (often `.gdd/goals/goal-YYYYMMDD-slug.md`). Upgrade to a folder (`goal-YYYYMMDD-slug/goal.md` + assets) when the goal carries mockups, screenshots, or other non-markdown companions, per the file-or-folder invariant in `../references/goal-driven-dev.md`. When landing under `.gdd/`, update the goal index `.gdd/goal.md` (citation omits `.md` so the file → folder upgrade is transparent). See `references/goal-template.md`.
 
 ## Assessing
 

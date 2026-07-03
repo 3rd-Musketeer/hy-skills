@@ -1,4 +1,0 @@
-interface:
-  display_name: "Goal Shaper"
-  short_description: "Shape executable milestone goal documents section by section"
-  default_prompt: "Help me shape this milestone into an agent-executable GOAL.md."

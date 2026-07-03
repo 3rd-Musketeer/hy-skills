@@ -1,0 +1,4 @@
+interface:
+  display_name: "Go"
+  short_description: "Implement a feature end-to-end with light TDD and a user-ready handoff"
+  default_prompt: "Implement this feature end-to-end and stage it so I can pick it up as the end user."

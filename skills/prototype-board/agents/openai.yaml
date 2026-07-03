@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prototype Board"
+  short_description: "Feel-first interactive prototype board for an unbuilt product"
+  default_prompt: "Scaffold a feel-first prototype board for this product."

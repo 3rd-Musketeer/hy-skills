@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain"
+  short_description: "User-tailored explanation with a conclusion-first expression discipline"
+  default_prompt: "Explain this using the explain skill's expression discipline."

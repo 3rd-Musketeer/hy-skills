@@ -1,0 +1,4 @@
+interface:
+  display_name: "Infisical Secrets"
+  short_description: "Dump a requested subset of Infisical secrets into a local env file"
+  default_prompt: "Set up this project's local env file from my Infisical secrets."

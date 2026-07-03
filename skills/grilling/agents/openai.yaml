@@ -1,4 +1,4 @@
 interface:
   display_name: "Grilling"
-  short_description: "Stress-test a plan by interviewing you one question at a time"
-  default_prompt: "Grill me on this plan one question at a time until we reach shared understanding."
+  short_description: "Outline-first, one-question-at-a-time plan grilling"
+  default_prompt: "Grill me about this plan before we build it."

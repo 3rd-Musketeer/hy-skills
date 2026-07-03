@@ -1,6 +1,6 @@
 ---
 name: html-as-doc
-description: Render a piece of converged content as a single-file self-contained HTML doc, applying a design discipline based on apple.com marketing aesthetics. Medium-only — does not regulate what content says, only how the HTML expresses it.
+description: Render a piece of converged content as a single-file self-contained HTML doc, applying a design discipline based on apple.com marketing aesthetics. Medium-only — does not regulate what content says, only how the HTML expresses it. Explicit invocation only — do not auto-trigger on ordinary "render this as html" requests.
 when_to_use: Use only when the user explicitly invokes /html-as-doc or asks for HTML output in this specific design style. Do NOT auto-trigger on ordinary "render this as html" / "做成 html" / "出个网页" mentions — those usually mean something else (a marketing site, a frontend component, a quick UI mockup). The user calls this skill deliberately when they want this expression discipline applied. NOT for multi-page doc sites (VitePress / Astro territory), NOT for production frontend code (→ frontend-design).
 ---
 
@@ -194,9 +194,11 @@ Two modes, one source:
 - **Sharing (on explicit request).** When the doc needs to go out as one portable file, run the build. It produces a **self-contained** copy — code shiki-highlighted, images inlined as base64 **WebP** — written to a *separate* path. The source is never touched, so you can keep editing after a build.
 
 ```bash
-node skills/html-as-doc/scripts/build.mjs <src.html> <out.html> [--no-compress]
+node <skill-dir>/scripts/build.mjs <src.html> <out.html> [--no-compress]
 # e.g.  build.mjs report.html report.share.html
 ```
+
+`<skill-dir>` is this skill's install directory — `${CLAUDE_SKILL_DIR}` when the harness provides that substitution, otherwise the directory containing this SKILL.md. Never assume cwd is the plugin repo.
 
 - Output naming convention: `foo.html` → `foo.share.html` (or `dist/foo.html`).
 - `out` must differ from `src` — the build refuses to overwrite the source.
@@ -224,7 +226,7 @@ These files live next to this SKILL.md under `references/`. Load policy varies b
 
 ### Optional share build — run on request, never embedded (see §13)
 
-- **`scripts/build.mjs`** — orchestrator: `node scripts/build.mjs <src.html> <out.html> [--no-compress]`. Highlights code + compresses/inlines images into a self-contained copy; refuses `out == src`.
+- **`scripts/build.mjs`** — orchestrator: `node <skill-dir>/scripts/build.mjs <src.html> <out.html> [--no-compress]` (path resolution per §13). Highlights code + compresses/inlines images into a self-contained copy; refuses `out == src`.
 - **`scripts/highlight.mjs`** — shiki dual-theme (github-light/dark) for `<pre><code>` blocks; honors `class="language-X"`, auto-detects JSON.
 - **`scripts/compress-images.mjs`** — sharp raster→WebP (q82, max-width 2400, alpha preserved, SVG passed through).
 - **`scripts/inline-images.mjs`** — `<img src>` → base64 data URI (idempotent; compresses via the above unless `--no-compress`).

@@ -1,6 +1,6 @@
 ---
 name: use-portless
-description: Start, expose, verify, and manage local dev servers through Portless stable named URLs. Use when the user wants to run a dev server, local preview, frontend app, API server, OAuth/MCP callback server, static preview, mobile/LAN preview, Tailscale/ngrok share, Playwright/browser verification target, monorepo app, git worktree preview, or reusable local URL with Portless.
+description: Start, expose, verify, and manage local dev servers through Portless stable named URLs. Use when the user wants to run a dev server, local preview, frontend app, API server, OAuth/MCP callback server, static preview, mobile/LAN preview, Tailscale/ngrok share, Playwright/browser verification target, monorepo app, git worktree preview, or reusable local URL with Portless. Do not auto-adopt — propose the route/command/URL and wait for go-ahead unless explicitly invoked.
 when_to_use: >
   May trigger when the user wants a dev server, local preview, API, OAuth/MCP callback,
   browser verification, or stable local URL — including implicit context like "start the app"
@@ -39,7 +39,7 @@ Use Portless as the local URL layer for dev servers. Prefer clean `.localhost` U
 
 2. **Discover the server shape**
    - Inspect nearby `package.json`, `vite.config.*`, `Makefile`, `pyproject.toml`, `docker-compose*.yml`, `README.md`, and obvious entrypoints.
-   - Use `scripts/detect-dev-servers.mjs <path>` for a fast first pass when Node is available.
+   - Use `node <skill-dir>/scripts/detect-dev-servers.mjs <path>` for a fast first pass when Node is available (`<skill-dir>` = this skill's install directory: `${CLAUDE_SKILL_DIR}` when the harness provides it, otherwise the directory containing this SKILL.md).
    - Identify framework, run command, current fixed port, whether it honors `PORT`, and health/preview path.
 
 3. **Choose the route name**
@@ -65,7 +65,7 @@ Use Portless as the local URL layer for dev servers. Prefer clean `.localhost` U
 5. **Verify**
    - Run `portless list`.
    - Confirm the clean URL is present, such as `https://<name>.localhost`.
-   - Probe the exact clean URL from `portless list`. Use `scripts/probe-url.mjs <url>` when Node is available.
+   - Probe the exact clean URL from `portless list`. Use `node <skill-dir>/scripts/probe-url.mjs <url>` when Node is available (same `<skill-dir>` resolution as step 2).
    - For UI work, open the Portless URL in the available browser tool and verify the rendered page.
    - For API/MCP/OAuth work, probe `/healthz`, metadata endpoints, callback pages, or documented smoke routes.
 

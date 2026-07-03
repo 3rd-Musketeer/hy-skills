@@ -1,6 +1,6 @@
 ---
 name: explain
-description: Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Adapts shape per scenario while applying a consistent set of expression rules.
+description: Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Adapts shape per scenario while applying a consistent set of expression rules. Explicit invocation only — do not auto-trigger on ordinary "what is X" / "how does X work" questions.
 when_to_use: Use only when the user explicitly invokes /explain or asks for an explanation in this style. Do NOT auto-trigger on ordinary "what is X" or "how does X work" questions — the user calls this skill deliberately when they want this specific expression discipline. Not for domain-specific Q&A that another skill (claude-api, update-config, etc.) should handle.
 ---
 

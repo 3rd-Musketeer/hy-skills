@@ -7,7 +7,7 @@ topic: 轻量 Mermaid 渲染器能否替换 mmdc（html-as-doc §11）— fideli
 
 **结论先行**：不换 §11，`mmdc` 仍是默认；`mmdr`（`mermaid-rs-renderer`）作为已验证的轻量备选，挂在 §12 既有的 "mmdc install breaks → vendor" trigger 下。
 
-完整可复现记录（corpus + 三方输出 SVG + gallery + 截图 + 复现命令）见 [`skills/html-as-doc/references/spike-mermaid-renderers/`](../../skills/html-as-doc/references/spike-mermaid-renderers/README.md)。本 ref 只记代码答不出的部分。
+完整可复现记录（corpus + 三方输出 SVG + gallery + 截图 + 复现命令）见本 ref 文件夹内的 [`spike-mermaid-renderers/`](spike-mermaid-renderers/README.md)。本 ref 只记代码答不出的部分。
 
 ## 为什么没换（① alternatives + 理由）
 

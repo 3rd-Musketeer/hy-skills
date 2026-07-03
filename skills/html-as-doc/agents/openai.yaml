@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML as Doc"
+  short_description: "Render converged content as a single-file apple.com-style HTML doc"
+  default_prompt: "Render this content as a single-file HTML doc in the html-as-doc design discipline."
