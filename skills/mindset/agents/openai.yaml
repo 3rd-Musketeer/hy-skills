@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mindset"
+  short_description: "Choose method and grain using the user's development mindset"
+  default_prompt: "Help me choose the right development method, grain, and verification move for this ambiguous task."
