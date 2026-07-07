@@ -1,0 +1,4 @@
+interface:
+  display_name: "Speak Normally"
+  short_description: "Plain engineering-register Chinese: direct statements, English tech terms kept, no rhetorical inflation"
+  default_prompt: "Rewrite this text in the speak-normally register."
