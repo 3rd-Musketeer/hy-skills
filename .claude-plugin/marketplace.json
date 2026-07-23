@@ -2,14 +2,14 @@
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "hy-skills",
   "description": "Personal methodology skills for AI-assisted development: feature delivery, worktree lifecycle, PR loop watching, prototype-board scaffolding, goal document shaping, mindset routing, plain-register Chinese writing discipline, Infisical env staging, and Portless dev server URLs. Self-hosted single-plugin marketplace.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "owner": {
     "name": "Haoyang Wu"
   },
   "plugins": [
     {
       "name": "hy-skills",
-      "description": "Personal methodology skills for AI-assisted development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /prototype-board, /gdd, /mindset, /grilling, /explain, /html-as-doc, /speak-normally, /infisical-secrets, /use-portless. Same skill files also run under Codex and skill-only agents.",
+      "description": "Personal methodology skills for AI-assisted development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /closeup, /prototype-board, /gdd, /mindset, /grilling, /explain, /html-as-doc, /speak-normally, /infisical-secrets, /use-portless. Same skill files also run under Codex and skill-only agents.",
       "source": "./",
       "author": {
         "name": "Haoyang Wu"
