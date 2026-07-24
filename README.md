@@ -4,7 +4,7 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 
 **Purpose:** better human-agent collaboration, and enabling coding agents to run long-range autonomous tasks with a visible, verifiable process.
 
-**Runs under Claude Code plugins, Codex plugins, or any skill-only agent.** The `skills/` tree is the single source of truth; the two plugin manifests are thin wrappers.
+**Runs under Claude Code plugins, Codex plugins, Kimi Code plugins, or any skill-only agent.** The `skills/` tree is the single source of truth; the plugin manifests are thin wrappers.
 
 ## Skills
 
@@ -65,6 +65,16 @@ Two install paths are supported.
 Or drop the plugin directory under `~/.codex/plugins/` for a home-local install.
 
 Codex has no slash aliases — trigger skills by intent: "implement this and ship it" picks up `go`; "simplify this diff" picks up `my-simplify`; "audit this architecture for refactor ROI" picks up `refactor`; "open a task worktree" picks up `open-worktree`; etc. Goal-document and milestone-planning requests pick up `gdd`. The `description` fields in each `SKILL.md` drive matching.
+
+### Kimi Code
+
+Two install paths are supported.
+
+**A · Direct GitHub install (recommended)** — in Kimi Code CLI, `/plugins install https://github.com/3rd-Musketeer/hy-skills`. Kimi Code reads `kimi.plugin.json` at the repo root, then run `/reload` or `/new` to activate. As a third-party source, the install shows a trust confirmation first.
+
+**B · Self-hosted marketplace** — `/plugins marketplace https://raw.githubusercontent.com/3rd-Musketeer/hy-skills/main/.kimi-plugin/marketplace.json` (or a local path to `.kimi-plugin/marketplace.json` in a checkout). The catalog lists `hy-skills` as the only plugin; install from there.
+
+Skills are invoked by intent or via `/skill:<name>`; the `description` fields in each `SKILL.md` drive matching.
 
 ### Skill-only agents (Claude.ai, API Skills runtime, `~/.codex/skills/`, etc.)
 

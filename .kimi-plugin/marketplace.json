@@ -1,0 +1,10 @@
+{
+  "version": "2",
+  "plugins": [
+    {
+      "id": "hy-skills",
+      "displayName": "Hy Skills",
+      "source": "https://github.com/3rd-Musketeer/hy-skills"
+    }
+  ]
+}
