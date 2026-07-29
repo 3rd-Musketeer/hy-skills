@@ -1,7 +1,6 @@
 ---
 name: grilling
-description: Relentlessly question the human about a plan, design, or task brief — outline first, then strictly one question at a time, each with options, analysis, and a recommendation. Aligns fuzzy boundaries, stress-tests the plan, and asks opening questions that may spark directions the human hadn't considered. Explicit invocation only — trigger on /grilling or explicit asks ("grill me", "拷问我", "stress-test this plan", "问我问题"); do not auto-trigger on ordinary planning discussion.
-when_to_use: Use when the human explicitly asks to be grilled about a plan before building, or invokes it as a closing sweep after a design discussion ("还有什么要问我的吗"). Requires a live human to answer — in a non-interactive context, produce the outline with recommendations as a document instead of asking.
+description: Relentlessly question the human about a plan, design, or task brief — outline first, then strictly one question at a time, each with options, analysis, and a recommendation. Aligns fuzzy boundaries, stress-tests the plan, and asks opening questions that may spark directions the human hadn't considered. Explicit invocation only — trigger on /grilling, explicit asks ("grill me", "拷问我", "stress-test this plan", "问我问题"), or a closing sweep after a design discussion ("还有什么要问我的吗"); do not auto-trigger on ordinary planning discussion.
 metadata:
   short-description: Outline-first, one-question-at-a-time plan grilling
 ---
@@ -14,7 +13,7 @@ The human invokes this when they want a plan questioned hard **before** work sta
 - **Pressure** (stress-test) — provenance ("is that from the docs or did you make it up?"), ROI/necessity, KISS, concrete counterexample scenarios. Try to break the plan; pressure points toward *removing* entities, never adding them.
 - **Opening** (spark) — exploratory, creative what-ifs that might open a direction the human hadn't considered. A good grilling question can inspire, not just verify.
 
-Two entry shapes, same mechanics: **pre-work alignment** (human hands you a brief → grill until the fuzzy boundaries are gone, then work may start) and **closing sweep** (discussion has converged → sweep for remaining questions; repeat invocations are welcome and should find fewer each time — "no questions left" is a valid, reportable outcome).
+Two entry shapes, same mechanics: **pre-work alignment** (human hands you a brief → grill until the fuzzy boundaries are gone, then work may start) and **closing sweep** (discussion has converged → sweep for remaining questions; repeat invocations are welcome and should find fewer each time — "no questions left" is a valid, reportable outcome). Grilling requires a live human to answer; in a non-interactive context, produce the outline with recommendations as a document instead of asking.
 
 ## §1 · Brain test, then outline — before asking anything
 
@@ -52,16 +51,6 @@ Then **land the results — the session ends in artifacts, not vibes**:
 - Probes → dispatched (subagent/experiment) or handed over as concrete probe plans.
 - Deferred items → the project's backlog convention.
 - Close with a sweep report: **"岔路已清空 — N decided, X probes, Y backlogged"** plus artifact paths. The tmp outline is disposable once landed.
-
-## Anti-patterns (named so they aren't repeated)
-
-- Dumping a numbered question list and asking for batch answers.
-- Asking one-by-one **without** an outline — you get derailed by each answer, tunnel on one question, and forget your own list.
-- Asking what code / docs / notes / history could answer.
-- Questions with no stateable consequence.
-- Options without a single recommendation, or a recommendation without a basis.
-- Grilling toward complexity — questions that add entities instead of testing or removing them.
-- Ending without landing artifacts.
 
 ---
 

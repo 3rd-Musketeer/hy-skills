@@ -23,40 +23,11 @@ Preserve unrelated user edits. Keep changes small and directly tied to simplific
 
 ## Review Lanes
 
-Run these lanes in parallel when the platform supports subagents. Otherwise, perform them sequentially.
+Three lenses. Run in parallel when the platform supports subagents, otherwise sequentially. Per-lane checklists live in `references/lanes.md` — load when a lens needs prompting.
 
-### Reuse Lane
-
-Find duplicated logic and unnecessary divergence:
-
-- Repeated parsing, validation, formatting, fetch, or state-update logic.
-- Local helpers that duplicate existing project utilities.
-- Similar branches that can share a clearer path.
-- Abstractions that remove real duplication while keeping call sites readable.
-
-Prefer local, obvious reuse. Avoid broad architecture changes.
-
-### Quality Lane
-
-Find clarity and correctness issues:
-
-- Hard-to-follow control flow, nested conditionals, unclear names, dead branches.
-- Brittle types, optional handling, error paths, and boundary cases.
-- Tests that miss changed behavior or assert implementation details.
-- UI state that can be represented with fewer states or derived values.
-
-Prefer direct code, semantic names, and tests that pin behavior.
-
-### Efficiency Lane
-
-Find avoidable runtime, memory, and I/O cost:
-
-- Repeated expensive work inside loops, renders, effects, or request handlers.
-- Unbounded data loading, excessive cloning, repeated serialization, N+1 calls.
-- Cache or memoization opportunities with clear invalidation.
-- Slow tests caused by heavy setup where a lighter fixture gives the same signal.
-
-Prefer measurable wins and simple data flow.
+- **Reuse** — duplicated logic and unnecessary divergence. Prefer local, obvious reuse; avoid broad architecture changes.
+- **Quality** — clarity and correctness. Prefer direct code, semantic names, and tests that pin behavior.
+- **Efficiency** — avoidable runtime, memory, and I/O cost. Prefer measurable wins and simple data flow.
 
 ## Triage
 

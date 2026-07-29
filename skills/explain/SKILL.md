@@ -1,7 +1,6 @@
 ---
 name: explain
-description: Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Adapts shape per scenario while applying a consistent set of expression rules. Explicit invocation only — do not auto-trigger on ordinary "what is X" / "how does X work" questions.
-when_to_use: Use only when the user explicitly invokes /explain or asks for an explanation in this style. Do NOT auto-trigger on ordinary "what is X" or "how does X work" questions — the user calls this skill deliberately when they want this specific expression discipline. Not for domain-specific Q&A that another skill (claude-api, update-config, etc.) should handle.
+description: Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Adapts shape per scenario while applying a consistent set of expression rules. Explicit invocation only — do not auto-trigger on ordinary "what is X" / "how does X work" questions; not for domain-specific Q&A that another skill (claude-api, update-config, etc.) should handle.
 ---
 
 # explain
@@ -63,7 +62,3 @@ When falling through to fallback, mention it briefly in the response. Recurring 
 ## Mixed scenarios
 
 A question can span archetypes — e.g. "what is Astro and should I use it" = Concept + Decision. Compose the shapes rather than forcing the question into one.
-
-## Backlog
-
-Persistence, retro / pattern surfacing, auto-trigger, and cross-skill coordination are deferred from MVP. See `backlog.md` next to this file for the preserved design notes and pickup triggers.
