@@ -1,7 +1,6 @@
 ---
 name: closeup
-description: Close out a finished work session — retire scaffolding, restore borrowed environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Use AFTER the change is merged/shipped (downstream of commit-push-pr and loop-for-merge) when the user says "close", "closeup", "收尾", "wrap up", "打完收工", or asks to clean up and wrap the session. NOT for mid-work, and NOT the merge itself. Orchestrates close-worktree; does not replace it.
-when_to_use: Explicit close-out of a session that already shipped its change. Triggers — "close it out", "收尾", "wrap up", "打完收工", "clean up and wrap this". Anti-triggers — the PR isn't merged yet (that's commit-push-pr / loop-for-merge), the work is still in progress, or a deep docs-vs-code-vs-runtime reconciliation is wanted (that's a knowledge-governance / neat-freak pass).
+description: Close out a finished work session — retire scaffolding, restore borrowed environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Use AFTER the change is merged/shipped (downstream of commit-push-pr and loop-for-merge) when the user says "close", "closeup", "收尾", "wrap up", "打完收工", or asks to clean up and wrap the session. NOT for mid-work, NOT the merge itself, and NOT a deep docs-vs-code-vs-runtime reconciliation (that's a knowledge-governance pass). Orchestrates close-worktree; does not replace it.
 metadata:
   short-description: Close out a shipped session — teardown, restore, file, verify, report
 ---
@@ -130,9 +129,3 @@ Layered and honest. Register follows the `speak-normally` skill; the roles/trans
 - **Borrowed state with no recorded original.** You can't safely restore what you never captured — ask for the pre-session value instead of guessing.
 - **Ambiguous environment ownership.** Unsure whether something was created by you or pre-existing shared infra → confirm before destroying. Don't delete shared infra on assumption.
 - **Dirty or open worktree.** Resolve or get explicit abandon approval — let `close-worktree` classify; don't force-retire.
-
-## Notes
-
-- closeup is an **umbrella**, not a monolith: facet 1 is `close-worktree`, the report register is `speak-normally`, deep knowledge reconciliation is a separate governance pass. closeup owns facets 2–6's *orchestration* and the ephemeral-environment teardown, which no other skill covers.
-- **Record-before-mutate is closeup's precondition.** The restore in facet 2 is only as good as what you noted when you borrowed. Capture originals at the moment you override shared state, not at close time.
-- Sessions that shipped nothing still deserve facet 4 (file the decision, if one was reached) and facet 6 (a short report) — closing out is also knowing there's nothing to tear down.

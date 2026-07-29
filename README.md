@@ -18,14 +18,11 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 | `loop-for-merge` | Watch one PR every 5 minutes and auto-merge the quiet or bot-approved happy path. Hands review comments back to a human. |
 | `close-worktree` | Inspect or clean up one finished task worktree after merge or explicit abandonment. |
 | `closeup` | Close out a shipped session downstream of merge — retire scaffolding, restore borrowed (created-vs-borrowed) environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Orchestrates `close-worktree` and adds the ephemeral-environment teardown no other skill covers. |
-| `prototype-board` | Build a feel-first interactive prototype board for a new product — a small React SPA where the team can experience the design before any of it is real. Supports two product shapes (sequence-of-moments with two tabs, or continuous workbench as single view). Encodes lessons from real prototype boards (both fully-scripted and live-LLM shapes) on the five flows that make a prototype board work, the theme system as the in-context A/B substrate, and the script-to-live control flow spectrum. |
 | `gdd` | Shape goals from backlog candidates through a drafting gate, then refine into executable goal documents. Implements the goal-driven development methodology under `.gdd/`. Keeps humans focused on outcome, product experience, contracts, scope, scenarios, and definition of done while deferring implementation details to `/go`. |
 | `mindset` | Interpret the user's development methodology and action words — probe, smoke, eyeball, 体感, sweep, review, audit, wrap up — to choose method and grain without turning the work into ceremony. |
 | `grilling` | Question you relentlessly about a plan before building — brain-test first, write a question outline to tmp, then strictly one question at a time with options, analysis, and a recommendation each. Mixes three question energies (boundary-alignment, stress-test pressure, exploratory openers), triages decide/probe/backlog, and lands every ruling in artifacts. Explicit invocation only. |
 | `explain` | Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Applies a consistent set of expression rules (user-layer concepts first, conclusion first, no code refs by default) while adapting shape per scenario. Explicit invocation only. |
-| `html-as-doc` | Render converged content as a single-file, self-contained HTML doc under an apple.com-inspired design discipline — three-layer visual doctrine (Mermaid / HTML-CSS / inline-SVG), a semantic gradient color layer, and a content-first type scale. Medium-only: governs how the HTML expresses, not what it says. Explicit invocation only. |
-| `infisical-secrets` | Discover existing secrets in Infisical and dump only the requested subset into local env files for agent or model-provider development. Explicit invocation only. |
-| `use-portless` | Start, expose, verify, and manage local dev servers through Portless clean `.localhost` URLs. Defaults to temporary run/alias/probe behavior, with setup guidance for clean URLs and project config suggested for maintained workflows. |
+| `speak-normally` | Register discipline for Chinese prose output — plain Mandarin, engineering register, direct declarative statements, English technical terms kept as-is, no rhetorical inflation or fake precision. Constrains wording only, not content or structure; stacks on top of whatever skill shapes the content. Auto-applies to substantive Chinese prose without explicit invocation. |
 
 ## Install
 
@@ -37,7 +34,7 @@ Two install paths are supported.
 
 **B · Direct plugin discovery** — point Claude Code's plugin discovery at this directory or symlink it into your configured plugins path. The `.claude-plugin/plugin.json` manifest is already present. Use this when you want a local checkout you actively edit.
 
-Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:my-simplify`, `/hy-skills:refactor`, `/hy-skills:open-worktree`, `/hy-skills:commit-push-pr`, `/hy-skills:loop-for-merge`, `/hy-skills:close-worktree`, `/hy-skills:closeup`, `/hy-skills:prototype-board`, `/hy-skills:gdd`, `/hy-skills:mindset`, `/hy-skills:grilling`, `/hy-skills:explain`, `/hy-skills:html-as-doc`, `/hy-skills:infisical-secrets`, `/hy-skills:use-portless`.
+Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:my-simplify`, `/hy-skills:refactor`, `/hy-skills:open-worktree`, `/hy-skills:commit-push-pr`, `/hy-skills:loop-for-merge`, `/hy-skills:close-worktree`, `/hy-skills:closeup`, `/hy-skills:gdd`, `/hy-skills:mindset`, `/hy-skills:grilling`, `/hy-skills:explain`, `/hy-skills:speak-normally`.
 
 ### Codex
 
@@ -82,4 +79,6 @@ Copy or symlink the contents of `skills/` into the agent's skills directory, **i
 
 ## Status
 
-v0.6.0. Dogfooded across many projects on task kickoff, feature delivery, simplification/refactor review, PR publishing, happy-path merge watching, finished-task closeout, session-level session close-out, feel-first prototype board construction, section-by-section goal document shaping, development mindset routing, single-file HTML-as-doc authoring, Infisical-backed local env staging, and Portless-backed dev server URL workflows. Active iteration — expect rules to change as more dogfood data comes in.
+v0.7.1. Dogfooded across many projects on task kickoff, feature delivery, simplification/refactor review, PR publishing, happy-path merge watching, finished-task closeout, session-level session close-out, section-by-section goal document shaping, development mindset routing, plan grilling, tailored explanation, and plain-register Chinese writing. Active iteration — expect rules to change as more dogfood data comes in.
+
+Four skills were withdrawn in v0.7.0 on the evidence of a transcript usage scan — `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless`. They live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition under which each should come back.

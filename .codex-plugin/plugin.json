@@ -1,7 +1,7 @@
 {
   "name": "hy-skills",
-  "version": "0.6.0",
-  "description": "Personal methodology skills for AI-assisted development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, prototype-board, gdd, mindset, grilling, explain, html-as-doc, speak-normally, infisical-secrets, use-portless. Same skills run under Claude Code, Codex, and any skill-only agent.",
+  "version": "0.7.1",
+  "description": "Personal methodology skills for AI-assisted development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally. Same skills run under Claude Code, Codex, and any skill-only agent.",
   "author": {
     "name": "Haoyang Wu"
   },
@@ -13,20 +13,17 @@
     "simplify",
     "refactor",
     "pr-review",
-    "prototype",
-    "storybook",
     "goal-docs",
     "planning",
-    "portless",
     "mindset",
     "writing-style",
-    "dev-server"
+    "grilling"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Hy Skills",
-    "shortDescription": "Worktree workflow, feature delivery, goal shaping, mindset routing, env staging, and Portless dev URLs",
-    "longDescription": "Personal methodology skills grown from day-to-day practice using AI across many codebases and products. Covers task kickoff (open-worktree), feature implementation with light TDD (go), fallback simplification review when native Simplify is unavailable (my-simplify), friction-driven maintainability and architecture-coherence refactor audits (refactor), branch publishing (commit-push-pr), happy-path PR watching (loop-for-merge), post-merge cleanup (close-worktree), session-level close-out that retires scaffolding, restores borrowed environments, finalizes tracking status, and files the decision downstream of merge (closeup), feel-first interactive prototype boards for validating UX before implementation (prototype-board), goal-driven development that shapes goals from backlog candidates through a drafting gate (gdd), development-methodology routing for probe/smoke/eyeball/体感/sweep/review/audit/wrap-up action words (mindset), outline-first, one-question-at-a-time grilling that aligns fuzzy boundaries, stress-tests, and sparks alternatives before building (grilling), user-tailored explanations across question types with a consistent expression discipline (explain), rendering converged content as single-file self-contained HTML docs under an apple.com-inspired design discipline (html-as-doc), a register discipline for Chinese prose output — plain Mandarin, engineering register, English technical terms kept, no rhetorical inflation or fake precision (speak-normally), explicit Infisical secret discovery for local agent/model-provider env files (infisical-secrets), and Portless-backed local dev server URLs for previews, APIs, OAuth/MCP callbacks, mobile/LAN checks, and browser verification (use-portless). Same skill files run under Claude Code plugins, Codex plugins, and plain skill-only agents.",
+    "shortDescription": "Worktree workflow, feature delivery, goal shaping, mindset routing, plan grilling, and plain-register writing",
+    "longDescription": "Personal methodology skills grown from day-to-day practice using AI across many codebases and products. Covers task kickoff (open-worktree), feature implementation with light TDD (go), fallback simplification review when native Simplify is unavailable (my-simplify), friction-driven maintainability and architecture-coherence refactor audits (refactor), branch publishing (commit-push-pr), happy-path PR watching (loop-for-merge), post-merge cleanup (close-worktree), session-level close-out that retires scaffolding, restores borrowed environments, finalizes tracking status, and files the decision downstream of merge (closeup), goal-driven development that shapes goals from backlog candidates through a drafting gate (gdd), development-methodology routing for probe/smoke/eyeball/体感/sweep/review/audit/wrap-up action words (mindset), outline-first, one-question-at-a-time grilling that aligns fuzzy boundaries, stress-tests, and sparks alternatives before building (grilling), user-tailored explanations across question types with a consistent expression discipline (explain), and a register discipline for Chinese prose output — plain Mandarin, engineering register, English technical terms kept, no rhetorical inflation or fake precision (speak-normally). Same skill files run under Claude Code plugins, Codex plugins, and plain skill-only agents.",
     "developerName": "Haoyang Wu",
     "category": "Developer Tools",
     "capabilities": [
@@ -38,7 +35,7 @@
       "Implement this feature end-to-end and let me try it.",
       "Shape this milestone into an agent-executable GOAL.md.",
       "Choose the right development method and grain for this ambiguous task.",
-      "Start this dev server with a stable Portless URL."
+      "Grill me on this plan before I build it."
     ]
   }
 }

@@ -1,7 +1,6 @@
 ---
 name: mindset
-description: Development methodology library for choosing method and grain on ambiguous tasks — probe, smoke, e2e, eyeball, 体感, sweep, A/B, review, audit, wrap up. Use when the user invokes /mindset, asks how to approach work in their style, or signals method/grain ambiguity through these action words.
-when_to_use: Use for explicit /mindset requests, for ambiguous development tasks where the next move is unclear, or when interpreting the user's action words such as probe, smoke, e2e, eyeball, 体感, sweep, A/B, review, audit, wrap up, 看看, 试试, 检查, 验证. Not a substitute for /go, /gdd, /refactor, or other execution skills once the right execution path is already clear.
+description: Development methodology library for choosing method and grain on ambiguous tasks. Use when the user invokes /mindset, asks how to approach work in their style, or signals method/grain ambiguity through action words — probe, smoke, e2e, eyeball, 体感, sweep, A/B, review, audit, wrap up, 看看, 试试, 检查, 验证. Not a substitute for /go, /gdd, /refactor, or other execution skills once the right execution path is already clear.
 ---
 
 # Mindset

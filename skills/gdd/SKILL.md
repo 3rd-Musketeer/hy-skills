@@ -101,7 +101,7 @@ A goal document covers these dimensions. The discussion may visit them in any or
 - **Product Experience** — how the result feels; the mental model the user holds
 - **Design** — visible surface (contracts, entrypoints, schemas) and architectural shape (responsibility boundaries, dataflow)
 - **Definition of Done** — acceptance scenarios + hard gates
-- **Pickup** — who picks this up (end-user role), the single pickup action, and the split between agent-scriptable staging and human-only steps that `/go` will honor at handoff. See the role contract in `../references/goal-driven-dev.md` § Roles.
+- **Pickup** — who picks this up (end-user role), the single pickup action, and the split between agent-scriptable staging and human-only steps that `/go` will honor at handoff.
 - **Decisions** — `[resolved]` choices with reason; `[fact]` external constraints
 
 ### Eliciting Pickup
@@ -114,7 +114,7 @@ Pickup is the dimension `/go` reads to honor the role contract — sloppy Pickup
 
 Decisions default to inline in the goal's Decisions section. Decisions that affect more than one goal are flagged as ref candidates and promoted to `.gdd/refs/` per the rules in `../references/goal-driven-dev.md`.
 
-Output: stage as `.tmp/gdd/goal-YYYYMMDD-slug.md` while shaping; after Pickup + placement decision, promote to the human-chosen path (often `.gdd/goals/goal-YYYYMMDD-slug.md`). Upgrade to a folder (`goal-YYYYMMDD-slug/goal.md` + assets) when the goal carries mockups, screenshots, or other non-markdown companions, per the file-or-folder invariant in `../references/goal-driven-dev.md`. When landing under `.gdd/`, update the goal index `.gdd/goal.md` (citation omits `.md` so the file → folder upgrade is transparent). See `references/goal-template.md`.
+Output: stage as `.tmp/gdd/goal-YYYYMMDD-slug.md` while shaping; after Pickup + placement decision, promote to the human-chosen path (often `.gdd/goals/goal-YYYYMMDD-slug.md`). Upgrade to a folder (`goal-YYYYMMDD-slug/goal.md` + assets) when the goal carries mockups, screenshots, or other non-markdown companions, per the same file-or-folder invariant. When landing under `.gdd/`, update the goal index `.gdd/goal.md` (citation omits `.md` so the file → folder upgrade is transparent). See `references/goal-template.md`.
 
 ## Assessing
 
@@ -122,7 +122,7 @@ When given an existing goal document, judge whether another agent can execute it
 
 - **ready** — outcome, contracts, scope, scenarios, decisions, **and Pickup** are all clear
 - **almost ready** — small number of decisions missing, or Pickup has minor gaps (e.g. user role implicit but inferable)
-- **not ready** — core product contract, scope, or acceptance is ambiguous, **or** Pickup is missing/empty (without Pickup, `/go` cannot honor the role contract — see `../references/goal-driven-dev.md` § Roles)
+- **not ready** — core product contract, scope, or acceptance is ambiguous, **or** Pickup is missing/empty (without Pickup, `/go` cannot honor the role contract)
 
 Lead with the readiness verdict. List missing decisions by section. Treat Pickup gaps with severity equal to scope or acceptance gaps.
 
