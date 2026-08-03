@@ -1,10 +1,10 @@
 # Goal-Driven Development
 
-A methodology for human-agent software development. The human maintains shared context; the agent executes against it.
+A methodology for shaped human-agent work. The human maintains shared context; the agent executes against it.
 
 ## Premise
 
-An agent, given clear context and a clear goal, can deliver an implementation end-to-end. Human effort therefore shifts from writing code to maintaining the artifacts an agent reads at cold start.
+An agent, given clear context and a clear goal, can deliver an outcome end-to-end. Human effort therefore shifts from prescribing execution steps to maintaining the artifacts an agent reads at cold start.
 
 ## Artifacts
 
@@ -94,10 +94,10 @@ A project with one milestone may collapse to:
 Fixed meanings across this methodology and the skills that implement it. Use the role-explicit term when role matters; don't fall back to bare "user" if the role is in question.
 
 - **the human** — the person, role-agnostic. Use when the role is mixed, switching, or doesn't matter for the point being made.
-- **end user** / **consumer** — the human in their post-handoff role: picking up the finished work to test as the project's actual user would. Used in `/go` §6, handoff shape, and the goal's Pickup section.
+- **end user** / **consumer** — the human in their post-handoff role: picking up the finished work as the task's actual consumer would. Used in `/go` handoff shape and the goal's Pickup section.
 - **co-author** — the human in their in-flow role: shaping a goal during `gdd`, answering mid-flow questions during `/go`, or invoking the escape hatch to dive into implementation. Default mode during `gdd`; escape mode during `/go`.
 - **agent** — the AI doing the work. The executing party under either phase's contract.
-- **dispatcher** — the upstream agent that invoked the current agent (e.g. when `/go` is run as a subagent). The dispatcher cannot reach the human mid-flow; see `/go` §1.
+- **dispatcher** — the upstream agent that invoked the current agent (e.g. when `/go` is run as a subagent). The dispatcher cannot reach the human mid-flow; `/go` therefore stops rather than guessing on a structural unknown.
 - **"user" (bare)** — acceptable when context makes the role unambiguous (e.g. "user-observable behavior" — clearly end-user). When the role is mixed or unclear, prefer the role term explicitly. Default to the role term when in doubt.
 
 ## Roles
@@ -112,8 +112,8 @@ Human and agent are **co-authors**. The agent surfaces options and consequences;
 
 Roles diverge:
 
-- **Agent** — full-context worker. Reads source, runs tests, performs environment setup, **drives the verification flow as the first user**, makes implementation calls. Has access to everything the project exposes.
-- **Human** — end user / consumer. Picks up the finished work to test it as the project's actual user would — without needing to know what code changed, what files moved, or what setup ran. The path is already walked once by the agent.
+- **Agent** — full-context worker. Reads source and current state, performs changes and setup, **drives the proof flow as the first user**, and makes execution-detail calls. Has access to everything the project exposes.
+- **Human** — end user / consumer. Picks up the finished work in the task's natural consumer role—using the result, reading the artifact, or exercising the flow—without needing to know what implementation or setup work ran. The path is already walked once by the agent.
 
 The human can drop into co-author mode mid-flow (ask to dive in, request explanation, redirect approach), but that is an **escape hatch**. The default contract is consumer.
 
@@ -121,7 +121,7 @@ Two principles govern this boundary. They are the judging standard for every `/g
 
 - **Transparence.** The agent makes its actions visible enough that the human can trust the work without reading source. Reporting is **calibrated**, not exhaustive: the goal is letting the human decide trust with minimum cognitive load, not enabling line-by-line audit. Default surface is behavior + impact; code-level detail folds beneath, available on demand.
 
-- **UX.** The agent stages the verification environment **and acts as the first user**. Anything within reach of the agent's tools is the agent's job — builds, migrations, dev-server bring-up, fixture loading, CLI invocations with available credentials, **and the verification flow itself** wherever the agent's tools can drive it. The human picks up as user #2 — opening a path the agent has already walked.
+- **UX.** The agent stages the verification environment **and acts as the first user**. Anything within reach of the agent's tools is the agent's job — builds, migrations, dev-server bring-up, fixture loading, searches, readbacks, rendered checks, CLI invocations with available credentials, **and the proof flow itself** wherever the agent's tools can drive it. The human picks up as user #2 — opening a path the agent has already walked.
 
   Defer to the human only what is **truly beyond agent's tool reach**, and when deferring, **name what was tried**. "Tried the browser driver; can't reach this surface from a headless tab" is a real deferral. "I'll let you check the UI" is not. "Beyond reach" is a fact about tools, not a default state.
 
@@ -129,7 +129,7 @@ Telling the human what to run is **not** UX. Running it, observing the result, r
 
 ## Skills
 
-Two skills implement this methodology.
+Two skills use this methodology.
 
-- `gdd`: shapes a goal from a backlog item through drafting; manages `.gdd/` structure. Entry point for human-driven goal definition. Operates under the co-author contract.
-- `/go`: executes a defined goal end-to-end with light TDD. Reads `.gdd/goals/<file>` as authoritative input. Writes findings to `.gdd/backlog.md`. Surfaces ref candidates per the promotion rules in the handoff. Operates under the agent-worker / human-consumer contract above.
+- `gdd`: shapes durable goals from backlog items through drafting and manages `.gdd/` structure. Use it when the work benefits from explicit co-authored scope, decisions, acceptance, and Pickup.
+- `/go`: executes an already-aligned outcome using task-appropriate methods and proof. A shaped goal is authoritative when present; lightweight tasks use an in-memory Outcome + Proof + Boundary + Pickup contract and do not manufacture a goal artifact. Goal-local findings stay with the goal; cross-goal decisions are surfaced as ref candidates. `/go` operates under the agent-worker / human-consumer contract above.

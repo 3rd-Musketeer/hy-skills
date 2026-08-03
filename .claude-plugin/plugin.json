@@ -1,7 +1,7 @@
 {
   "name": "hy-skills",
-  "description": "Personal methodology skills for AI-assisted development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /closeup, /gdd, /mindset, /grilling, /explain, /speak-normally. Same skill files also run under Codex and skill-only agents.",
-  "version": "0.7.1",
+  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /closeup, /gdd, /mindset, /grilling, /explain, /speak-normally. Same skill files also run under Codex and skill-only agents.",
+  "version": "0.8.0",
   "author": {
     "name": "Haoyang Wu"
   }

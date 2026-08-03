@@ -75,7 +75,7 @@ Load only what matches the moment:
 `/mindset` decides **grain and method**. Execution belongs elsewhere:
 
 - Use `/gdd` when the work needs a goal document or human decision shaping.
-- Use `/go` when the implementation contract is clear and the user wants a working feature.
+- Use `/go` only when the Outcome and Boundary are aligned and the human explicitly invokes its result-responsibility mode. `/go` chooses a method pack itself; use `/mindset` first only when method or grain is still genuinely ambiguous.
 - Use `/refactor` for maintainability or architecture-coherence audits.
 - Use `/my-simplify` for focused simplification of current changes.
 - Use `/grilling` when the user wants adversarial plan interrogation.

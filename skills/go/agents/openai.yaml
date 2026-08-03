@@ -1,4 +1,4 @@
 interface:
   display_name: "Go"
-  short_description: "Implement a feature end-to-end with light TDD and a user-ready handoff"
-  default_prompt: "Implement this feature end-to-end and stage it so I can pick it up as the end user."
+  short_description: "Own an aligned outcome, prove it, polish it, and stage the pickup"
+  default_prompt: "Use $go to take responsibility for this aligned outcome within existing authority: recover my standards, choose the right method, prove completion, clean up, and leave zero or one pickup action."

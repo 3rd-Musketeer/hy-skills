@@ -1,8 +1,8 @@
 # Handoff Doctrine
 
-Expression discipline for the `/go` §6 handback. Medium-agnostic — applies whether the handback is delivered as a chat message to the dispatcher, an HTML doc, a PDF, a deck, or any other artifact. Loaded by `/go` when shaping §6 output; not required reading at planning time.
+Expression discipline for the `/go` handback. Medium-agnostic — applies whether the handback is delivered as a chat message to the dispatcher, an HTML doc, a PDF, a deck, or any other artifact. Load it when shaping a substantial or rendered handoff; it is not required reading at contract time.
 
-`/go` §6 defines the **slot structure** (pickup runway / audit material). This doctrine defines **how each slot reads** — the typology, density, language layer, and visual judgment that turn a contract-compliant handback into one the human can actually use.
+`/go`'s **Hand back the result** section defines the slot structure. This doctrine defines how each slot reads — the typology, density, language layer, and visual judgment that turn a contract-compliant handback into one the human can actually use.
 
 ## §1 · Typology — handback is the catch-up-and-verify artifact
 

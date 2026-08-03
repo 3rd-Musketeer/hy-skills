@@ -25,4 +25,5 @@ Three threads emerged from the 2026-05-29 `/html-as-doc` dogfooding; they are la
 
 ## Other
 
+- **go-general-execution-contract** — ✅ **DONE 2026-08-03 → [`goal-20260803-go-v2-general-execution-contract`](goals/goal-20260803-go-v2-general-execution-contract)**：`/go` 从 feature + light TDD 工作流升级为 explicit-only 的通用结果责任模式；thin core 负责 Outcome / Proof / Boundary / Pickup，七个 policy-delta packs 按需提供领域证据与扫尾纪律，release bump 为 `0.8.0`。
 - **grilling-rewrite** — ✅ **v1 DONE 2026-07-02**：grilling 已从 mattpocock 搬运件重写为本人实证风格（brain-test 推演找模糊边界 + outline 先行 + 一次只问一题带选项/分析/推荐 + 三种提问能量配额 + 追问入队不追杀 + decide/probe/backlog 三态分流 + 产物落地 + 问空停止）。实证归纳 + 本人口述纠正 + 默认值取值记录见 [`backlogs/backlog-20260702-grilling-rewrite`](backlogs/backlog-20260702-grilling-rewrite.md)。现进入 dogfood 迭代循环——体验后的手感问题回写 brief。

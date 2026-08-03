@@ -77,9 +77,10 @@ Examples (the specific shape depends on the project):
 
 ### Pickup action
 
-The single action the human takes to begin verifying. After `/go` finishes, everything before this action is the agent's responsibility.
+Zero or one action. Use `None` when the result is already delivered and observable; state why no action is needed. Otherwise give the single action the human takes to begin verifying. After `/go` finishes, everything before this action is the agent's responsibility.
 
 Examples:
+- "None — the committed artifact is the delivered result; inspection is optional review."
 - "Reload the extension and trigger the highlighted feature on any article."
 - "Refresh the running web app and navigate to the new route."
 - "Run the CLI's new subcommand in any test project."

@@ -23,7 +23,7 @@ Across all modes — note `gdd` operates under the **co-author contract** (see `
 
 - Coaching, not authoring. Lead the human to a decision. Do not draft prose ahead of decisions.
 - One decision at a time. Surface options, explain consequences, recommend a direction, let the human choose (see § Decision support).
-- Stay at artifact level. Push implementation detail (commands, file paths, library choices) to `/go`.
+- Stay at artifact level. Push execution detail (commands, file paths, tool choices inside the accepted boundary) to `/go`.
 - **Stage first, place last.** While shaping, write working artifacts under `.tmp/gdd/` (create the directory if needed). Do not promote to a permanent path until content is converged **and** the human has chosen placement (see § Staging and placement).
 
 ## Decision support
@@ -40,7 +40,7 @@ When recommending a direction, state the basis: why it fits the current mileston
 
 Bring to the human the decisions that affect: overall goal and release intent · product experience and mental model · milestone scope and explicit exclusions · public UX/DX contracts · source of truth and responsibility boundaries · acceptance scenarios and the acceptance bar · high-risk product or architecture tradeoffs.
 
-Do not bring to the human during shaping — these belong to `/go` at execution time: implementation order · test runner and command details · file layout below module level · library choices within the accepted tech boundary · helper naming · small adapters and fallback mechanics.
+Do not bring to the human during shaping — these belong to `/go` at execution time: execution order · evidence-command details · file layout below module level · tool or library choices within the accepted boundary · helper naming · small adapters and fallback mechanics.
 
 ## Staging and placement
 
@@ -77,7 +77,7 @@ For each option, state: who will run `/go` from where, whether an index file (`g
 
 ## Drafting
 
-Drafting tests whether a backlog item is concrete enough to become a goal. The draft attempts a short specification. If the draft cannot be completed without speculation ("we'll figure it out during implementation"), the underlying problem is not yet surfaced; the item returns to backlog.
+Drafting tests whether a backlog item is concrete enough to become a goal. The draft attempts a short specification. If the draft cannot be completed without speculation ("we'll figure it out during execution"), the underlying problem is not yet surfaced; the item returns to backlog.
 
 A draft minimally answers:
 
@@ -91,7 +91,7 @@ Output: stage as `.tmp/gdd/backlog-YYYYMMDD-slug.md` while drafting; after matur
 
 ## Shaping
 
-Shaping refines a mature draft into a goal document an implementation agent can execute against.
+Shaping refines a mature draft into a goal document an execution agent can execute against.
 
 A goal document covers these dimensions. The discussion may visit them in any order the human finds natural.
 
@@ -101,7 +101,7 @@ A goal document covers these dimensions. The discussion may visit them in any or
 - **Product Experience** — how the result feels; the mental model the user holds
 - **Design** — visible surface (contracts, entrypoints, schemas) and architectural shape (responsibility boundaries, dataflow)
 - **Definition of Done** — acceptance scenarios + hard gates
-- **Pickup** — who picks this up (end-user role), the single pickup action, and the split between agent-scriptable staging and human-only steps that `/go` will honor at handoff.
+- **Pickup** — who picks this up (end-user role), zero or one pickup action, and the split between agent-scriptable staging and human-only steps that `/go` will honor at handoff.
 - **Decisions** — `[resolved]` choices with reason; `[fact]` external constraints
 
 ### Eliciting Pickup
@@ -109,7 +109,7 @@ A goal document covers these dimensions. The discussion may visit them in any or
 Pickup is the dimension `/go` reads to honor the role contract — sloppy Pickup produces friction-heavy handoffs no matter how clean the rest of the goal is. Walk it in this order:
 
 1. **User role** — who is the human picking this up acting as? One line. Anchor it in the project's actual end-user shape, not a generic "developer".
-2. **Pickup action** — what is the single thing they do to start verifying? If the human needs more than one action before the first observable behavior, push back: staging is incomplete.
+2. **Pickup action** — is the result already delivered (zero actions), or what is the single thing they do to start verifying? Zero must be explicit, not an omitted section. If the human needs more than one action before the first observable behavior, push back: staging is incomplete.
 3. **Staging required** — for each item, ask "could the agent conceivably do this in `/go`?" If yes → agent-scriptable. If genuinely no (credentials missing, GUI-only, irreversible) → human-only with reason. When in doubt, default to agent-scriptable — `/go` will defer at execution time and report what it tried, which is cheaper than over-pessimistic shaping here.
 
 Decisions default to inline in the goal's Decisions section. Decisions that affect more than one goal are flagged as ref candidates and promoted to `.gdd/refs/` per the rules in `../references/goal-driven-dev.md`.
@@ -122,7 +122,7 @@ When given an existing goal document, judge whether another agent can execute it
 
 - **ready** — outcome, contracts, scope, scenarios, decisions, **and Pickup** are all clear
 - **almost ready** — small number of decisions missing, or Pickup has minor gaps (e.g. user role implicit but inferable)
-- **not ready** — core product contract, scope, or acceptance is ambiguous, **or** Pickup is missing/empty (without Pickup, `/go` cannot honor the role contract)
+- **not ready** — core outcome contract, scope, or acceptance is ambiguous, **or** Pickup is missing/unclear. An explicit zero-action Pickup is complete; an omitted action is not.
 
 Lead with the readiness verdict. List missing decisions by section. Treat Pickup gaps with severity equal to scope or acceptance gaps.
 

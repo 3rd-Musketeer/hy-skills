@@ -1,13 +1,14 @@
 {
   "name": "hy-skills",
-  "version": "0.7.1",
-  "description": "Personal methodology skills for AI-assisted development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally. Same skills run under Claude Code, Codex, Kimi Code, and any skill-only agent.",
+  "version": "0.8.0",
+  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally. Same skills run under Claude Code, Codex, Kimi Code, and any skill-only agent.",
   "author": {
     "name": "Haoyang Wu"
   },
   "homepage": "https://github.com/3rd-Musketeer/hy-skills",
   "keywords": [
     "methodology",
+    "outcome-execution",
     "git",
     "worktree",
     "tdd",
@@ -23,8 +24,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Hy Skills",
-    "shortDescription": "Worktree workflow, feature delivery, goal shaping, mindset routing, plan grilling, and plain-register writing",
-    "longDescription": "Personal methodology skills grown from day-to-day practice using AI across many codebases and products. Covers task kickoff (open-worktree), feature implementation with light TDD (go), fallback simplification review when native Simplify is unavailable (my-simplify), friction-driven maintainability and architecture-coherence refactor audits (refactor), branch publishing (commit-push-pr), happy-path PR watching (loop-for-merge), post-merge cleanup (close-worktree), session-level close-out that retires scaffolding, restores borrowed environments, finalizes tracking status, and files the decision downstream of merge (closeup), goal-driven development that shapes goals from backlog candidates through a drafting gate (gdd), development-methodology routing for probe/smoke/eyeball/体感/sweep/review/audit/wrap-up action words (mindset), outline-first, one-question-at-a-time grilling that aligns fuzzy boundaries, stress-tests, and sparks alternatives before building (grilling), user-tailored explanations across question types with a consistent expression discipline (explain), and a register discipline for Chinese prose output — plain Mandarin, engineering register, English technical terms kept, no rhetorical inflation or fake precision (speak-normally). Same skill files run under Claude Code plugins, Codex plugins, Kimi Code plugins, and plain skill-only agents.",
+    "shortDescription": "Outcome execution, worktree workflow, goal shaping, method routing, and writing discipline",
+    "longDescription": "Personal methodology skills grown from day-to-day practice using AI across many codebases, products, documents, and system tasks. Covers explicit high-agency outcome execution with task-appropriate proof and a staged pickup (go), fallback code simplification review when native Simplify is unavailable (my-simplify), friction-driven maintainability and architecture-coherence refactor audits (refactor), task kickoff (open-worktree), branch publishing (commit-push-pr), happy-path PR watching (loop-for-merge), post-merge cleanup (close-worktree), session-level close-out that retires scaffolding, restores borrowed environments, finalizes tracking status, and files the decision downstream of merge (closeup), goal-driven development that shapes goals from backlog candidates through a drafting gate (gdd), development-methodology routing for probe/smoke/eyeball/体感/sweep/review/audit/wrap-up action words (mindset), outline-first, one-question-at-a-time grilling that aligns fuzzy boundaries, stress-tests, and sparks alternatives before building (grilling), user-tailored explanations across question types with a consistent expression discipline (explain), and a register discipline for Chinese prose output — plain Mandarin, engineering register, English technical terms kept, no rhetorical inflation or fake precision (speak-normally). Same skill files run under Claude Code plugins, Codex plugins, Kimi Code plugins, and plain skill-only agents.",
     "developerName": "Haoyang Wu",
     "websiteURL": "https://github.com/3rd-Musketeer/hy-skills"
   }

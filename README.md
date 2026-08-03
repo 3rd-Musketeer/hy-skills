@@ -2,7 +2,7 @@
 
 A personal methodology-skills plugin grown from my day-to-day practice using AI across many codebases and products — not tied to any single project. Every rule exists because a real dogfood run surfaced a gap, not because it sounded like good practice.
 
-**Purpose:** better human-agent collaboration, and enabling coding agents to run long-range autonomous tasks with a visible, verifiable process.
+**Purpose:** better human-agent collaboration, and enabling agents to own long-range outcomes with a visible, verifiable process.
 
 **Runs under Claude Code plugins, Codex plugins, Kimi Code plugins, or any skill-only agent.** The `skills/` tree is the single source of truth; the plugin manifests are thin wrappers.
 
@@ -10,8 +10,8 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 
 | Name | What it does |
 |---|---|
-| `go` | Implement a feature end-to-end with light TDD — contract → tests-first → implement → patch tests → frontend verify → simplify → stage the pickup → ship. Returns a tested feature staged for the human to pick up as end user #2, not read as code. |
-| `my-simplify` | Review recent code changes for reuse, quality, and efficiency simplifications. Used by `go` when the current harness has no native Simplify capability. |
+| `go` | Explicit high-agency outcome execution: recover relevant standards, own the result within existing authority, choose task-appropriate proof, polish the resulting state, and stage zero or one Pickup action. Uses compact on-demand packs for development, system configuration, research, documents, product/design, data analysis, and external actions. |
+| `my-simplify` | Review recent code changes for reuse, quality, and efficiency simplifications. Used by `go`'s development pack when the current harness has no native Simplify capability. |
 | `refactor` | Audit code for maintainability, naming, contract boundaries, architecture coherence, and refactor ROI. Applies small safe refactors or proposes bounded rewrites when needed. |
 | `open-worktree` | Propose or create one new task worktree from the repo base branch. Follows worktree-first naming and creation policy. |
 | `commit-push-pr` | Publish the current task branch into a ready-for-review PR. Reuses the existing branch PR when present. |
@@ -61,7 +61,7 @@ Two install paths are supported.
 
 Or drop the plugin directory under `~/.codex/plugins/` for a home-local install.
 
-Codex has no slash aliases — trigger skills by intent: "implement this and ship it" picks up `go`; "simplify this diff" picks up `my-simplify`; "audit this architecture for refactor ROI" picks up `refactor`; "open a task worktree" picks up `open-worktree`; etc. Goal-document and milestone-planning requests pick up `gdd`. The `description` fields in each `SKILL.md` drive matching.
+Codex has no slash aliases — trigger most skills by intent. `go` is the exception: explicitly say “use go” or invoke the linked skill when you want its result-responsibility mode; a generic implementation, research, writing, or configuration request must not trigger it. “Simplify this diff” picks up `my-simplify`; “audit this architecture for refactor ROI” picks up `refactor`; “open a task worktree” picks up `open-worktree`; goal-document and milestone-planning requests pick up `gdd`. The `description` fields in each `SKILL.md` drive matching.
 
 ### Kimi Code
 
@@ -71,14 +71,14 @@ Two install paths are supported.
 
 **B · Self-hosted marketplace** — `/plugins marketplace https://raw.githubusercontent.com/3rd-Musketeer/hy-skills/main/.kimi-plugin/marketplace.json` (or a local path to `.kimi-plugin/marketplace.json` in a checkout). The catalog lists `hy-skills` as the only plugin; install from there.
 
-Skills are invoked by intent or via `/skill:<name>`; the `description` fields in each `SKILL.md` drive matching.
+Skills are invoked by intent or via `/skill:<name>`; the `description` fields in each `SKILL.md` drive matching. `go` is explicit-only: use `/skill:go` or explicitly ask for the go skill rather than relying on a generic task request.
 
 ### Skill-only agents (Claude.ai, API Skills runtime, `~/.codex/skills/`, etc.)
 
-Copy or symlink the contents of `skills/` into the agent's skills directory, **including `skills/references/`** — `gdd`, `go`, and `closeup` cite the shared methodology doc at `skills/references/goal-driven-dev.md`; `go` falls back to the sibling `my-simplify` skill when the harness has no native Simplify; and `closeup` orchestrates the sibling `close-worktree` and cites `speak-normally` for its report register. Apart from those shared files, each skill folder is self-contained; no plugin manifest required. Invocation is by intent, same as Codex.
+Copy or symlink the contents of `skills/` into the agent's skills directory, **including `skills/references/`** — `gdd`, `go`, and `closeup` cite the shared methodology doc at `skills/references/goal-driven-dev.md`; `go`'s development pack falls back to the sibling `my-simplify` skill when the harness has no native Simplify; and `closeup` orchestrates the sibling `close-worktree` and cites `speak-normally` for its report register. Apart from those shared files, each skill folder is self-contained; no plugin manifest required. Invocation follows the skill descriptions; `go` remains explicit-only.
 
 ## Status
 
-v0.7.1. Dogfooded across many projects on task kickoff, feature delivery, simplification/refactor review, PR publishing, happy-path merge watching, finished-task closeout, session-level session close-out, section-by-section goal document shaping, development mindset routing, plan grilling, tailored explanation, and plain-register Chinese writing. Active iteration — expect rules to change as more dogfood data comes in.
+v0.8.0. `/go` now separates a thin outcome-responsibility core from on-demand domain packs, based on dogfood across repository delivery, system configuration, research, documents, product review, data analysis, and outward-visible actions. The broader plugin remains actively dogfooded on task kickoff, simplification/refactor review, PR lifecycle, session close-out, goal shaping, methodology routing, plan grilling, tailored explanation, and plain-register Chinese writing.
 
 Four skills were withdrawn in v0.7.0 on the evidence of a transcript usage scan — `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless`. They live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition under which each should come back.

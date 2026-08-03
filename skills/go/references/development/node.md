@@ -145,7 +145,7 @@ Going down this list means your code is harder to test than it should be.
 
 ## Writing-time signals — Node
 
-The items below are **frictions to notice while writing tests** in Node/TS, not a grep checklist to run at the end. If one fires during `/go` §2.3, pause and fix the design before continuing.
+The items below are **frictions to notice while writing tests** in Node/TS, not a grep checklist to run at the end. If one fires during the development implementation loop, pause and fix the design before continuing.
 
 > Tables assume **Vitest + TS** (the default shape). For `node:test`, Jest, or plain JS, see **Project shape detection** at the top of this file for which signals to skip and which to substitute.
 

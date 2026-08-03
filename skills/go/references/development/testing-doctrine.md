@@ -98,7 +98,7 @@ These are the common ways teams avoid refactoring. They all just push the pain f
 
 ### Using signals during /go
 
-These signals are **most useful during §2.3 Implement** (of the `/go` skill), when you're alternating between writing the test and the implementation. The agent feels the friction, acts on it immediately. They are NOT an audit pass to run at the end; that's what turns methodology into bureaucracy.
+These signals are **most useful during the development pack's implementation loop**, when you're alternating between writing the test and the implementation. The agent feels the friction and acts on it immediately. They are not an audit pass to run at the end; that's what turns methodology into bureaucracy.
 
 ## A judgment heuristic
 

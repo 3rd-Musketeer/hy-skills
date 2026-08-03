@@ -1,4 +1,4 @@
 interface:
   display_name: "GDD"
-  short_description: "Shape goals from backlog items into executable goal documents"
-  default_prompt: "Help me shape this into an executable goal document using goal-driven development."
+  short_description: "Shape aligned outcomes into executable goals with zero-or-one-action pickup"
+  default_prompt: "Help me shape this into an executable goal with clear scope, proof, decisions, and an explicit zero-or-one-action pickup."

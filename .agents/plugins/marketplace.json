@@ -16,8 +16,8 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer Tools",
-      "description": "Personal methodology skills for AI-assisted development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally. Same skills run under Claude Code, Codex, and any skill-only agent.",
-      "version": "0.7.1"
+      "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally. Same skills run under Claude Code, Codex, and any skill-only agent.",
+      "version": "0.8.0"
     }
   ]
 }

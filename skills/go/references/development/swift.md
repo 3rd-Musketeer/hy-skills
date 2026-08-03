@@ -43,7 +43,7 @@ These signals are **specific to Apple-platform apps** and are not in the main ta
 These don't fire signals — they affect how Phase 4 of the skill behaves on these projects:
 
 - **`xcodebuild test -quiet` swallows test-case names.** If you might need failure detail, drop `-quiet`. If a wrapper enforces it, grep stdout for `Test Case '-\[.*\]' failed` patterns to recover names.
-- **Cold build is slow** (50-90s for a single test target). Don't compare the duration to SwiftPM's `swift test` baseline — they're different categories. Always report **setup time and test time separately** (per SKILL.md Phase 4c).
+- **Cold build is slow** (50-90s for a single test target). Don't compare the duration to SwiftPM's `swift test` baseline — they're different categories. Always report **setup time and test time separately** (per the development pack's canonical-check guidance).
 - **`swift test --fail-fast` doesn't translate to xcodebuild.** Pick the smallest test target relevant to scope instead.
 
 ## Stack
@@ -160,7 +160,7 @@ A typical macOS client is a case where extracting non-UI logic to a SwiftPM modu
 
 ## Writing-time signals — Swift
 
-The items below are **frictions to notice while writing tests** in Swift, not a grep checklist to run at the end. If one fires during `/go` §2.3, pause and fix the design before continuing.
+The items below are **frictions to notice while writing tests** in Swift, not a grep checklist to run at the end. If one fires during the development implementation loop, pause and fix the design before continuing.
 
 > Tables cover **universal Swift signals** (any Swift code). For Apple-platform apps (`*.xcodeproj`, AppKit / SwiftUI / UIKit), **also apply the macOS / iOS app supplement** in Project shape detection above.
 

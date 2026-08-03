@@ -94,7 +94,7 @@ Allowed because it intercepts the HTTP **protocol**, not third-party SDK interna
 
 ## Writing-time signals — Python
 
-The items below are **frictions to notice while writing tests** in Python, not a grep checklist to run at the end. If one fires during `/go` §2.3, pause and fix the design before continuing — that's how the signal is meant to be used.
+The items below are **frictions to notice while writing tests** in Python, not a grep checklist to run at the end. If one fires during the development implementation loop, pause and fix the design before continuing — that's how the signal is meant to be used.
 
 **Strong friction** — means the design is actively wrong; refactor before shipping.
 

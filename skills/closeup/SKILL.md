@@ -9,7 +9,7 @@ metadata:
 
 Close out a work session that has shipped. A session is not done when the code merges; it is done when the scaffolding is gone, the borrowed environment is back to how you found it, the tracking state is closed, the decision is recorded, and the report is one the next person (including future-you) can trust.
 
-**Position in the flow.** closeup runs **after** the change is published and merged — `commit-push-pr` publishes, `loop-for-merge` (or a human) merges, then closeup closes the session. The shipping/merge step is upstream and separate. closeup **orchestrates `close-worktree`** for each finished worktree and adds the session-level facets that per-worktree cleanup doesn't cover.
+**Position in the flow.** `/go` removes residue created directly by its task before handoff. closeup runs **after** the change is published and merged — `commit-push-pr` publishes, `loop-for-merge` (or a human) merges, then closeup closes the broader session. The shipping/merge step is upstream and separate. closeup **orchestrates `close-worktree`** for each finished worktree and adds the session-level facets that per-worktree cleanup doesn't cover.
 
 ## What closeup covers
 
