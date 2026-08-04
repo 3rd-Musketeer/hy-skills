@@ -65,4 +65,4 @@ All three are recoverable by going back to §1 and re-asking: what does the read
 
 ## §7 · Output path
 
-When the handback is rendered as a non-markdown artifact (HTML, PDF, deck, or any other doc-render skill's output), it attaches to the goal folder per the file-or-folder invariant in `../../references/goal-driven-dev.md` § Invariants — alongside `goal.md`, triggering the file-or-folder upgrade if it has not already triggered. The agent does **not** invent a separate top-level location for handoff artifacts.
+When the handback is rendered as a non-markdown artifact (HTML, PDF, deck, or any other doc-render skill's output), attach it to the goal it serves. A single-file goal upgrades to a same-named folder containing `goal.md` and the handback artifact; an existing goal folder receives the artifact alongside `goal.md`. The agent does **not** invent a separate top-level location for handoff artifacts.

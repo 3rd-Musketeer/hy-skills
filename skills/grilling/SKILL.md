@@ -53,5 +53,3 @@ Then **land the results — the session ends in artifacts, not vibes**:
 - Close with a sweep report: **"岔路已清空 — N decided, X probes, Y backlogged"** plus artifact paths. The tmp outline is disposable once landed.
 
 ---
-
-Distant ancestor: [mattpocock/skills](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) grilling. Rewritten 2026-07 from transcript-mined evidence plus the human's stated questioning discipline; evidence base in this plugin repo at `.gdd/backlogs/backlog-20260702-grilling-rewrite`.

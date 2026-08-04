@@ -7,7 +7,7 @@ description: Execute an already-aligned task as a high-agency outcome contract �
 
 Take responsibility for an aligned outcome and carry it to a real, evidenced, directly usable terminal state.
 
-`/go` is a role switch: **agent = full-context worker; human = end-user consumer** (`../references/goal-driven-dev.md` § Roles). Two principles judge every mechanic:
+`/go` is a role switch: **agent = full-context worker; human = end-user consumer**. Two principles judge every mechanic:
 
 - **Transparence** — expose enough result, evidence, limits, and judgment for trust calibration; do not narrate every step.
 - **UX** — stage everything within tool reach and walk the verification path as user #1. The human should arrive as user #2, not as setup staff.
@@ -47,6 +47,8 @@ Load one primary pack that matches the dominant work shape:
 | Dataset, metric, evaluation, report, or analytical conclusion | `references/data-analysis.md` |
 
 When any step publishes, sends, shares, installs, deletes, pays, or otherwise changes a target visible beyond the local working state, also load `references/external-actions.md` as an overlay.
+
+For development work, load `references/development-testing-doctrine.md` when user-observable behavior is stable enough to specify, then at most one stack reference that matches the source: `references/development-node.md`, `references/development-python.md`, or `references/development-swift.md`. Load `references/development-streaming-ui.md` only when streamed model output is in scope.
 
 Use a second primary pack only when the outcome genuinely crosses domains. If method or grain remains ambiguous after inspecting the task, use the available `mindset` skill/library on demand; it is not a prerequisite.
 

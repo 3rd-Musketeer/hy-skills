@@ -1,8 +1,25 @@
 {
   "name": "hy-skills",
-  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /closeup, /gdd, /mindset, /grilling, /explain, /speak-normally. Same skill files also run under Codex and skill-only agents.",
-  "version": "0.8.0",
+  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+  "version": "0.9.0",
   "author": {
     "name": "Haoyang Wu"
-  }
+  },
+  "homepage": "https://github.com/3rd-Musketeer/hy-skills",
+  "repository": "https://github.com/3rd-Musketeer/hy-skills",
+  "keywords": [
+    "methodology",
+    "outcome-execution",
+    "git",
+    "worktree",
+    "tdd",
+    "simplify",
+    "refactor",
+    "pr-review",
+    "goal-docs",
+    "planning",
+    "mindset",
+    "writing-style",
+    "grilling"
+  ]
 }

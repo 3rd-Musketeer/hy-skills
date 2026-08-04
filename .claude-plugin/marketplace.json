@@ -1,19 +1,37 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "hy-skills",
-  "description": "Personal methodology skills for AI-assisted outcome execution and development: high-agency delivery, worktree lifecycle, PR loop watching, session close-out, goal document shaping, mindset routing, plan grilling, tailored explanations, and plain-register Chinese writing discipline. Self-hosted single-plugin marketplace.",
-  "version": "0.8.0",
+  "description": "Personal methodology skills for outcome execution, code simplification and refactoring, worktree and PR lifecycle, session closeout, goal shaping, development-method routing, plan stress-testing, tailored explanation, and plain-register writing. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients. Self-hosted single-plugin marketplace.",
   "owner": {
     "name": "Haoyang Wu"
   },
   "plugins": [
     {
       "name": "hy-skills",
-      "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships /go, /my-simplify, /refactor, /open-worktree, /commit-push-pr, /loop-for-merge, /close-worktree, /closeup, /gdd, /mindset, /grilling, /explain, /speak-normally. Same skill files also run under Codex and skill-only agents.",
+      "displayName": "Hy Skills",
+      "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
       "source": "./",
       "author": {
         "name": "Haoyang Wu"
-      }
+      },
+      "homepage": "https://github.com/3rd-Musketeer/hy-skills",
+      "repository": "https://github.com/3rd-Musketeer/hy-skills",
+      "keywords": [
+        "methodology",
+        "outcome-execution",
+        "git",
+        "worktree",
+        "tdd",
+        "simplify",
+        "refactor",
+        "pr-review",
+        "goal-docs",
+        "planning",
+        "mindset",
+        "writing-style",
+        "grilling"
+      ],
+      "category": "Developer Tools"
     }
   ]
 }

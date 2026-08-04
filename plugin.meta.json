@@ -1,11 +1,13 @@
 {
   "name": "hy-skills",
   "version": "0.9.0",
-  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+  "description": "Personal methodology skills for AI-assisted outcome execution and development.",
   "author": {
     "name": "Haoyang Wu"
   },
   "homepage": "https://github.com/3rd-Musketeer/hy-skills",
+  "repository": "https://github.com/3rd-Musketeer/hy-skills",
+  "gitUrl": "https://github.com/3rd-Musketeer/hy-skills.git",
   "keywords": [
     "methodology",
     "outcome-execution",
@@ -21,12 +23,37 @@
     "writing-style",
     "grilling"
   ],
-  "skills": "./skills/",
+  "skills": [
+    "go",
+    "my-simplify",
+    "refactor",
+    "open-worktree",
+    "commit-push-pr",
+    "loop-for-merge",
+    "close-worktree",
+    "closeup",
+    "gdd",
+    "mindset",
+    "grilling",
+    "explain",
+    "speak-normally"
+  ],
   "interface": {
     "displayName": "Hy Skills",
     "shortDescription": "Outcome execution, worktree workflow, goal shaping, method routing, and writing discipline",
     "longDescription": "Personal methodology skills for outcome execution, code simplification and refactoring, worktree and PR lifecycle, session closeout, goal shaping, development-method routing, plan stress-testing, tailored explanation, and plain-register writing. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
     "developerName": "Haoyang Wu",
-    "websiteURL": "https://github.com/3rd-Musketeer/hy-skills"
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Open a worktree for a new task.",
+      "Use go explicitly to own this aligned outcome, prove it, and stage the pickup.",
+      "Shape this milestone into an agent-executable GOAL.md.",
+      "Choose the right development method and grain for this ambiguous task.",
+      "Grill me on this plan before I build it."
+    ]
   }
 }

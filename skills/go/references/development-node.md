@@ -1,6 +1,6 @@
 # Node / TypeScript Testing Reference
 
-Read after `testing-doctrine.md` when Node files are in scope.
+Use when the core skill has selected the testing doctrine and Node files are in scope.
 
 ## Project shape detection
 

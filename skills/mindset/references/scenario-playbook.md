@@ -117,6 +117,6 @@ When a scenario repeats in real dogfood but is not covered here, add a new scena
 If the task does not match a scenario:
 
 1. Use the `SKILL.md` uncertainty table.
-2. Pick one or two canonical moves from `method-library.md`.
+2. Pick one or two canonical moves already routed by the core skill.
 3. Say briefly that you are composing moves directly rather than following a scenario.
 4. If this fallback recurs, add a scenario later.

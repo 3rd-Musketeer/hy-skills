@@ -64,7 +64,7 @@ Avoid restating field lists or flag checklists that already live in code or sche
 
 ## Pickup
 
-What the human needs in order to verify this milestone as the end user — not as a reviewer of the implementation. Required: `/go` reads this to know what to stage before handing back. See `../../references/goal-driven-dev.md` § Roles.
+What the human needs in order to verify this milestone as the end user — not as a reviewer of the implementation. Required: `/go` reads this to know what to stage before handing back.
 
 ### User role
 

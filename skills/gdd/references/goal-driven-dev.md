@@ -129,7 +129,6 @@ Telling the human what to run is **not** UX. Running it, observing the result, r
 
 ## Skills
 
-Two skills use this methodology.
+The `gdd` skill owns this reference: it shapes durable goals from backlog items through drafting and manages `.gdd/` structure. Use it when work benefits from explicit co-authored scope, decisions, acceptance, and Pickup.
 
-- `gdd`: shapes durable goals from backlog items through drafting and manages `.gdd/` structure. Use it when the work benefits from explicit co-authored scope, decisions, acceptance, and Pickup.
-- `/go`: executes an already-aligned outcome using task-appropriate methods and proof. A shaped goal is authoritative when present; lightweight tasks use an in-memory Outcome + Proof + Boundary + Pickup contract and do not manufacture a goal artifact. Goal-local findings stay with the goal; cross-goal decisions are surfaced as ref candidates. `/go` operates under the agent-worker / human-consumer contract above.
+The `go` skill implements the execution side of the role boundary in its own self-contained instructions. A shaped goal is authoritative when present; lightweight tasks use an in-memory Outcome + Proof + Boundary + Pickup contract and do not manufacture a goal artifact.

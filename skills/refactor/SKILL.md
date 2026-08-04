@@ -9,7 +9,7 @@ Run a friction-driven refactor audit. The goal is maintainability and conceptual
 
 Default posture: apply small safe refactors when evidence is clear; propose bounded rewrites or reshapes when local cleanup cannot restore coherence.
 
-`$ARGUMENTS` may name a scope or focus, such as API boundary, naming, architecture coherence, tests, frontend state, package layout, or rewrite feasibility.
+Treat any scope or focus supplied with the invocation as the review boundary, such as API shape, naming, architecture coherence, tests, frontend state, package layout, or rewrite feasibility.
 
 ## Scope
 

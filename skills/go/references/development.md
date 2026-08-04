@@ -15,11 +15,7 @@ When user-observable behavior is stable enough to specify, default to light TDD:
 
 Do not force tests-first onto a spike, mechanical metadata change, generated artifact, or task whose strongest proof is a build, schema inspection, rendered surface, or live integration. State the substitution and why it proves the Outcome better.
 
-Load `development/testing-doctrine.md`, then only the stack reference that matches current source:
-
-- `development/node.md`
-- `development/python.md`
-- `development/swift.md`
+The core skill routes directly to the testing doctrine and the one stack reference that matches current source.
 
 ## Implementation signals
 
@@ -39,13 +35,13 @@ For UI work, use the least intrusive evidence that reaches the needed surface:
 
 Default to 1–2 representative live flows plus component coverage for non-trivial wiring. A visual claim needs a rendered screenshot or runtime inspection; passing typecheck and tests is not visual proof. Prefer headless verification. Announce before taking over the human's screen, and exhaust available tools before declaring a surface unreachable.
 
-When streamed model output is in scope, load `development/streaming-ui.md`.
+The core skill routes directly to the streamed-output reference when that surface is in scope.
 
 ## Canonical checks and code polish
 
 Discover the project's real commands from its task runner, manifest, CI, or instructions. Never invent a test command. Separate cold setup/build duration from warm test duration when it matters to interpretation.
 
-Run a code Simplify pass after implementation and before final proof. Use a native Simplify capability when present; otherwise load the sibling `my-simplify` skill. Act on small, high-confidence findings inside scope and re-run affected checks.
+Run a code Simplify pass after implementation and before final proof. Use a native Simplify capability when present; otherwise use the `my-simplify` skill when available. If neither exists, review the diff directly for reuse, clarity, and avoidable work. Act on small, high-confidence findings inside scope and re-run affected checks.
 
 ## Repository handoff
 

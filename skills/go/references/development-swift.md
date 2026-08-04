@@ -1,6 +1,6 @@
 # Swift Testing Reference
 
-Read after `testing-doctrine.md` when Swift files are in scope.
+Use when the core skill has selected the testing doctrine and Swift files are in scope.
 
 ## Project shape detection
 

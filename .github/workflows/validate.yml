@@ -1,0 +1,41 @@
+name: Validate plugin
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Check generated manifests
+        run: node scripts/render-manifests.mjs --check
+
+      - name: Check portable plugin structure
+        run: node scripts/validate-plugin.mjs
+
+      - name: Validate Agent Skills specification
+        run: |
+          for skill_dir in skills/*; do
+            uvx --from 'git+https://github.com/agentskills/agentskills.git@27a9f0c075e876ad632fc2e88b8866c5dc8ca15c#subdirectory=skills-ref' \
+              skills-ref validate "$skill_dir"
+          done
+
+      - name: Validate Claude plugin and marketplace
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.220 plugin validate . --strict
+          npx --yes @anthropic-ai/claude-code@2.1.220 plugin validate .claude-plugin/plugin.json --strict

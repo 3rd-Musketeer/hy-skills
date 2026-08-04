@@ -5,9 +5,9 @@ description: Shape a goal from a backlog item through drafting, then refine into
 
 # gdd
 
-Shape goals from backlog candidates through human-agent discussion. The canonical layout lives under `.gdd/` (see `../references/goal-driven-dev.md`), but **where** an artifact belongs is a human decision — not assumed from cwd or repo count.
+Shape goals from backlog candidates through human-agent discussion. The canonical layout lives under `.gdd/` (see `references/goal-driven-dev.md`), but **where** an artifact belongs is a human decision — not assumed from cwd or repo count.
 
-The methodology this skill implements is defined in `../references/goal-driven-dev.md`. Read it before operating if it is not already in context.
+The methodology this skill implements is defined in `references/goal-driven-dev.md`. Read it before operating if it is not already in context.
 
 ## Modes
 
@@ -19,7 +19,7 @@ The skill operates in one of three modes. The human signals the mode by intent; 
 
 ## Behavior
 
-Across all modes — note `gdd` operates under the **co-author contract** (see `../references/goal-driven-dev.md` § Roles): the human is an active participant in decisions, not a downstream consumer.
+Across all modes — note `gdd` operates under the **co-author contract** (see `references/goal-driven-dev.md` § Roles): the human is an active participant in decisions, not a downstream consumer.
 
 - Coaching, not authoring. Lead the human to a decision. Do not draft prose ahead of decisions.
 - One decision at a time. Surface options, explain consequences, recommend a direction, let the human choose (see § Decision support).
@@ -87,7 +87,7 @@ A draft minimally answers:
 
 A draft is mature when these three are stable and complete.
 
-Output: stage as `.tmp/gdd/backlog-YYYYMMDD-slug.md` while drafting; after maturity + placement decision, promote to `.gdd/backlogs/backlog-YYYYMMDD-slug.md` with `status: drafted` in frontmatter. Upgrade to a folder (`backlog-YYYYMMDD-slug/backlog.md` + assets) when non-markdown companions are needed, per the file-or-folder invariant in `../references/goal-driven-dev.md`. See `references/draft-template.md`.
+Output: stage as `.tmp/gdd/backlog-YYYYMMDD-slug.md` while drafting; after maturity + placement decision, promote to `.gdd/backlogs/backlog-YYYYMMDD-slug.md` with `status: drafted` in frontmatter. Upgrade to a folder (`backlog-YYYYMMDD-slug/backlog.md` + assets) when non-markdown companions are needed, per the file-or-folder invariant in `references/goal-driven-dev.md`. See `references/draft-template.md`.
 
 ## Shaping
 
@@ -112,7 +112,7 @@ Pickup is the dimension `/go` reads to honor the role contract — sloppy Pickup
 2. **Pickup action** — is the result already delivered (zero actions), or what is the single thing they do to start verifying? Zero must be explicit, not an omitted section. If the human needs more than one action before the first observable behavior, push back: staging is incomplete.
 3. **Staging required** — for each item, ask "could the agent conceivably do this in `/go`?" If yes → agent-scriptable. If genuinely no (credentials missing, GUI-only, irreversible) → human-only with reason. When in doubt, default to agent-scriptable — `/go` will defer at execution time and report what it tried, which is cheaper than over-pessimistic shaping here.
 
-Decisions default to inline in the goal's Decisions section. Decisions that affect more than one goal are flagged as ref candidates and promoted to `.gdd/refs/` per the rules in `../references/goal-driven-dev.md`.
+Decisions default to inline in the goal's Decisions section. Decisions that affect more than one goal are flagged as ref candidates and promoted to `.gdd/refs/` per the rules in `references/goal-driven-dev.md`.
 
 Output: stage as `.tmp/gdd/goal-YYYYMMDD-slug.md` while shaping; after Pickup + placement decision, promote to the human-chosen path (often `.gdd/goals/goal-YYYYMMDD-slug.md`). Upgrade to a folder (`goal-YYYYMMDD-slug/goal.md` + assets) when the goal carries mockups, screenshots, or other non-markdown companions, per the same file-or-folder invariant. When landing under `.gdd/`, update the goal index `.gdd/goal.md` (citation omits `.md` so the file → folder upgrade is transparent). See `references/goal-template.md`.
 
@@ -128,6 +128,6 @@ Lead with the readiness verdict. List missing decisions by section. Treat Pickup
 
 ## References
 
-- `../references/goal-driven-dev.md` — methodology this skill implements
+- `references/goal-driven-dev.md` — methodology this skill implements
 - `references/goal-template.md` — concrete goal document structure
 - `references/draft-template.md` — draft brief structure

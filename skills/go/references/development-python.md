@@ -1,6 +1,6 @@
 # Python Testing Reference
 
-Read after `testing-doctrine.md` when Python files are in scope.
+Use when the core skill has selected the testing doctrine and Python files are in scope.
 
 ## Project shape detection
 

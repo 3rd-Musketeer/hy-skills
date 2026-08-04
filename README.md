@@ -4,7 +4,7 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 
 **Purpose:** better human-agent collaboration, and enabling agents to own long-range outcomes with a visible, verifiable process.
 
-**Runs under Claude Code plugins, Codex plugins, Kimi Code plugins, or any skill-only agent.** The `skills/` tree is the single source of truth; the plugin manifests are thin wrappers.
+**Runs under Claude Code, Codex, Cursor, Kimi Code, and compatible Agent Skills clients.** Every folder under `skills/` is self-contained; client manifests are generated wrappers around the same portable source.
 
 ## Skills
 
@@ -63,6 +63,14 @@ Or drop the plugin directory under `~/.codex/plugins/` for a home-local install.
 
 Codex has no slash aliases — trigger most skills by intent. `go` is the exception: explicitly say “use go” or invoke the linked skill when you want its result-responsibility mode; a generic implementation, research, writing, or configuration request must not trigger it. “Simplify this diff” picks up `my-simplify`; “audit this architecture for refactor ROI” picks up `refactor`; “open a task worktree” picks up `open-worktree`; goal-document and milestone-planning requests pick up `gdd`. The `description` fields in each `SKILL.md` drive matching.
 
+### Cursor
+
+The repository is a first-class Cursor plugin through `.cursor-plugin/plugin.json` and can also be consumed as ordinary Agent Skills.
+
+**A · Local plugin development** — symlink or copy the repository to `~/.cursor/plugins/local/hy-skills`, then reload the Cursor window. Cursor discovers the shared `skills/` tree from the plugin manifest.
+
+**B · Skills-only use** — copy or symlink selected skill folders into `.agents/skills/`, `.cursor/skills/`, `~/.agents/skills/`, or `~/.cursor/skills/`. Skills appear under Customize → Skills and can be invoked explicitly from the `/` menu or selected by intent.
+
 ### Kimi Code
 
 Two install paths are supported.
@@ -73,12 +81,14 @@ Two install paths are supported.
 
 Skills are invoked by intent or via `/skill:<name>`; the `description` fields in each `SKILL.md` drive matching. `go` is explicit-only: use `/skill:go` or explicitly ask for the go skill rather than relying on a generic task request.
 
-### Skill-only agents (Claude.ai, API Skills runtime, `~/.codex/skills/`, etc.)
+### Skill-only agents
 
-Copy or symlink the contents of `skills/` into the agent's skills directory, **including `skills/references/`** — `gdd`, `go`, and `closeup` cite the shared methodology doc at `skills/references/goal-driven-dev.md`; `go`'s development pack falls back to the sibling `my-simplify` skill when the harness has no native Simplify; and `closeup` orchestrates the sibling `close-worktree` and cites `speak-normally` for its report register. Apart from those shared files, each skill folder is self-contained; no plugin manifest required. Invocation follows the skill descriptions; `go` remains explicit-only.
+Copy or symlink any selected folder under `skills/` into the client's skills directory. Each folder is independently installable; sibling skills are optional accelerators, not required files.
+
+For Codex, Cursor, and Kimi Code, `~/.agents/skills/` is the preferred shared user-level location. Claude Code uses `~/.claude/skills/`. Project-level clients can use their own `.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, or `.kimi-code/skills/` discovery path. Invocation follows each skill's `description`; `go`, `grilling`, and `explain` retain their explicit-only contract in portable prose.
 
 ## Status
 
-v0.8.0. `/go` now separates a thin outcome-responsibility core from on-demand domain packs, based on dogfood across repository delivery, system configuration, research, documents, product review, data analysis, and outward-visible actions. The broader plugin remains actively dogfooded on task kickoff, simplification/refactor review, PR lifecycle, session close-out, goal shaping, methodology routing, plan grilling, tailored explanation, and plain-register Chinese writing.
+v0.9.0. Every skill is now independently installable, all runtime references stay inside the owning skill, manifests are generated from one metadata source, and Cursor is a first-class plugin target alongside Claude Code, Codex, and Kimi Code. `/go` retains its thin outcome-responsibility core and on-demand domain packs without client-specific path or argument assumptions.
 
 Four skills were withdrawn in v0.7.0 on the evidence of a transcript usage scan — `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless`. They live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition under which each should come back.

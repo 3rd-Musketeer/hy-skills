@@ -4,59 +4,85 @@ Operating notes for agents working on this plugin repository.
 
 ## What this repo is
 
-`hy-skills` is a methodology plugin. Skills live under `skills/` and are shared across three ecosystems. Each ecosystem has its own manifest pair:
+`hy-skills` is a portable methodology-skills plugin. Every direct child of `skills/` is one self-contained Agent Skill with its own `SKILL.md`; no runtime resource lives in a sibling or shared top-level skills directory.
+
+The same `skills/` tree ships through four client wrappers:
 
 | Ecosystem | Plugin manifest | Marketplace catalog |
 | :-- | :-- | :-- |
 | Claude Code | `.claude-plugin/plugin.json` | `.claude-plugin/marketplace.json` |
 | Codex | `.codex-plugin/plugin.json` | `.agents/plugins/marketplace.json` |
+| Cursor | `.cursor-plugin/plugin.json` | External Cursor Marketplace; no catalog required for this single-plugin repo |
 | Kimi Code | `kimi.plugin.json` | `.kimi-plugin/marketplace.json` |
 
-The `skills/` tree is the single source of truth; all six manifests point at it.
+`plugin.meta.json` is the source of truth for shared plugin metadata, version, and skill inventory. The client manifests are generated artifacts.
 
 ## Release discipline
 
-Installed clients load the plugin from a local cache, not from this repo. After any change under `skills/`, **bump the version** — otherwise the marketplace updater sees the same version, treats the install as current, and never pulls the new commits. Codex requires `version`; it cannot be omitted.
+Installed clients load versioned or managed copies, not the working checkout. A shipped change under `skills/` therefore requires a version bump in `plugin.meta.json` followed by:
 
-On every release, set the same version string in all six manifests:
+```bash
+node scripts/render-manifests.mjs --write
+node scripts/validate-plugin.mjs
+```
 
-- `.claude-plugin/plugin.json` — `version`
-- `.claude-plugin/marketplace.json` — top-level `version`
-- `.codex-plugin/plugin.json` — `version`
-- `.agents/plugins/marketplace.json` — `plugins[0].version`
-- `kimi.plugin.json` — `version`
+Do not hand-edit generated manifests. `render-manifests.mjs` owns:
 
-Do not add `version` to the `plugins[]` entry of `.claude-plugin/marketplace.json`. When `version` is set in both `plugin.json` and the marketplace entry, `plugin.json` wins silently and the marketplace value becomes a stale trap. Kimi's `.kimi-plugin/marketplace.json` has no per-plugin `version` field at all — the marketplace `"version": "2"` is the catalog schema version, not the plugin version.
+- `.codex-plugin/plugin.json`
+- `.agents/plugins/marketplace.json`
+- `.claude-plugin/plugin.json`
+- `.claude-plugin/marketplace.json`
+- `.cursor-plugin/plugin.json`
+- `kimi.plugin.json`
+- `.kimi-plugin/marketplace.json`
 
-Minor bump (`0.x.0`) for a new skill or a skill behavior change; patch bump (`0.x.y`) for skill fixes and reference-doc edits. Repo-meta files (`README.md`, `AGENTS.md`) ship nothing to clients and need no bump.
+The shared plugin version is rendered into the Codex plugin and marketplace entry, Claude plugin, Cursor plugin, and Kimi plugin. Claude's marketplace intentionally has no plugin-version duplicate; `.claude-plugin/plugin.json` is authoritative. Kimi marketplace `"version": "2"` is a catalog schema version and never follows the plugin version.
 
-When adding or removing a skill, also update the skill list in the `description` of all six manifests, and the `interface.longDescription` in `.codex-plugin/plugin.json` and `kimi.plugin.json`. Check `keywords` and `interface.defaultPrompt` too — removing a skill can orphan an entry there.
+Use a minor bump (`0.x.0`) for a new skill, behavior change, or newly supported client distribution surface. Use a patch bump (`0.x.y`) for compatible skill fixes and reference edits. Repo-only documentation can ship without a bump when it does not affect generated manifests or installed content.
+
+Before release, validate the portable core and the available client wrappers:
+
+```bash
+node scripts/render-manifests.mjs --check
+node scripts/validate-plugin.mjs
+for skill_dir in skills/*; do
+  uvx --from 'git+https://github.com/agentskills/agentskills.git@27a9f0c075e876ad632fc2e88b8866c5dc8ca15c#subdirectory=skills-ref' \
+    skills-ref validate "$skill_dir"
+done
+claude plugin validate . --strict
+claude plugin validate .claude-plugin/plugin.json --strict
+```
+
+`.github/workflows/validate.yml` runs the same source and schema checks on pull requests and pushes to `main`. Update the pinned Agent Skills validator commit and Claude Code version deliberately when adopting a newer specification; do not let release validation drift implicitly.
+
+Also smoke the packaged artifact in each client whose distribution surface changed. Source-checkout success is not proof that an installed cache contains every resource.
 
 ## Retiring a skill
 
-Skills are withdrawn to `.archive/skills/<name>/`, not deleted. All three ecosystems load from `skills/` only — Codex and Kimi via an explicit `"skills": "./skills/"`, Claude Code via default scan — so moving the folder out of `skills/` is the whole de-registration. Editing the skill list in a manifest `description` does **not** withdraw anything; that string is prose for humans and Codex intent matching, not a registry.
+Withdraw skills to `.archive/skills/<name>/`, not by deleting them. Remove the name from `plugin.meta.json`, render the manifests, and reverse-check all name-based compositions before shipping.
 
-Before moving, reverse-check that no remaining skill references it. Shared dependencies are real: `go` falls back to `my-simplify`, `closeup` orchestrates `close-worktree`, and `gdd`/`go`/`closeup` all cite `references/`.
+Skill composition is optional acceleration, never a filesystem dependency. For example, `closeup` may use `close-worktree` when available and `go` may use `my-simplify`; each caller must still contain enough fallback behavior to work when installed alone.
 
-Every archived skill needs an entry in `.archive/README.md` recording the usage evidence at withdrawal, the reason, and the condition under which it should come back. Without a revival condition an archive is a deletion with extra steps — the folder alone cannot say whether a skill was withdrawn for being bad, unused, or out of category, so it can never be correctly reclaimed.
-
-`.gdd/` goals and backlogs for an archived skill stay where they are. `.gdd` is the decision archive; it records what was decided when, and does not move with a skill's lifecycle.
+Every archived skill needs an entry in `.archive/README.md` recording usage evidence, the withdrawal reason, and a revival condition. `.gdd/` goals and backlogs remain in place as decision history.
 
 ## Skill authoring conventions
 
 Checks for every new or edited skill under `skills/`:
 
-- **Frontmatter.** `name` + `description` are required. `description` must carry both what-the-skill-does *and* the trigger guidance, because some runtimes (Codex intent matching, skill-only agents) read only `description`. In particular, explicit-invocation-only skills must say so **inside `description`**, not only in `when_to_use`. `when_to_use` is optional and carries **only what `description` doesn't already say** — never repeat the trigger list, because both fields are resident in the session skill listing and duplication is paid every turn. If `description` can absorb the delta in a clause, drop `when_to_use` entirely. `metadata.short-description` is an optional display label.
-- **Say it once; trust judgment.** State a principle at its natural home and reference it — don't restate it in every section that applies it, don't add an anti-patterns section that re-lists rules already given imperatively, and don't add meta-commentary defending the skill's weight ("this isn't ceremony"). Detailed generic checklists (things any strong model already knows) go to the skill's `references/` for on-demand loading, or get cut; SKILL.md keeps this repo's specific opinions, thresholds, and conventions. Precision stays where operations are destructive or outward-visible (git, teardown, merge loops).
-- **Codex display metadata.** Every skill ships `agents/openai.yaml` with `interface.display_name`, `short_description`, `default_prompt`.
-- **Script paths are install-relative.** A skill that ships `scripts/` must reference them relative to the skill's install directory (`${CLAUDE_SKILL_DIR}` when available, else the directory containing SKILL.md) — never as repo-relative paths like `skills/<name>/scripts/...`, which break under plugin installs.
-- **Project-agnostic.** No personal project names, private paths, or company-specific identifiers in `skills/` or `README.md`. Case studies are described by shape ("a fully-scripted content board", "a live-LLM workbench"), not by name. Research residue (spikes, experiment outputs) lives under `.gdd/`, not inside shipped skill folders.
-- **Cross-skill references.** Shared methodology lives in `skills/references/`; skills cite it as `../references/<file>.md`. Any new cross-folder dependency must be reflected in README's skill-only-agent install note.
+- **Portable frontmatter.** Use `name`, `description`, optional `license`, and optional string-valued `metadata`. `name` matches the directory. `description` carries both capability and trigger guidance, including explicit-only behavior and exclusions. Do not put client-only behavior fields such as `argument-hint`, `arguments`, `whenToUse`, `paths`, or `context` in shared `SKILL.md` files.
+- **Self-contained root.** Every direct child directory under `skills/` contains `SKILL.md`. Do not add `skills/README.md`, `skills/references/`, category folders, or any other non-skill entry; strict scanners reject them and flat-file scanners may register Markdown as an unintended skill.
+- **One-level resources.** Put optional resources under the owning skill's `references/`, `scripts/`, or `assets/`. Reference them from `SKILL.md` with paths such as `references/foo.md`. Do not use `../`, sibling paths, or reference-to-reference chains.
+- **Client-neutral content.** Do not depend on `$ARGUMENTS`, `${CLAUDE_SKILL_DIR}`, `${KIMI_SKILL_DIR}`, or another client substitution in portable instructions. Describe invocation focus in prose and resolve bundled paths from the current skill root.
+- **Progressive disclosure.** Keep `SKILL.md` under 500 lines. Put detailed, genuinely on-demand material in focused reference files, but keep routing decisions in `SKILL.md` so references do not need to point at other references.
+- **Say it once; trust judgment.** State a principle at its natural home. Cut generic checklists and development history from shipped skill content. Preserve precision where operations are destructive or outward-visible.
+- **Codex display metadata.** Every skill ships `agents/openai.yaml` with `interface.display_name`, `short_description`, and `default_prompt`. Other clients safely ignore it.
+- **Project-agnostic.** No private paths, company-specific identifiers, or research residue in `skills/`. Research and provenance live under `.gdd/`, `devlogs/`, or repository documentation.
 
 ## Client-side update
 
-After pushing, the change does not reach a client until the client refreshes:
+After publishing, refresh the installed copy:
 
-- Claude Code: `/plugin` -> update `hy-skills` -> restart.
-- Codex: refresh the marketplace, update the plugin, restart.
-- Kimi Code: `/plugins` -> install the available update on the Installed tab -> `/reload` (or `/new`).
+- Claude Code: `/plugin` → update `hy-skills` → `/reload-plugins` or restart.
+- Codex: refresh the marketplace, update the plugin, then start a new task.
+- Cursor: update/reinstall the plugin and reload the window.
+- Kimi Code: `/plugins` → install the available update → `/reload` or `/new`.

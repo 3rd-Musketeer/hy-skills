@@ -1,6 +1,6 @@
 # Action Lexicon
 
-This file preserves the user's wording and maps it to canonical moves in `method-library.md`. Do not redefine moves here.
+This file preserves the user's wording and maps it to the canonical moves already routed by the core skill. Do not redefine moves here.
 
 One phrase can map to multiple moves. Interpret by context, stage, and grain.
 

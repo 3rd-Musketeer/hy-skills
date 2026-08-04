@@ -85,7 +85,7 @@ Pause. Refactor the implementation. Continue. Don't push through and file it as 
 3. **Determinism friction** — you can't assert because time / random / IDs change every run. Signal: SUT reads these from the environment. Action: inject them.
 4. **Assertion friction** — you need `and` / `then` to describe what the test checks. Signal: testing two behaviors at once. Action: split the test.
 
-The per-language refs (`python.md`, `node.md`, `swift.md`) name these in each stack's specific vocabulary (e.g. "`monkeypatch` a stdlib module" = mock friction in Python; `URLSession.shared` access = determinism friction in Swift).
+The stack-specific references name these signals in each ecosystem's vocabulary (e.g. "`monkeypatch` a stdlib module" = mock friction in Python; `URLSession.shared` access = determinism friction in Swift).
 
 ### Anti-patterns (workarounds that don't actually fix the signal)
 

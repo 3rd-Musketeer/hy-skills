@@ -1,14 +1,13 @@
 ---
 name: my-simplify
 description: Review recently changed code for simplification opportunities, then apply small high-confidence cleanup fixes. Use when native Simplify is unavailable, or when the user asks to simplify, clean up, reduce complexity, improve code reuse, improve quality, or improve efficiency after a code change.
-argument-hint: "[focus]"
 ---
 
 # my-simplify
 
 Review recent code changes, identify concrete simplification opportunities, and apply focused fixes.
 
-`$ARGUMENTS` is the user's focus, such as memory efficiency, duplication, readability, API shape, test simplification, or frontend state complexity.
+Treat any focus supplied with the invocation as the review focus, such as memory efficiency, duplication, readability, API shape, test simplification, or frontend state complexity.
 
 ## Scope
 

@@ -43,7 +43,7 @@ Present the plan as the report's teardown section in draft form (what will be de
 
 ### 1. Worktrees & branches → `close-worktree`
 
-For each finished worktree, run the `close-worktree` skill (`../close-worktree/SKILL.md`). It classifies merged / open-PR / dirty / abandon and does the worktree-remove-then-branch-delete in the right order. A multi-repo or multi-worktree session runs it once per worktree.
+For each finished worktree, use the available `close-worktree` skill. It classifies merged / open-PR / dirty / abandon and does the worktree-remove-then-branch-delete in the right order. If that skill is unavailable, perform the same classification and preserve the same removal order locally. A multi-repo or multi-worktree session runs the flow once per worktree.
 
 **Remote protected branches** (deploy-only or lane branches that are *not* the auto-deleted PR source) reject `git push --delete`. Delete via the host API:
 
@@ -99,7 +99,7 @@ Plus any invariant that had to survive the change (a data identity, a contract t
 
 ### 6. Closeout report
 
-Layered and honest. Register follows the `speak-normally` skill; the roles/transparence principle is in `../references/goal-driven-dev.md`.
+Layered and honest. Use the `speak-normally` register when available; otherwise report in direct engineering prose. Expose enough result, evidence, limits, and judgment for trust calibration without narrating every step.
 
 ```
 ## closeup 完成 / Closeout complete
