@@ -2,7 +2,7 @@
 
 Skills that were shipped once and have been withdrawn from `skills/`. They are kept here — not deleted — so a revival is one `git mv` away and the reasoning survives.
 
-**They do not ship as skills.** All three ecosystems load from `skills/` only (Codex and Kimi via an explicit `"skills": "./skills/"`, Claude Code via default scan). Anything under `.archive/` is copied into the plugin cache as bytes and never registered.
+**They do not ship as skills.** All supported clients load from `skills/` only. Anything under `.archive/` is copied into the plugin cache as bytes and never registered.
 
 To revive one:
 
@@ -10,7 +10,7 @@ To revive one:
 git mv .archive/skills/<name> skills/<name>
 ```
 
-then re-add it to the skill list in all six manifests, restore its README row and slash-command entry, and bump the version — the same checklist as adding a new skill in AGENTS.md.
+then re-add it to the skill inventory in `plugin.meta.json`, restore its README row and invocation entry, bump the version, and render the generated manifests — the same checklist as adding a new skill in AGENTS.md.
 
 ## Why archive instead of delete
 
@@ -48,3 +48,19 @@ Usage evidence came from a scan of local Claude Code transcripts (`~/.claude/pro
 ## Kept, against the original cut
 
 `explain` was on the withdrawal list and was kept. It had 3 invocations in the window, 2 of them typed directly by the user, most recently 2026-07-21. A user-typed invocation is the strongest available value signal, stronger than a model-initiated one. At 16K with no cross-skill dependencies, its residency cost is close to zero.
+
+## Archived 2026-08-20 (v0.9.0 → v0.10.0)
+
+These two skills were withdrawn because their responsibilities moved to the owner's text-quality domain kit. This is an ownership decision, not a low-usage judgment.
+
+### explain
+
+- **Usage:** The 2026-07-29 scan found 3 explicit invocations, including 2 typed directly by the user, so it was deliberately kept in v0.7.0. The later text-quality consolidation absorbed both its universal expression rules and its Decision / Mechanism / Comparison / Concept shapes.
+- **Reason:** Keeping the skill after that move would leave two authorities for the same explanation behavior. The skill's own backlog had already identified this extraction as the right change once the universal rules appeared elsewhere.
+- **Revive when:** three explicit explanation requests within one quarter need a repeatable workflow that the general conversation standard does not cover. Revive only the distinct workflow, not copied expression rules.
+
+### speak-normally
+
+- **Usage:** It auto-applied to substantive prose, so explicit invocation counts never represented its real use. Its complete effective rule set — direct engineering prose, natural terminology, no invented translations, no rhetorical inflation, and evidence instead of fake precision — was absorbed by the text-quality base rules.
+- **Reason:** A cross-cutting writing standard belongs in the writing-quality owner, not as a second resident methodology skill. Keeping both would duplicate rules and let their wording drift.
+- **Revive when:** a portable, project-agnostic writing standard has a single publishable upstream and repeated cross-project demand that cannot be met by project or user-level writing guidance.

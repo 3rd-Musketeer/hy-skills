@@ -1,7 +1,7 @@
 {
   "name": "hy-skills",
-  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling, explain, speak-normally as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
-  "version": "0.9.0",
+  "description": "Personal methodology skills for AI-assisted outcome execution and development. Ships go, my-simplify, refactor, open-worktree, commit-push-pr, loop-for-merge, close-worktree, closeup, gdd, mindset, grilling as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+  "version": "0.10.0",
   "author": {
     "name": "Haoyang Wu"
   },
@@ -19,7 +19,6 @@
     "goal-docs",
     "planning",
     "mindset",
-    "writing-style",
     "grilling"
   ]
 }

@@ -99,7 +99,7 @@ Plus any invariant that had to survive the change (a data identity, a contract t
 
 ### 6. Closeout report
 
-Layered and honest. Use the `speak-normally` register when available; otherwise report in direct engineering prose. Expose enough result, evidence, limits, and judgment for trust calibration without narrating every step.
+Layered and honest. Report in direct engineering prose. Expose enough result, evidence, limits, and judgment for trust calibration without narrating every step.
 
 ```
 ## closeup 完成 / Closeout complete

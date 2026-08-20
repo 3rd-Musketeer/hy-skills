@@ -21,8 +21,6 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 | `gdd` | Shape goals from backlog candidates through a drafting gate, then refine into executable goal documents. Implements the goal-driven development methodology under `.gdd/`. Keeps humans focused on outcome, product experience, contracts, scope, scenarios, and definition of done while deferring implementation details to `/go`. |
 | `mindset` | Interpret the user's development methodology and action words — probe, smoke, eyeball, 体感, sweep, review, audit, wrap up — to choose method and grain without turning the work into ceremony. |
 | `grilling` | Question you relentlessly about a plan before building — brain-test first, write a question outline to tmp, then strictly one question at a time with options, analysis, and a recommendation each. Mixes three question energies (boundary-alignment, stress-test pressure, exploratory openers), triages decide/probe/backlog, and lands every ruling in artifacts. Explicit invocation only. |
-| `explain` | Generate user-tailored explanations across different question types — concept intro, mechanism, decision, comparison. Applies a consistent set of expression rules (user-layer concepts first, conclusion first, no code refs by default) while adapting shape per scenario. Explicit invocation only. |
-| `speak-normally` | Register discipline for Chinese prose output — plain Mandarin, engineering register, direct declarative statements, English technical terms kept as-is, no rhetorical inflation or fake precision. Constrains wording only, not content or structure; stacks on top of whatever skill shapes the content. Auto-applies to substantive Chinese prose without explicit invocation. |
 
 ## Install
 
@@ -34,7 +32,7 @@ Two install paths are supported.
 
 **B · Direct plugin discovery** — point Claude Code's plugin discovery at this directory or symlink it into your configured plugins path. The `.claude-plugin/plugin.json` manifest is already present. Use this when you want a local checkout you actively edit.
 
-Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:my-simplify`, `/hy-skills:refactor`, `/hy-skills:open-worktree`, `/hy-skills:commit-push-pr`, `/hy-skills:loop-for-merge`, `/hy-skills:close-worktree`, `/hy-skills:closeup`, `/hy-skills:gdd`, `/hy-skills:mindset`, `/hy-skills:grilling`, `/hy-skills:explain`, `/hy-skills:speak-normally`.
+Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:my-simplify`, `/hy-skills:refactor`, `/hy-skills:open-worktree`, `/hy-skills:commit-push-pr`, `/hy-skills:loop-for-merge`, `/hy-skills:close-worktree`, `/hy-skills:closeup`, `/hy-skills:gdd`, `/hy-skills:mindset`, `/hy-skills:grilling`.
 
 ### Codex
 
@@ -85,10 +83,12 @@ Skills are invoked by intent or via `/skill:<name>`; the `description` fields in
 
 Copy or symlink any selected folder under `skills/` into the client's skills directory. Each folder is independently installable; sibling skills are optional accelerators, not required files.
 
-For Codex, Cursor, and Kimi Code, `~/.agents/skills/` is the preferred shared user-level location. Claude Code uses `~/.claude/skills/`. Project-level clients can use their own `.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, or `.kimi-code/skills/` discovery path. Invocation follows each skill's `description`; `go`, `grilling`, and `explain` retain their explicit-only contract in portable prose.
+For Codex, Cursor, and Kimi Code, `~/.agents/skills/` is the preferred shared user-level location. Claude Code uses `~/.claude/skills/`. Project-level clients can use their own `.agents/skills/`, `.claude/skills/`, `.cursor/skills/`, or `.kimi-code/skills/` discovery path. Invocation follows each skill's `description`; `go` and `grilling` retain their explicit-only contract in portable prose.
 
 ## Status
 
-v0.9.0. Every skill is now independently installable, all runtime references stay inside the owning skill, manifests are generated from one metadata source, and Cursor is a first-class plugin target alongside Claude Code, Codex, and Kimi Code. `/go` retains its thin outcome-responsibility core and on-demand domain packs without client-specific path or argument assumptions.
+v0.10.0. Every skill is independently installable, all runtime references stay inside the owning skill, manifests are generated from one metadata source, and Cursor is a first-class plugin target alongside Claude Code, Codex, and Kimi Code. `/go` retains its thin outcome-responsibility core and on-demand domain packs without client-specific path or argument assumptions.
 
 Four skills were withdrawn in v0.7.0 on the evidence of a transcript usage scan — `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless`. They live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition under which each should come back.
+
+Two writing skills were withdrawn in v0.10.0 after their responsibilities moved into the owner's text-quality domain kit — `explain` and `speak-normally`. Their history and revival conditions live under [`.archive/skills/`](.archive/).
