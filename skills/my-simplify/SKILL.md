@@ -1,61 +1,28 @@
 ---
 name: my-simplify
-description: Review recently changed code for simplification opportunities, then apply small high-confidence cleanup fixes. Use when native Simplify is unavailable, or when the user asks to simplify, clean up, reduce complexity, improve code reuse, improve quality, or improve efficiency after a code change.
+description: Clean up the changed code without changing behavior. Review the diff for reuse, simplification, efficiency, and altitude cleanups, then apply the fixes. Quality only; it does not hunt for bugs. For Codex and any client without a native Simplify; in Claude Code use the built-in /simplify.
+metadata:
+  short-description: Post-change cleanup on four angles, then apply the fixes
+  derived-from: "Claude Code built-in /simplify (claude 2.1.258), prompt text adapted. Local additions: the two duplication tests under Reuse and Simplification."
 ---
 
 # my-simplify
 
-Review recent code changes, identify concrete simplification opportunities, and apply focused fixes.
+You are improving the quality of the changed code, not hunting for bugs. Review it for reuse, simplification, efficiency, and altitude issues, then fix what you find. Do not look for correctness bugs; that is a code review's job.
 
-Treat any focus supplied with the invocation as the review focus, such as memory efficiency, duplication, readability, API shape, test simplification, or frontend state complexity.
+## Phase 0: gather the diff
 
-## Scope
+Run `git diff @{upstream}...HEAD` (or `git diff main...HEAD` / `git diff HEAD~1` if there is no upstream). If there are uncommitted changes, or the range diff is empty, also run `git diff HEAD` and include the working-tree changes. If a PR number, branch, or path was passed as an argument, review that target instead. This diff is the review scope.
 
-Default scope is recently changed files:
+## Phase 1: review on four angles
 
-1. Inspect `git status --short`.
-2. Inspect `git diff --stat` and `git diff`.
-3. Include nearby files only when needed to understand contracts, callers, or tests.
-4. Ask for scope only when there is no git repository and the user gave no files, directories, or focus.
+With a subagent tool, launch four independent review agents in one message, each with the diff and one angle. Without one, work through all four angles yourself in one pass; do not skip an angle, and say in the summary that this was a single pass. Each finding carries `file`, `line`, a one-line summary, and the concrete cost: what is duplicated, wasted, or harder to maintain.
 
-Preserve unrelated user edits. Keep changes small and directly tied to simplification.
+- **Reuse**: new code that re-implements something the codebase already has. Grep shared and utility modules and the files adjacent to the change; name the existing helper to call instead. Merge only semantic duplicates, code that shares one piece of knowledge; two pieces that merely look alike today stay apart.
+- **Simplification**: unnecessary complexity the diff adds: redundant or derivable state, copy-paste with slight variation, deep nesting, dead code left behind. Name the simpler form that does the same job. Before flagging a module as needless, apply the deletion test: would removing it concentrate the complexity somewhere else (a real finding), or only move it (not one)?
+- **Efficiency**: wasted work the diff introduces: redundant computation or repeated I/O, independent operations run sequentially, blocking work added to startup or hot paths, long-lived objects built from closures that keep the enclosing scope alive.
+- **Altitude**: is each change implemented at the right depth, not as a fragile bandaid? Special cases layered on shared infrastructure are a sign the fix is not deep enough; prefer generalizing the underlying mechanism over adding a branch.
 
-## Review Lanes
+## Phase 2: apply the fixes
 
-Three lenses. Run in parallel when the platform supports subagents, otherwise sequentially. Per-lane checklists live in `references/lanes.md` — load when a lens needs prompting.
-
-- **Reuse** — duplicated logic and unnecessary divergence. Prefer local, obvious reuse; avoid broad architecture changes.
-- **Quality** — clarity and correctness. Prefer direct code, semantic names, and tests that pin behavior.
-- **Efficiency** — avoidable runtime, memory, and I/O cost. Prefer measurable wins and simple data flow.
-
-## Triage
-
-Report and fix only findings that satisfy all conditions:
-
-- The issue is visible in the current diff or directly caused by it.
-- The fix is smaller or clearer than the existing code.
-- The behavior is preserved or explicitly improved.
-- The risk is low enough to validate in this session.
-
-Defer broad refactors, speculative abstractions, style-only churn, and changes outside the requested focus.
-
-## Implementation
-
-1. State the chosen scope and focus in one short update.
-2. Gather context with fast search/read tools.
-3. Produce a compact finding list grouped by lane.
-4. Select the fixes with the best impact-to-risk ratio.
-5. Edit files.
-6. Run the narrowest meaningful validation: targeted tests, typecheck, lint, build, or a focused manual check.
-7. Report changed files, fixes applied, and validation result.
-
-## Output Style
-
-Lead with the result. Keep the final response short:
-
-- Files changed.
-- Simplifications applied.
-- Validation run and outcome.
-- Remaining deferred items only when they are important.
-
-For review-only use, lead with findings ordered by severity and include file/line references.
+Wait for all angles, dedup findings that point at the same line or mechanism, and fix each remaining one directly. Skip any finding whose fix would change intended behavior, require changes well outside the reviewed diff, or that you judge a false positive; note the skip rather than arguing with it. Run the narrowest check that covers what you touched. Finish with a brief summary of what was fixed and what was skipped, or confirm the code was already clean.
