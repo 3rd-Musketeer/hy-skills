@@ -1,0 +1,4 @@
+interface:
+  display_name: "Retro"
+  short_description: "Improve the environment and file the lessons after a thread"
+  default_prompt: "Run a retro on this thread: what should change in the repo and the workflow, and what gets filed where."

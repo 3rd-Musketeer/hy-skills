@@ -103,3 +103,8 @@ Usage evidence: explicit invocations in both harnesses, 2026-08-19 → 2026-09-0
 - **Usage:** across 21 `go` sessions in the window, digests record 3 reads (development.md ×2, data-analysis.md ×1).
 - **Reason:** the packs restate methods the model applies by default; no friction item in the window points to a missing method. `go` keeps only the orchestration layer.
 - **Revive when:** a `go` session fails for lack of a method the model did not apply on its own; revive that one pack, not the set.
+
+### closeup (2026-09-03 evening, one day after its rewrite)
+- **Usage:** 13 in the window.
+- **Reason:** it mixed two things. Task teardown (destroy created, restore borrowed, close tracking, baseline check) is part of the task and moved into `go` §5, where the Boundary already records what was borrowed. Learning (project documents, workspace ledger, environment improvements) is `retro`. Nothing of closeup is lost; the entry skills are now grilling / go / retro.
+- **Revive when:** never as a skill; if a session changes environment without a `go`, the owner calls it out.

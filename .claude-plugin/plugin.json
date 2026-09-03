@@ -1,6 +1,6 @@
 {
   "name": "hy-skills",
-  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, session closeout, and domain modeling. Ships go, grilling, closeup, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling. Ships go, grilling, retro, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
   "version": "0.11.0",
   "author": {
     "name": "Haoyang Wu"
@@ -11,12 +11,12 @@
     "methodology",
     "outcome-execution",
     "grilling",
-    "closeout",
     "simplify",
     "research",
     "handoff",
     "domain-modeling",
     "adr",
-    "diagnosing-bugs"
+    "diagnosing-bugs",
+    "retro"
   ]
 }

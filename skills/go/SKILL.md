@@ -15,7 +15,7 @@ Before changing anything, state five things in a few lines. The handback mirrors
 
 - **Outcome**: the observable end state, in behavior terms.
 - **Proof**: which checks you will run to support exactly that claim, decided now, not after the work. A narrow check cannot back a broad claim.
-- **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive. "None" is a valid answer.
+- **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive, and any shared state you will borrow with its current value, so it can be restored. "None" is a valid answer.
 - **Pickup**: zero or one action the user takes after handback, and how they will do it (for example, try the new feature in the simulator). Zero when the result is already delivered; more than one means staging is incomplete.
 - **Layout**: where every output of this task will live, and which file is the authority for it. Agreeing this first is what keeps the context from scattering.
 
@@ -33,9 +33,14 @@ Work inside the Boundary. When you find the scope should grow, including an adja
 
 A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify. When the proof itself needs an outward-visible operation (a push that deploys, a message sent), that operation belongs in the Boundary: authorized in the contract, or the claim stays unverified.
 
-## 5. Polish
+## 5. Polish and put the world back
 
-Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, remove temporary processes and files this task created, then re-run the proof that the polish touched. Session-level teardown belongs to closeup.
+Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, then re-run the proof it touched. Then:
+
+- Destroy what this task created: processes, servers, port-forwards, scratch files, merged branches and their worktrees. Anything dirty or unmerged: ask.
+- Restore what this task borrowed to the original recorded in the Boundary. No recorded original: ask, never guess. Verify by identity (the value, the image tag), not by liveness.
+- Close what tracks the task: PR state, the task README's state line, the action list. Nothing should still read "in progress".
+- Check, do not assert: tree clean, only the expected worktrees and branches, no orphan processes, and every invariant that had to survive the change still holds.
 
 ## 6. Hand back
 

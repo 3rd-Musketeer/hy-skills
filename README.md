@@ -12,11 +12,11 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 |---|---|
 | `go` | Explicit high-agency outcome execution: recover relevant standards, own the result within existing authority, choose task-appropriate proof, polish the resulting state, and stage zero or one Pickup action. Uses compact on-demand packs for development, system configuration, research, documents, product/design, data analysis, and external actions. |
 | `my-simplify` | Review recent code changes for reuse, quality, and efficiency simplifications. Used by `go`'s development pack when the current harness has no native Simplify capability. |
+| `retro` | Retrospective on a thread: environment improvements (seven categories, from mattpocock/skills, MIT) plus filing what the thread learned into the project's docs or the workspace ledger. One plan, the user approves, then it writes. |
 | `research` | Vendored from mattpocock/skills (MIT). Background research against primary sources; writes a report with citations. |
 | `handoff` | Vendored from mattpocock/skills (MIT). Explicit-only: write a handoff document so another agent or session can pick the work up. |
 | `domain-modeling` | Vendored from mattpocock/skills (MIT). Build a `CONTEXT.md` glossary and record decisions as ADRs (three gates: hard to reverse, looks odd without background, real tradeoff). Local template additions: `Scope`, `Rejected`, `Revisit when`. |
 | `wait-what` | Vendored from mattpocock/skills (MIT). Explicit-only: re-pitch an unclear agent message in ASD-STE100 plain language. |
-| `closeup` | Close out a shipped session downstream of merge — retire scaffolding, restore borrowed (created-vs-borrowed) environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Retires finished worktrees itself (the former `close-worktree` classification is folded in) and adds the ephemeral-environment teardown no other skill covers. |
 | `grilling` | Question you relentlessly about a plan before building — brain-test first, write a question outline to tmp, then strictly one question at a time with options, analysis, and a recommendation each. Mixes three question energies (boundary-alignment, stress-test pressure, exploratory openers), triages decide/probe/backlog, and lands every ruling in artifacts. Explicit invocation only. |
 
 ## Install
@@ -29,7 +29,7 @@ Two install paths are supported.
 
 **B · Direct plugin discovery** — point Claude Code's plugin discovery at this directory or symlink it into your configured plugins path. The `.claude-plugin/plugin.json` manifest is already present. Use this when you want a local checkout you actively edit.
 
-Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:grilling`, `/hy-skills:closeup`, `/hy-skills:my-simplify`, `/hy-skills:research`, `/hy-skills:handoff`, `/hy-skills:domain-modeling`, `/hy-skills:wait-what`.
+Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:grilling`, `/hy-skills:retro`, `/hy-skills:my-simplify`, `/hy-skills:research`, `/hy-skills:handoff`, `/hy-skills:domain-modeling`, `/hy-skills:wait-what`.
 
 ### Codex
 

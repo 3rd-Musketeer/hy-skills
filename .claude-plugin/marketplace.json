@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "hy-skills",
-  "description": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), session closeout (closeup), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients. Self-hosted single-plugin marketplace.",
+  "description": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), retrospectives that file lessons and improve the environment (retro), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients. Self-hosted single-plugin marketplace.",
   "owner": {
     "name": "Haoyang Wu"
   },
@@ -9,7 +9,7 @@
     {
       "name": "hy-skills",
       "displayName": "Hy Skills",
-      "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, session closeout, and domain modeling. Ships go, grilling, closeup, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+      "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling. Ships go, grilling, retro, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
       "source": "./",
       "author": {
         "name": "Haoyang Wu"
@@ -20,13 +20,13 @@
         "methodology",
         "outcome-execution",
         "grilling",
-        "closeout",
         "simplify",
         "research",
         "handoff",
         "domain-modeling",
         "adr",
-        "diagnosing-bugs"
+        "diagnosing-bugs",
+        "retro"
       ],
       "category": "Developer Tools"
     }

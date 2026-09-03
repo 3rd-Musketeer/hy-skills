@@ -1,7 +1,7 @@
 {
   "name": "hy-skills",
   "version": "0.11.0",
-  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, session closeout, and domain modeling.",
+  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling.",
   "author": {
     "name": "Haoyang Wu"
   },
@@ -12,18 +12,18 @@
     "methodology",
     "outcome-execution",
     "grilling",
-    "closeout",
     "simplify",
     "research",
     "handoff",
     "domain-modeling",
     "adr",
-    "diagnosing-bugs"
+    "diagnosing-bugs",
+    "retro"
   ],
   "skills": [
     "go",
     "grilling",
-    "closeup",
+    "retro",
     "my-simplify",
     "diagnosing-bugs",
     "research",
@@ -33,8 +33,8 @@
   ],
   "interface": {
     "displayName": "Hy Skills",
-    "shortDescription": "Outcome execution, plan stress-testing, session closeout, research, handoff, and domain modeling",
-    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), session closeout (closeup), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+    "shortDescription": "Outcome execution, plan stress-testing, retrospectives, research, handoff, and domain modeling",
+    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), retrospectives that file lessons and improve the environment (retro), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
     "developerName": "Haoyang Wu",
     "category": "Developer Tools",
     "capabilities": [
@@ -44,9 +44,9 @@
     "defaultPrompt": [
       "Use go explicitly to own this aligned outcome, prove it, and stage the pickup.",
       "Grill me on this plan before I build it.",
-      "Close up this shipped session.",
       "Research this question against primary sources in the background.",
-      "Write a handoff document for the next session."
+      "Write a handoff document for the next session.",
+      "Run a retro on this thread."
     ]
   }
 }
