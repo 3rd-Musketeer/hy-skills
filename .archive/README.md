@@ -64,3 +64,37 @@ These two skills were withdrawn because their responsibilities moved to the owne
 - **Usage:** It auto-applied to substantive prose, so explicit invocation counts never represented its real use. Its complete effective rule set — direct engineering prose, natural terminology, no invented translations, no rhetorical inflation, and evidence instead of fake precision — was absorbed by the text-quality base rules.
 - **Reason:** A cross-cutting writing standard belongs in the writing-quality owner, not as a second resident methodology skill. Keeping both would duplicate rules and let their wording drift.
 - **Revive when:** a portable, project-agnostic writing standard has a single publishable upstream and repeated cross-project demand that cannot be met by project or user-level writing guidance.
+
+## Archived 2026-09-03 (v0.10.0 → v0.11.0)
+
+Usage evidence: explicit invocations in both harnesses, 2026-08-19 → 2026-09-01 (Codex 107 sessions: `[$hy-skills:<name>]` links in user turns; Claude Code 23 sessions: user `/name` slash text + `Skill` tool calls). Combined counts: go 56 · grilling 47 · closeup 13 · my-simplify 6 · open/close-worktree 4 · commit-push-pr 1 · gdd 1 · refactor / mindset / loop-for-merge 0. Owner's ruling: keep the four entry skills (go, grilling, closeup, reflect-to-be) plus my-simplify; everything the model already does by default, or that another skill covers, is withdrawn.
+
+### refactor
+- **Usage:** 0 in the window.
+- **Reason:** the two-axis review it prescribes is what a capable model does when asked to refactor; Pocock's `code-review` covers the standards/spec split if it is ever needed.
+- **Revive when:** a refactor session goes wrong in a way a written procedure would have prevented, twice.
+
+### mindset
+- **Usage:** 0 in the window.
+- **Reason:** method-and-grain routing overlaps `go`'s reference packs; the owner picks method by naming it, not by consulting a library.
+- **Revive when:** `go` loses its per-shape reference packs and method choice becomes a recurring friction.
+
+### loop-for-merge
+- **Usage:** 0 in the window.
+- **Reason:** review-bot loops are now run by a background subagent with an active poll; the fixed heartbeat skill was never invoked.
+- **Revive when:** merge monitoring stops being delegated and needs a user-invoked procedure again.
+
+### commit-push-pr
+- **Usage:** 1 in the window.
+- **Reason:** commit/push/MR is default model behavior; the team-repo conventions it wrapped live in the workspace's `areta-dev` skill.
+- **Revive when:** a PR-shaping convention appears that is not repo-specific and is violated by default behavior.
+
+### open-worktree · close-worktree
+- **Usage:** 1 + 3 in the window, all in Claude Code; 0 in Codex.
+- **Reason:** the owner judges the worktree-first workflow internalized by current models. `closeup` keeps a fallback that classifies a finished worktree (merged / open-PR / dirty / abandon) when this skill is absent; that classification is folded into the closeup rewrite.
+- **Revive when:** an agent retires a worktree in the wrong order (branch before worktree, or a dirty tree) twice.
+
+### gdd
+- **Usage:** 1 in the window; `go` (56) replaced it in practice.
+- **Reason:** the goal document and `.gdd/` layout are superseded by the tasks/ model (task README as thread authority, TODO as the action list, docs/adr for decisions). Its one increment over default model behavior, **stakes** (ask only when a real tradeoff falls on something the owner cares about, and state why the decision is needed now, what differs between an arbitrary and a deliberate choice, and where that difference lands), moves into the grilling rewrite.
+- **Revive when:** never as a goal-document skill; the tasks/ model owns that role. `references/goal-driven-dev.md` stays here as history.

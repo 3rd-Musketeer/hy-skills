@@ -12,14 +12,11 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 |---|---|
 | `go` | Explicit high-agency outcome execution: recover relevant standards, own the result within existing authority, choose task-appropriate proof, polish the resulting state, and stage zero or one Pickup action. Uses compact on-demand packs for development, system configuration, research, documents, product/design, data analysis, and external actions. |
 | `my-simplify` | Review recent code changes for reuse, quality, and efficiency simplifications. Used by `go`'s development pack when the current harness has no native Simplify capability. |
-| `refactor` | Audit code for maintainability, naming, contract boundaries, architecture coherence, and refactor ROI. Applies small safe refactors or proposes bounded rewrites when needed. |
-| `open-worktree` | Propose or create one new task worktree from the repo base branch. Follows worktree-first naming and creation policy. |
-| `commit-push-pr` | Publish the current task branch into a ready-for-review PR. Reuses the existing branch PR when present. |
-| `loop-for-merge` | Watch one PR every 5 minutes and auto-merge the quiet or bot-approved happy path. Hands review comments back to a human. |
-| `close-worktree` | Inspect or clean up one finished task worktree after merge or explicit abandonment. |
-| `closeup` | Close out a shipped session downstream of merge — retire scaffolding, restore borrowed (created-vs-borrowed) environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Orchestrates `close-worktree` and adds the ephemeral-environment teardown no other skill covers. |
-| `gdd` | Shape goals from backlog candidates through a drafting gate, then refine into executable goal documents. Implements the goal-driven development methodology under `.gdd/`. Keeps humans focused on outcome, product experience, contracts, scope, scenarios, and definition of done while deferring implementation details to `/go`. |
-| `mindset` | Interpret the user's development methodology and action words — probe, smoke, eyeball, 体感, sweep, review, audit, wrap up — to choose method and grain without turning the work into ceremony. |
+| `research` | Vendored from mattpocock/skills (MIT). Background research against primary sources; writes a report with citations. |
+| `handoff` | Vendored from mattpocock/skills (MIT). Explicit-only: write a handoff document so another agent or session can pick the work up. |
+| `domain-modeling` | Vendored from mattpocock/skills (MIT). Build a `CONTEXT.md` glossary and record decisions as ADRs (three gates: hard to reverse, looks odd without background, real tradeoff). Local template additions: `Scope`, `Rejected`, `Revisit when`. |
+| `wait-what` | Vendored from mattpocock/skills (MIT). Explicit-only: re-pitch an unclear agent message in ASD-STE100 plain language. |
+| `closeup` | Close out a shipped session downstream of merge — retire scaffolding, restore borrowed (created-vs-borrowed) environments, finalize tracking status, file the decision, verify a clean baseline, and hand off honestly. Retires finished worktrees itself (the former `close-worktree` classification is folded in) and adds the ephemeral-environment teardown no other skill covers. |
 | `grilling` | Question you relentlessly about a plan before building — brain-test first, write a question outline to tmp, then strictly one question at a time with options, analysis, and a recommendation each. Mixes three question energies (boundary-alignment, stress-test pressure, exploratory openers), triages decide/probe/backlog, and lands every ruling in artifacts. Explicit invocation only. |
 
 ## Install
@@ -32,7 +29,7 @@ Two install paths are supported.
 
 **B · Direct plugin discovery** — point Claude Code's plugin discovery at this directory or symlink it into your configured plugins path. The `.claude-plugin/plugin.json` manifest is already present. Use this when you want a local checkout you actively edit.
 
-Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:my-simplify`, `/hy-skills:refactor`, `/hy-skills:open-worktree`, `/hy-skills:commit-push-pr`, `/hy-skills:loop-for-merge`, `/hy-skills:close-worktree`, `/hy-skills:closeup`, `/hy-skills:gdd`, `/hy-skills:mindset`, `/hy-skills:grilling`.
+Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:grilling`, `/hy-skills:closeup`, `/hy-skills:my-simplify`, `/hy-skills:research`, `/hy-skills:handoff`, `/hy-skills:domain-modeling`, `/hy-skills:wait-what`.
 
 ### Codex
 
@@ -59,7 +56,7 @@ Two install paths are supported.
 
 Or drop the plugin directory under `~/.codex/plugins/` for a home-local install.
 
-Codex has no slash aliases — trigger most skills by intent. `go` is the exception: explicitly say “use go” or invoke the linked skill when you want its result-responsibility mode; a generic implementation, research, writing, or configuration request must not trigger it. “Simplify this diff” picks up `my-simplify`; “audit this architecture for refactor ROI” picks up `refactor`; “open a task worktree” picks up `open-worktree`; goal-document and milestone-planning requests pick up `gdd`. The `description` fields in each `SKILL.md` drive matching.
+Codex has no slash aliases — trigger most skills by intent. `go` is the exception: explicitly say “use go” or invoke the linked skill when you want its result-responsibility mode; a generic implementation, research, writing, or configuration request must not trigger it. “Simplify this diff” picks up `my-simplify`; “research this against primary sources” picks up `research`; “model this domain / write the ADR” picks up `domain-modeling`. `handoff` and `wait-what` are explicit-only. The `description` fields in each `SKILL.md` drive matching.
 
 ### Cursor
 
