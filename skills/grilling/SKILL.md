@@ -17,23 +17,22 @@ Goal: a shared understanding of the plan. Nothing left silently assumed. Do not 
 2. Write the candidates to `.tmp/grilling/YYYYMMDD-<slug>.md` as a **design tree**: each decision lists the decisions that depend on it. The outline is for you, not the user. It keeps the whole tree in view when one answer pulls you into a local detail.
 3. Facts are your job. Anything answerable from code, docs, or tools: look it up, or dispatch a subagent and keep asking the questions that do not depend on it.
 4. Triage each candidate: **decide** (the user's call), **probe** (a cheap experiment answers it: propose the probe instead), **backlog** (real, off the current path: record, do not ask).
-5. Every `decide` question carries its **stakes** on one line, three short clauses: why it must be decided now / what differs between an arbitrary choice and a deliberate one / which thing the user cares about that difference lands on. If the difference lands on nothing the user cares about, decide it yourself and note the choice in the outline. No stakes, no question.
+5. Every `decide` question must have **stakes**: why it must be decided now, what differs between an arbitrary choice and a deliberate one, and which thing the user cares about that difference lands on. If the difference lands on nothing the user cares about, decide it yourself and note the choice in the outline. No stakes, no question.
 6. Two sources that contradict each other are a `decide` question, not a lookup. Name both sources in the question.
 
 ## 2. Ask in frontier rounds
 
-The **frontier** is every `decide` question whose prerequisites are settled. Ask the whole frontier in one round, numbered, each with its stakes, options, and your recommended answer with a one-line basis. Keep each question under ten lines; the stakes line and the options carry the content, not prose around them. A question that depends on another question still open in this round waits for a later round. Then stop and wait.
+The **frontier** is every `decide` question whose prerequisites are settled. Ask the whole frontier in one round. A question that depends on another question still open in this round waits for a later round. Then stop and wait.
 
-```
-❓ **Q1 · <title>**
-Stakes: <why now> / <arbitrary vs deliberate> / <lands on>
-<options>
-➡️ <recommendation and basis>
-```
+Group questions that share one parent decision. Open a group with one or two sentences: what these questions settle, and which conflict or ambiguity they resolve. Add a diagram only when the questions are about structure, flow, or boundaries and words would take longer.
+
+A question is a conflict made visible: a need and the rule it collides with, or two paths and the cost of each. If the conflict is visible, the stakes are already stated; do not label them. Write it in the user's words, not the words you coined while working. Options are paths you have already thought through, so the user chooses instead of designing. Note a cost only where it is not obvious. End with one recommendation and its basis, one line.
+
+Read the round as the user would: short sentences, bullets, nothing they have to translate. Cut every sentence that repeats what the conflict already says.
 
 After each round: write the user's answer into the outline's **ruling** column in their words. The proposal column is yours; the ruling column is theirs; never promote one to the other. If they decide something outside your options, record what they decided. If they say "that is not what I asked", re-read the original question and ask again.
 
-Use the user's words and the project's `CONTEXT.md` terms. When a term is used two ways, ask which one before going on.
+When a term is used two ways, ask which one before going on. Use the project's `CONTEXT.md` terms where they exist.
 
 ## 3. Rules while grilling
 
