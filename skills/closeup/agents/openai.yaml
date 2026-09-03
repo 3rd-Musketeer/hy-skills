@@ -1,4 +1,4 @@
 interface:
   display_name: "Closeup"
-  short_description: "Close the broader shipped session after task-level cleanup"
+  short_description: "Close out a finished task and brief the user"
   default_prompt: "Use $closeup after task-level cleanup to close this broader shipped session: retire scaffolding, restore borrowed environments, finalize status, file the decision, and hand off."

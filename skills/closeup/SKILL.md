@@ -11,7 +11,7 @@ Run when the user says the task is done: shipped, merged, or the thread reached 
 
 ## Propose, then wait
 
-Inspect first: `git worktree list`, `git status --short`, local and remote branches this session created, processes, containers, and port-forwards you started, shared state you changed. Then present one plan: what will be deleted, what will be restored to which original value, what is kept and how to recreate it, and every file this closeup will write, with its destination and content. Wait for the user's go. Do not delete, restore, or write before it.
+Inspect first: `git worktree list`, `git status --short`, local and remote branches this session created, processes, containers, and port-forwards you started, shared state you changed. Then present one plan: what will be deleted, what will be restored to which original value, what is kept and how to recreate it, every file this closeup will write with its destination and your proposed wording, and any ledger promotion section 4 turned up. The user's answer to the plan is the ruling; where they change your wording, theirs is what gets written. Wait for the user's go. Do not delete, restore, or write before it.
 
 ## 1. Environment
 
@@ -39,7 +39,7 @@ Record rulings in the user's words. What you proposed is not what they decided.
 
 A candidate is a lesson that would still hold in a different project: an `AGENTS.md` line, a skill change, an environment improvement (a navigation pointer, an automated check, an expensive tool call, an instruction that changes nothing, information the agent could not reach). Append one line per candidate: `date · type · one line · session id`.
 
-The ledger is the nearest `LEDGER.md` found by walking up from the working directory; if there is none, create it beside the outermost `AGENTS.md`. If the ledger already holds the same candidate from another session, propose the promotion now. The user decides; write the promotion only after. Delete an existing instruction only with evidence that it caused a wrong action.
+The ledger is the nearest `LEDGER.md` found by walking up from the working directory; if there is none, create it beside the outermost `AGENTS.md`. If the ledger already holds the same candidate from another session, put the promotion in the plan. The user decides; write it only after. Delete an existing instruction only with evidence that it caused a wrong action.
 
 ## 5. Baseline
 
