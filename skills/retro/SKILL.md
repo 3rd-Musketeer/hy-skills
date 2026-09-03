@@ -31,8 +31,8 @@ The thread the user names; by default the current one, including the parts befor
 
 ## 3. Sort by scope
 
-- **Project level** is written in this round.
-- **Workspace level** is anything that would still hold in a different project: a line in the workspace agent rules, a skill change, an environment improvement. Append one line to the ledger: `date · type · what happened · session id`. Write the event ("finding the report script took 20 minutes"), not the fix; the fix is inferred when two events line up. The ledger is the nearest `LEDGER.md` found walking up from the working directory; if none, create it beside the outermost `AGENTS.md`. Propose a promotion only when the ledger already holds the same event from another session. Delete an existing instruction only with evidence it caused a wrong action.
+- **Project level** goes into this round's plan (section 4).
+- **Workspace level** is anything that would still hold in a different project: a line in the workspace agent rules, a skill change, an environment improvement. Append one line to the ledger: `date · type · what happened · session id`, where type is one of the seven environment categories above, or `rule` for a candidate line in the agent rules, or `skill` for a skill change. Write the event ("finding the report script took 20 minutes"), not the fix; the fix is inferred when two events line up. The ledger is the nearest `LEDGER.md` found walking up from the working directory; if none, create it beside the outermost `AGENTS.md`. Propose a promotion only when the ledger already holds the same event from another session. Delete an existing instruction only with evidence it caused a wrong action.
 
 Agent rules files are read by every agent in the repo; they carry navigation pointers, sparingly. Docs are reference files, pointed to from elsewhere; look for an existing doc before writing a new one. Skills hold knowledge whose description should reach the agent, or user-invoked procedures.
 
