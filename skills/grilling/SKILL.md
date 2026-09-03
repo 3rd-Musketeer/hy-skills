@@ -4,7 +4,7 @@ description: Interview the user about a plan, decision, or idea until you share 
 license: MIT
 metadata:
   short-description: Outline-first, frontier-round plan grilling
-  derived-from: "The design-tree / frontier-round method is from github.com/mattpocock/skills@6654f6b skills/productivity/grilling (MIT). Local additions: the outline file, stakes per question, decide/probe/backlog triage, the no-action rule, ruling-vs-proposal columns, landing in TODO."
+  derived-from: "The design-tree / frontier-round method is from github.com/mattpocock/skills@6654f6b skills/productivity/grilling (MIT). Local additions: the outline file, stakes per question, decide/probe/backlog triage, the no-action rule, ruling-vs-proposal columns, terms into CONTEXT.md as they settle, landing in TODO."
 ---
 
 # grilling
@@ -32,11 +32,11 @@ Read the round as the user would: short sentences, bullets, nothing they have to
 
 After each round: write the user's answer into the outline's **ruling** column in their words. The proposal column is yours; the ruling column is theirs; never promote one to the other. If they decide something outside your options, record what they decided. If they say "that is not what I asked", re-read the original question and ask again.
 
-When a term is used two ways, ask which one before going on. Use the project's `CONTEXT.md` terms where they exist.
+When a term is used two ways, ask which one before going on. Use the project's `CONTEXT.md` terms where they exist. Once the user settles a term, write it into `CONTEXT.md` right then, in the domain-modeling skill's format; a term settled in grilling should already be there when the work starts.
 
 ## 3. Rules while grilling
 
-- Write nothing except the outline. No implementation, no files, no proposals for how to build it.
+- Write nothing except the outline and settled terms in `CONTEXT.md`. No implementation, no other files, no proposals for how to build it.
 - One line of echo after a ruling, then the next round. No re-summarizing what they just said.
 
 ## 4. Done
