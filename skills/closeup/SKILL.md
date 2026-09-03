@@ -37,7 +37,7 @@ Record rulings in the user's words. What you proposed is not what they decided.
 
 ## 4. Ledger
 
-A candidate is a lesson that would still hold in a different project: an `AGENTS.md` line, a skill change, an environment improvement (a navigation pointer, an automated check, an expensive tool call, an instruction that changes nothing, information the agent could not reach). Append one line per candidate: `date · type · one line · session id`.
+A candidate is a lesson that would still hold in a different project: an `AGENTS.md` line, a skill change, an environment improvement (a navigation pointer, an automated check, an expensive tool call, an instruction that changes nothing, information the agent could not reach). Append one line per candidate: `date · type · what happened · session id`. Write the event ("finding the report script took 20 minutes"), not the fix you would propose; the event is the evidence, the fix is inferred when two events line up.
 
 The ledger is the nearest `LEDGER.md` found by walking up from the working directory; if there is none, create it beside the outermost `AGENTS.md`. If the ledger already holds the same candidate from another session, put the promotion in the plan. The user decides; write it only after. Delete an existing instruction only with evidence that it caused a wrong action.
 
