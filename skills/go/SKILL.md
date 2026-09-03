@@ -26,11 +26,11 @@ Read what the project already says before acting: `AGENTS.md`, `CONTEXT.md`, the
 
 ## 3. Execute
 
-Work inside the Boundary. When you find the scope should grow, say so and stop; do not grow it. When you find a bug that resists the first fix, use the diagnosing-bugs skill instead of guessing. Report material discoveries and changed risk; do not keep a diary.
+Work inside the Boundary. When you find the scope should grow, including an adjacent defect you noticed on the way, report it and leave it; do not grow the scope. When you find a bug that resists the first fix, use the diagnosing-bugs skill instead of guessing. Report material discoveries and changed risk; do not keep a diary.
 
 ## 4. Prove
 
-A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify.
+A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify. When the proof itself needs an outward-visible operation (a push that deploys, a message sent), that operation belongs in the Boundary: authorized in the contract, or the claim stays unverified.
 
 ## 5. Polish
 
