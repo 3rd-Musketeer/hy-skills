@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagnosing Bugs"
+  short_description: "Feedback loop first, then hypotheses, for hard bugs"
+  default_prompt: "Diagnose this bug: build a tight feedback loop before hypothesising."

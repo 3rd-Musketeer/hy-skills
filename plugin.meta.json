@@ -17,13 +17,15 @@
     "research",
     "handoff",
     "domain-modeling",
-    "adr"
+    "adr",
+    "diagnosing-bugs"
   ],
   "skills": [
     "go",
     "grilling",
     "closeup",
     "my-simplify",
+    "diagnosing-bugs",
     "research",
     "handoff",
     "domain-modeling",
@@ -32,7 +34,7 @@
   "interface": {
     "displayName": "Hy Skills",
     "shortDescription": "Outcome execution, plan stress-testing, session closeout, research, handoff, and domain modeling",
-    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), session closeout (closeup), code simplification (my-simplify), plus vendored Matt Pocock skills for background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), session closeout (closeup), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
     "developerName": "Haoyang Wu",
     "category": "Developer Tools",
     "capabilities": [

@@ -1,103 +1,46 @@
 ---
 name: go
-description: Execute an already-aligned task as a high-agency outcome contract — recover relevant standards, own the result within existing authority, choose a task-appropriate method, prove completion, polish the resulting state, and leave zero or one Pickup action. Use ONLY when the human explicitly invokes "/go" or explicitly asks to use the go skill; do not infer it from a generic implementation, research, writing, configuration, or operations request.
+description: Execute an already-aligned task and deliver it proven. Use ONLY when the user explicitly invokes "/go" or says "use go"; never infer it from an ordinary implementation, research, writing, or configuration request.
+metadata:
+  short-description: Execute an aligned task and deliver it proven
 ---
 
-# /go
+# go
 
-Take responsibility for an aligned outcome and carry it to a real, evidenced, directly usable terminal state.
+Carry an aligned task to a state the user can use directly, and prove it before saying so.
 
-`/go` is a role switch: **agent = full-context worker; human = end-user consumer**. Two principles judge every mechanic:
+## 1. Contract
 
-- **Transparence** — expose enough result, evidence, limits, and judgment for trust calibration; do not narrate every step.
-- **UX** — stage everything within tool reach and walk the verification path as user #1. The human should arrive as user #2, not as setup staff.
+Before changing anything, state four things in a few lines:
 
-This mode increases agency, not authority. “Finish,” “ship,” or “do not stop” never grants permission to publish, message, share, delete, pay, or mutate a broader target.
+- **Outcome**: the observable end state, in behavior terms.
+- **Proof**: which evidence would support exactly that claim. A narrow check cannot back a broad claim.
+- **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive.
+- **Pickup**: zero or one action the user takes after handback. Zero when the result is already delivered; more than one means staging is incomplete.
 
-## 1 · Establish the execution contract
+Ask only when a missing choice changes the outcome, the scope, a public contract, the source of truth, or an irreversible consequence. Decide ordinary implementation details yourself. "Finish" or "do not stop" never grants permission to publish, send, delete, pay, or change a broader target.
 
-State four things before mutating:
+## 2. Read the project's standards
 
-- **Outcome** — the observable terminal state, in behavior language.
-- **Proof** — what current evidence would be strong enough to support that exact claim.
-- **Boundary** — scope, authorization, irreversible or outward-visible operations, and protected adjacent state.
-- **Pickup** — zero or one action the human takes after handoff. Zero is correct when the result is already delivered; more than one means staging is incomplete.
+Read what the project already says before acting: `AGENTS.md`, `CONTEXT.md`, the ADRs whose Scope covers the paths you will touch, the task's README, and the runbook for the surface you are about to use. Before writing any file, find where this project keeps that kind of file; do not invent a location. Current evidence beats a summary; when sources conflict in a way that changes the contract, say so.
 
-When a shaped goal or approved plan exists, treat it as authoritative. For a lightweight task, hold this contract in the working context; do not create a goal artifact just to satisfy `/go`.
+## 3. Execute
 
-Restate the contract briefly. Ask only when a missing choice changes outcome shape, scope, public contract, source of truth, authority, or irreversible consequence. In a non-interactive context, stop on any such unknown rather than guessing. Decide ordinary implementation details yourself.
+Work inside the Boundary. When you find the scope should grow, say so and stop; do not grow it. When you find a bug that resists the first fix, use the diagnosing-bugs skill instead of guessing. Report material discoveries and changed risk; do not keep a diary.
 
-## 2 · Recover relevant standards
+## 4. Prove
 
-Read what a capable full-context worker would need: project instructions, current source and runtime state, goal or plan, runbooks, nearby decisions, and available user preferences. Retrieve progressively; do not preload unrelated history or references.
+A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify.
 
-Prefer current evidence over stale summaries. If sources conflict in a way that changes the contract, surface the conflict. Do not make the human repeat standards already recoverable from the environment.
+## 5. Polish
 
-## 3 · Select method and evidence
+Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, remove temporary processes and files this task created, then re-run the proof that the polish touched. Session-level teardown belongs to closeup.
 
-Load one primary pack that matches the dominant work shape:
+## 6. Hand back
 
-| Work shape | Primary pack |
-|---|---|
-| Code, repository feature, migration, or executable product change | `references/development.md` |
-| User/system configuration, local tooling, runtime, or operations | `references/system-config-and-ops.md` |
-| Investigation leading to a recommendation or decision | `references/research-and-decision.md` |
-| Document, guide, prose, or structured writing change | `references/document-and-writing.md` |
-| Product flow, interaction, visual hierarchy, or rendered experience | `references/product-and-design.md` |
-| Dataset, metric, evaluation, report, or analytical conclusion | `references/data-analysis.md` |
+Stage the system as the user will meet it: builds done, servers up, fixtures loaded, the Pickup walked through once by you. Then report, leading with the end state:
 
-When any step publishes, sends, shares, installs, deletes, pays, or otherwise changes a target visible beyond the local working state, also load `references/external-actions.md` as an overlay.
-
-For development work, load `references/development-testing-doctrine.md` when user-observable behavior is stable enough to specify, then at most one stack reference that matches the source: `references/development-node.md`, `references/development-python.md`, or `references/development-swift.md`. Load `references/development-streaming-ui.md` only when streamed model output is in scope.
-
-Use a second primary pack only when the outcome genuinely crosses domains. If method or grain remains ambiguous after inspecting the task, use the available `mindset` skill/library on demand; it is not a prerequisite.
-
-Choose proof before execution. The core standard is scope alignment: a narrow check cannot support a broad completion claim.
-
-## 4 · Execute and adapt
-
-Carry out all agent-scriptable work inside the accepted Boundary. Preserve unrelated state and prefer the smallest complete mechanism with one clear owner.
-
-Implementation is a discovery loop. New evidence may change order, tools, local design, or the proof plan. Adapt without ceremony when the contract still holds. Stop and realign before changing Outcome, Boundary, authority, irreversible consequences, or a human-approved product direction.
-
-Keep the human updated enough to understand material discoveries, changed risk, or a revised route. Do not turn progress updates into a work diary.
-
-## 5 · Prove the outcome
-
-Obtain current, task-appropriate evidence from the primary pack. Exercise the real Pickup path yourself wherever tools reach it.
-
-- Verify the result, not merely the intended configuration, source diff, command exit, or artifact existence.
-- Cover representative states and the failure boundary that would make the completion claim false.
-- Record what the evidence does and does not prove. A real tool-reach limit becomes an explicit deferral only after concrete attempts.
-- If proof fails, fix what is local and inside scope. Escalate instead of hiding a structural failure or expanding authority.
-
-## 6 · Polish and complete the resulting state
-
-Review the whole state produced by the task:
-
-- Is the mechanism simpler than the problem, with no duplicate owner or misleading source of truth?
-- Are temporary processes, sessions, fixtures, files, overrides, and partial attempts removed or intentionally retained?
-- Is adjacent user state unharmed and the surviving state legible to the next agent?
-- Did execution uncover a real out-of-scope issue or reusable decision that needs an explicit owner?
-
-The development pack performs its code-specific Simplify pass here. Other packs use their own completion lens. `/go` removes direct task residue; the `closeup` skill remains responsible for post-ship session lifecycle, worktree retirement, and restoration of broader borrowed environments.
-
-Re-run affected proof after any polish change.
-
-## 7 · Stage the Pickup
-
-Bring the system to the state the human will encounter. Builds, migrations, server startup, fixture loading, local installation, generated artifacts, and tool-drivable verification remain agent work when authorized and reachable.
-
-Then walk the Pickup as user #1. If the original action no longer applies, update it and explain the material reason. Never manufacture an action solely to make the handoff look interactive.
-
-## 8 · Hand back the result
-
-Lead with the terminal state, not the implementation sequence. Default shape:
-
-1. **Result** — what is true now, in behavior language.
-2. **Pickup** — `None` or the single action; include what is already staged.
-3. **Proof** — the strongest evidence and its scope; include relevant limits.
-4. **Polish** — what was cleaned, simplified, restored, or intentionally retained.
-5. **Residuals** — only real deferrals, assumptions, out-of-scope findings, or cross-goal ref candidates, each with an owner or decision needed.
-
-Load `references/handoff-doctrine.md` when the handback needs more than a brief chat response or is rendered as a document artifact.
+1. **Result**: what is true now.
+2. **Pickup**: none, or the single action.
+3. **Proof**: the command and output, and its limits.
+4. **Residuals**: real deferrals, assumptions, and out-of-scope findings, each with an owner.

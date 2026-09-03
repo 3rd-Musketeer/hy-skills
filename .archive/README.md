@@ -98,3 +98,8 @@ Usage evidence: explicit invocations in both harnesses, 2026-08-19 → 2026-09-0
 - **Usage:** 1 in the window; `go` (56) replaced it in practice.
 - **Reason:** the goal document and `.gdd/` layout are superseded by the tasks/ model (task README as thread authority, TODO as the action list, docs/adr for decisions). Its one increment over default model behavior, **stakes** (ask only when a real tradeoff falls on something the owner cares about, and state why the decision is needed now, what differs between an arbitrary and a deliberate choice, and where that difference lands), moves into the grilling rewrite.
 - **Revive when:** never as a goal-document skill; the tasks/ model owns that role. `references/goal-driven-dev.md` stays here as history.
+
+### go/references (13 method packs, 913 lines)
+- **Usage:** across 21 `go` sessions in the window, digests record 3 reads (development.md ×2, data-analysis.md ×1).
+- **Reason:** the packs restate methods the model applies by default; no friction item in the window points to a missing method. `go` keeps only the orchestration layer.
+- **Revive when:** a `go` session fails for lack of a method the model did not apply on its own; revive that one pack, not the set.
