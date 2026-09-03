@@ -91,7 +91,7 @@ Usage evidence: explicit invocations in both harnesses, 2026-08-19 → 2026-09-0
 
 ### open-worktree · close-worktree
 - **Usage:** 1 + 3 in the window, all in Claude Code; 0 in Codex.
-- **Reason:** the owner judges the worktree-first workflow internalized by current models. `closeup` keeps a fallback that classifies a finished worktree (merged / open-PR / dirty / abandon) when this skill is absent; that classification is folded into the closeup rewrite.
+- **Reason:** the owner judges the worktree-first workflow internalized by current models. The classification table was not carried forward; `go` §5 keeps the two rules that matter (merged branches are deleted, anything dirty or unmerged is asked about).
 - **Revive when:** an agent retires a worktree in the wrong order (branch before worktree, or a dirty tree) twice.
 
 ### gdd

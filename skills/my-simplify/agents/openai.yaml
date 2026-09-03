@@ -1,4 +1,4 @@
 interface:
   display_name: "My Simplify"
-  short_description: "Review recent code changes and apply focused simplifications"
-  default_prompt: "Use $my-simplify to review the current diff for reuse, quality, and efficiency simplifications, then apply focused fixes."
+  short_description: "Post-change cleanup on four angles, then apply the fixes"
+  default_prompt: "Use $my-simplify to clean up the current diff for reuse, simplification, efficiency, and altitude, then apply the fixes."

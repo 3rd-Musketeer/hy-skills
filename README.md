@@ -10,14 +10,15 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 
 | Name | What it does |
 |---|---|
-| `go` | Explicit high-agency outcome execution: recover relevant standards, own the result within existing authority, choose task-appropriate proof, polish the resulting state, and stage zero or one Pickup action. Uses compact on-demand packs for development, system configuration, research, documents, product/design, data analysis, and external actions. |
-| `my-simplify` | Review recent code changes for reuse, quality, and efficiency simplifications. Used by `go`'s development pack when the current harness has no native Simplify capability. |
+| `go` | Execute an already-aligned task and deliver it proven. States a five-item contract (outcome, proof, boundary, pickup, layout), reads the project's standards, works inside the boundary, proves with commands and output from the surface the user will see, puts the world back, and hands back against the contract. Explicit invocation only. |
+| `my-simplify` | Post-change cleanup, a port of Claude Code's built-in /simplify for clients without one: four angles (reuse, simplification, efficiency, altitude), fan-out or single pass, then apply the fixes. Quality only, no bug hunting. |
 | `retro` | Retrospective on a thread: environment improvements (seven categories, from mattpocock/skills, MIT) plus filing what the thread learned into the project's docs or the workspace ledger. One plan, the user approves, then it writes. |
+| `diagnosing-bugs` | Vendored from mattpocock/skills (MIT). Build a tight red-capable feedback loop before hypothesising; then reproduce, minimise, instrument, fix with a regression test, clean up. `go` calls it for bugs that resist the first fix. |
 | `research` | Vendored from mattpocock/skills (MIT). Background research against primary sources; writes a report with citations. |
 | `handoff` | Vendored from mattpocock/skills (MIT). Explicit-only: write a handoff document so another agent or session can pick the work up. |
 | `domain-modeling` | Vendored from mattpocock/skills (MIT). Build a `CONTEXT.md` glossary and record decisions as ADRs (three gates: hard to reverse, looks odd without background, real tradeoff). Local template additions: `Scope`, `Rejected`, `Revisit when`. |
 | `wait-what` | Vendored from mattpocock/skills (MIT). Explicit-only: re-pitch an unclear agent message in ASD-STE100 plain language. |
-| `grilling` | Question you relentlessly about a plan before building — brain-test first, write a question outline to tmp, then strictly one question at a time with options, analysis, and a recommendation each. Mixes three question energies (boundary-alignment, stress-test pressure, exploratory openers), triages decide/probe/backlog, and lands every ruling in artifacts. Explicit invocation only. |
+| `grilling` | Interview the user about a plan until you share one understanding. Outline as a design tree, frontier rounds (Matt Pocock's method, MIT), stakes on every question, decide/probe/backlog triage, writes nothing but the outline, lands rulings in the project's action list. Explicit invocation only. |
 
 ## Install
 
@@ -84,8 +85,6 @@ For Codex, Cursor, and Kimi Code, `~/.agents/skills/` is the preferred shared us
 
 ## Status
 
-v0.10.0. Every skill is independently installable, all runtime references stay inside the owning skill, manifests are generated from one metadata source, and Cursor is a first-class plugin target alongside Claude Code, Codex, and Kimi Code. `/go` retains its thin outcome-responsibility core and on-demand domain packs without client-specific path or argument assumptions.
+v0.11.0. Three entry skills, `grilling` / `go` / `retro` (align, do, learn), plus `my-simplify` and five vendored Matt Pocock skills. Every skill is independently installable, all runtime references stay inside the owning skill, and manifests are generated from one metadata source. Vendored and derived skills name their source and commit in `metadata`.
 
-Four skills were withdrawn in v0.7.0 on the evidence of a transcript usage scan — `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless`. They live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition under which each should come back.
-
-Two writing skills were withdrawn in v0.10.0 after their responsibilities moved into the owner's text-quality domain kit — `explain` and `speak-normally`. Their history and revival conditions live under [`.archive/skills/`](.archive/).
+Withdrawn in v0.11.0 on a two-week usage scan and a redesign of the entry skills: `refactor`, `mindset`, `loop-for-merge`, `commit-push-pr`, `open-worktree`, `close-worktree`, `gdd`, `closeup`, and the thirteen `go` reference packs. Earlier withdrawals: `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless` (v0.7.0), `explain`, `speak-normally` (v0.10.0). All live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition for revival.

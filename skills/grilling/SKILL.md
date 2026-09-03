@@ -43,6 +43,6 @@ When a term is used two ways, ask which one before going on. Use the project's `
 
 The session ends when the frontier is empty and the user confirms the shared understanding. Then:
 
-- Rulings and action items go to the project's action list (`TODO.md` or its equivalent). A decision may sit there as a temporary line; filing durable decisions is closeup's job, not grilling's.
+- Rulings and action items go to the project's action list (`TODO.md` or its equivalent). A decision may sit there as a temporary line; filing durable decisions is retro's job, not grilling's.
 - Probes are dispatched or handed over as concrete plans. Backlog items go to the project's backlog file.
 - Report in one line: N decided, X probes, Y backlogged, and the file paths. Delete the outline.

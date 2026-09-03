@@ -1,4 +1,4 @@
 interface:
   display_name: "Go"
   short_description: "Execute an aligned task and deliver it proven"
-  default_prompt: "Use $go to take responsibility for this aligned outcome within existing authority: recover my standards, choose the right method, prove completion, clean up, and leave zero or one pickup action."
+  default_prompt: "Use $go: state the contract (outcome, proof, boundary, pickup, layout), do the task, prove it with commands and output, put the world back, and hand back against the contract."
