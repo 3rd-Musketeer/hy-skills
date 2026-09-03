@@ -32,7 +32,7 @@ Read the round as the user would: short sentences, bullets, nothing they have to
 
 After each round: write the user's answer into the outline's **ruling** column in their words. The proposal column is yours; the ruling column is theirs; never promote one to the other. If they decide something outside your options, record what they decided. If they say "that is not what I asked", re-read the original question and ask again.
 
-When a term is used two ways, ask which one before going on. Use the project's `CONTEXT.md` terms where they exist. Once the user settles a term, write it into `CONTEXT.md` right then, in the domain-modeling skill's format; a term settled in grilling should already be there when the work starts.
+When a term is used two ways, ask which one before going on. Use the project's `CONTEXT.md` terms where they exist. When a term is settled in a round, write it into `CONTEXT.md` right then, in the domain-modeling skill's format; this is the one write allowed besides the outline, because a settled term serves every task after this one. Once the user settles a term, write it into `CONTEXT.md` right then, in the domain-modeling skill's format; a term settled in grilling should already be there when the work starts.
 
 ## 3. Rules while grilling
 
