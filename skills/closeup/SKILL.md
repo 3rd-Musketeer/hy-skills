@@ -47,7 +47,7 @@ Check, do not assert: working tree clean, only the expected worktrees and branch
 
 ## 6. Brief
 
-In the user's language, short. Shipped. Verified versus pending, with the evidence. Destroyed, restored, kept. Files written. Candidates recorded. Residuals that need the user. Next step.
+The plan you proposed is the contract. Report it back item by item, in the user's language: done, or how it deviated. Then anything the execution turned up that was not in the plan, such as a repeated candidate that now deserves a promotion. Nothing else.
 
 ## Stop and ask
 

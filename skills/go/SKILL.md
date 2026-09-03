@@ -11,18 +11,19 @@ Carry an aligned task to a state the user can use directly, and prove it before 
 
 ## 1. Contract
 
-Before changing anything, state four things in a few lines:
+Before changing anything, state five things in a few lines. The handback mirrors them.
 
 - **Outcome**: the observable end state, in behavior terms.
-- **Proof**: which evidence would support exactly that claim. A narrow check cannot back a broad claim.
-- **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive.
-- **Pickup**: zero or one action the user takes after handback. Zero when the result is already delivered; more than one means staging is incomplete.
+- **Proof**: which checks you will run to support exactly that claim, decided now, not after the work. A narrow check cannot back a broad claim.
+- **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive. "None" is a valid answer.
+- **Pickup**: zero or one action the user takes after handback, and how they will do it (for example, try the new feature in the simulator). Zero when the result is already delivered; more than one means staging is incomplete.
+- **Layout**: where every output of this task will live, and which file is the authority for it. Agreeing this first is what keeps the context from scattering.
 
 Ask only when a missing choice changes the outcome, the scope, a public contract, the source of truth, or an irreversible consequence. Decide ordinary implementation details yourself. "Finish" or "do not stop" never grants permission to publish, send, delete, pay, or change a broader target.
 
 ## 2. Read the project's standards
 
-Read what the project already says before acting: `AGENTS.md`, `CONTEXT.md`, the ADRs whose Scope covers the paths you will touch, the task's README, and the runbook for the surface you are about to use. Before writing any file, find where this project keeps that kind of file; do not invent a location. Current evidence beats a summary; when sources conflict in a way that changes the contract, say so.
+Before acting, find what the project already says, wherever it keeps it: the rules it gives agents, the words it uses for its concepts, the decisions that constrain the paths you will touch, the current state of this thread, and how to operate the surface you are about to use. Before writing any file, find where this project keeps that kind of file; do not invent a location. Current evidence beats a summary; when sources conflict in a way that changes the contract, say so.
 
 ## 3. Execute
 
@@ -38,9 +39,12 @@ Run the project's simplify pass (native Simplify, or the my-simplify skill) on t
 
 ## 6. Hand back
 
-Stage the system as the user will meet it: builds done, servers up, fixtures loaded, the Pickup walked through once by you. Then report, leading with the end state:
+Stage the system as the user will meet it: builds done, servers up, fixtures loaded, the Pickup walked through once by you. Then report by filling in the contract, one line per item, in the user's language:
 
-1. **Result**: what is true now.
-2. **Pickup**: none, or the single action.
-3. **Proof**: the command and output, and its limits.
-4. **Residuals**: real deferrals, assumptions, and out-of-scope findings, each with an owner.
+- **Result** against the Outcome: what is true now.
+- **Proof**, item by item: the command and its output, or "unverified".
+- **Pickup**: none, or the one action, as agreed.
+- **Layout**: where things went, one or two bullets.
+- **Deviations** from the contract: scope left undone, route changed, assumptions made. "None" when clean.
+
+Boundary is not reported; it was honored during execution.
