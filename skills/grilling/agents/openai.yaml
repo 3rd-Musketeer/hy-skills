@@ -2,3 +2,5 @@ interface:
   display_name: "Grilling"
   short_description: "Outline-first, frontier-round plan grilling"
   default_prompt: "Grill me about this plan before we build it."
+policy:
+  allow_implicit_invocation: false

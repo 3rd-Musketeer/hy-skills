@@ -1,6 +1,6 @@
 ---
 name: wait-what
-description: Explicit invocation only. "Stop. That last message did not land: re-pitch it."
+description: "Explicit invocation only. Stop, that last message did not land: re-pitch it in plain language with the missing context."
 license: MIT
 metadata:
   vendored-from: "github.com/mattpocock/skills@6654f6b skills/productivity/wait-what/SKILL.md"
