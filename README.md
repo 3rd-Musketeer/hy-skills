@@ -85,6 +85,6 @@ For Codex, Cursor, and Kimi Code, `~/.agents/skills/` is the preferred shared us
 
 ## Status
 
-v0.11.0. Three entry skills, `grilling` / `go` / `retro` (align, do, learn), plus `my-simplify` and five vendored Matt Pocock skills. Every skill is independently installable, all runtime references stay inside the owning skill, and manifests are generated from one metadata source. Vendored and derived skills name their source and commit in `metadata`.
+v0.11.1. Three entry skills, `grilling` / `go` / `retro` (align, do, learn), plus `my-simplify` and five vendored Matt Pocock skills. Every skill is independently installable, all runtime references stay inside the owning skill, and manifests are generated from one metadata source. Vendored and derived skills name their source and commit in `metadata`.
 
 Withdrawn in v0.11.0 on a two-week usage scan and a redesign of the entry skills: `refactor`, `mindset`, `loop-for-merge`, `commit-push-pr`, `open-worktree`, `close-worktree`, `gdd`, `closeup`, and the thirteen `go` reference packs. Earlier withdrawals: `prototype-board`, `html-as-doc`, `infisical-secrets`, `use-portless` (v0.7.0), `explain`, `speak-normally` (v0.10.0). All live under [`.archive/skills/`](.archive/) with the usage data, the reason, and the condition for revival.

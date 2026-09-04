@@ -17,7 +17,7 @@
       },
       "category": "Developer Tools",
       "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling. Ships go, grilling, retro, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
-      "version": "0.11.0"
+      "version": "0.11.1"
     }
   ]
 }
