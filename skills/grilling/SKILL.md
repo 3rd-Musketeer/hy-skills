@@ -28,7 +28,7 @@ Group questions that share one parent decision. Open a group with one or two sen
 
 A question is a conflict made visible: a need and the rule it collides with, or two paths and the cost of each. If the conflict is visible, the stakes are already stated; do not label them. Write it in the user's words, not the words you coined while working. Options are paths you have already thought through, so the user chooses instead of designing. Note a cost only where it is not obvious. End with one recommendation and its basis, one line.
 
-Read the round as the user would: short sentences, bullets, nothing they have to translate. Cut every sentence that repeats what the conflict already says.
+Number the questions and letter the options (A, B, C) so the user can answer "3 B". Read the round as the user would: short sentences, bullets, nothing they have to translate. Cut every sentence that repeats what the conflict already says.
 
 After each round: write the user's answer into the outline's **ruling** column in their words. The proposal column is yours; the ruling column is theirs; never promote one to the other. If they decide something outside your options, record what they decided. If they say "that is not what I asked", re-read the original question and ask again.
 
