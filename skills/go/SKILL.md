@@ -33,6 +33,8 @@ Work inside the Boundary. When you find the scope should grow, including an adja
 
 A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify. When the proof itself needs an outward-visible operation (a push that deploys, a message sent), that operation belongs in the Boundary: authorized in the contract, or the claim stays unverified.
 
+Once the proof matches the Outcome, stop. Broaden or repeat testing only when a new change, a failure, or an unresolved concern justifies it. Do not write tests that mirror a reversible, low-impact change.
+
 ## 5. Polish and put the world back
 
 Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, then re-run the proof it touched. Then:
