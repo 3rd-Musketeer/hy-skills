@@ -39,14 +39,14 @@ Once the proof matches the Outcome, stop. Broaden or repeat testing only when a 
 
 Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, then re-run the proof it touched. Then:
 
-- Destroy what this task created: processes, servers, port-forwards, scratch files, merged branches and their worktrees. Anything dirty or unmerged: ask.
-- Restore what this task borrowed to the original recorded in the Boundary. No recorded original: ask, never guess. Verify by identity (the value, the image tag), not by liveness.
+- Remove task-created resources used only for verification when they are no longer needed. Keep resources required for the agreed deliverable available through handback, and report their purpose, access point, and stop or cleanup method. Clean up merged branches and their worktrees when no longer needed for delivery; ask before removing anything dirty or unmerged.
+- Restore task-only changes to borrowed resources to the original recorded in the Boundary. Preserve pre-existing services and user resources unless changing or stopping them is authorized. No recorded original: ask, never guess. Verify by identity (the value, the image tag), not by liveness.
 - Close what tracks the task: PR state, the task README's state line, the action list. Nothing should still read "in progress".
-- Check, do not assert: tree clean, only the expected worktrees and branches, no orphan processes, and every invariant that had to survive the change still holds.
+- Check, do not assert: tree clean, only the expected worktrees and branches, every retained delivery process accounted for, no orphan processes, and every invariant that had to survive the change still holds.
 
 ## 6. Hand back
 
-Stage the system as the user will meet it: builds done, servers up, fixtures loaded, the Pickup walked through once by you. Then report by filling in the contract, one line per item, in the user's language:
+Stage the system as the user will meet it: necessary builds complete, delivery services running, required fixtures loaded, and the Pickup walked through once by you. Then report by filling in the contract, one line per item, in the user's language:
 
 - **Result** against the Outcome: what is true now.
 - **Proof**, item by item: the command and its output, or "unverified".
