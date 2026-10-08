@@ -27,7 +27,7 @@ The thread the user names; by default the current one, including the parts befor
 - **No-ops**: an instruction in a steering file that does not change behavior.
 - **Information access**: a crucial piece of information the agent could not reach (logs, a read-only view of a service).
 
-**Knowledge.** Take what passes the gate: a reusable method, a fact that cannot be read out of the code, a pitfall, something still valid a month from now. Destinations follow the project's own documents when they say; otherwise: a decision → `docs/adr/` only when it is hard to reverse, would look odd without its background, or had a real alternative, else a `TODO.md` line; a term → `CONTEXT.md`; a pitfall or convention → the project's `AGENTS.md`; a verified fact → `docs/<date>-<slug>.md`; an open action → `TODO.md`.
+**Knowledge.** Take what passes the gate: a reusable method, a fact that cannot be read out of the code, a pitfall, something still valid a month from now. Destinations follow the project's own documents when they say; otherwise: a decision → `docs/adr/` only when it is hard to reverse, would look odd without its background, or had a real alternative, else a `TODO.md` line; a term → `CONTEXT.md`; a pitfall or convention → the project's `AGENTS.md`; a verified fact → the task directory, unless it stays useful outside this task, then `docs/<subject>.md`; an open action → `TODO.md`.
 
 ## 3. Sort by scope
 

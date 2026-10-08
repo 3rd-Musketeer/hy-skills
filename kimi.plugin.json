@@ -1,7 +1,7 @@
 {
   "name": "hy-skills",
-  "version": "0.13.0",
-  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling. Ships go, grilling, retro, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+  "version": "0.14.0",
+  "description": "Personal methodology skills for AI-assisted outcome execution, plan stress-testing, retrospectives, and domain modeling. Ships go, grilling, retro, my-simplify, diagnosing-bugs, research, handoff, domain-modeling, context-layout, wait-what as self-contained Agent Skills for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
   "author": {
     "name": "Haoyang Wu"
   },
@@ -15,6 +15,7 @@
     "handoff",
     "domain-modeling",
     "adr",
+    "context-layout",
     "diagnosing-bugs",
     "retro"
   ],
@@ -22,7 +23,7 @@
   "interface": {
     "displayName": "Hy Skills",
     "shortDescription": "Outcome execution, plan stress-testing, retrospectives, research, handoff, and domain modeling",
-    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), retrospectives that file lessons and improve the environment (retro), code simplification (my-simplify), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
+    "longDescription": "Personal methodology skills: outcome execution (go), plan stress-testing (grilling), retrospectives that file lessons and improve the environment (retro), code simplification (my-simplify), where project context lives and how to keep it tidy (context-layout), plus vendored Matt Pocock skills for bug diagnosis, background research, conversation handoff, domain modeling with CONTEXT.md and ADRs, and re-pitching an unclear message. Every skill is self-contained and follows the portable Agent Skills layout for Codex, Claude Code, Cursor, Kimi Code, and compatible clients.",
     "developerName": "Haoyang Wu",
     "websiteURL": "https://github.com/3rd-Musketeer/hy-skills"
   }

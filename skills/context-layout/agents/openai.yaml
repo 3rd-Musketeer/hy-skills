@@ -1,0 +1,4 @@
+interface:
+  display_name: "Context Layout"
+  short_description: "Where project context lives, and keeping it tidy"
+  default_prompt: "Tidy the context layout: put this round's material where it belongs, keep one home for state, and check what a fresh reader would get wrong."

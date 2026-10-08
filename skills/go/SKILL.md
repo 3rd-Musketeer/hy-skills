@@ -17,7 +17,7 @@ Before changing anything, state five things in a few lines. The handback mirrors
 - **Proof**: which checks you will run to support exactly that claim, decided now, not after the work. A narrow check cannot back a broad claim.
 - **Boundary**: scope, authorization, irreversible or outward-visible operations, adjacent state that must survive, and any shared state you will borrow with its current value, so it can be restored. "None" is a valid answer.
 - **Pickup**: zero or one action the user takes after handback, and how they will do it (for example, try the new feature in the simulator). Zero when the result is already delivered; more than one means staging is incomplete.
-- **Layout**: where every output of this task will live, and which file is the authority for it. Agreeing this first is what keeps the context from scattering.
+- **Layout**: where every output of this task will live, and which file is the authority for it; where the project names no location, the defaults come from the context-layout skill. Agreeing this first is what keeps the context from scattering.
 
 Ask only when a missing choice changes the outcome, the scope, a public contract, the source of truth, or an irreversible consequence. Decide ordinary implementation details yourself. "Finish" or "do not stop" never grants permission to publish, send, delete, pay, or change a broader target.
 
@@ -41,7 +41,7 @@ Run the project's simplify pass (native Simplify, or the my-simplify skill) on t
 
 - Remove task-created resources used only for verification when they are no longer needed. Keep resources required for the agreed deliverable available through handback, and report their purpose, access point, and stop or cleanup method. Clean up merged branches and their worktrees when no longer needed for delivery; ask before removing anything dirty or unmerged.
 - Restore task-only changes to borrowed resources to the original recorded in the Boundary. Preserve pre-existing services and user resources unless changing or stopping them is authorized. No recorded original: ask, never guess. Verify by identity (the value, the image tag), not by liveness.
-- Close what tracks the task: PR state, the task README's state line, the action list. Nothing should still read "in progress".
+- Close the project's state record, whatever its `AGENTS.md` names (a `TODO.md` line, an issue). If the project uses `tasks/done/`, move the task directory there as the PR's last commit. Nothing should still read "in progress".
 - Check, do not assert: tree clean, only the expected worktrees and branches, every retained delivery process accounted for, no orphan processes, and every invariant that had to survive the change still holds.
 
 ## 6. Hand back

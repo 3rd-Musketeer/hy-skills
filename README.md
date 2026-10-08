@@ -17,6 +17,7 @@ A personal methodology-skills plugin grown from my day-to-day practice using AI 
 | `research` | Vendored from mattpocock/skills (MIT). Background research against primary sources; writes a report with citations. |
 | `handoff` | Vendored from mattpocock/skills (MIT). Explicit-only: write a handoff document so another agent or session can pick the work up. |
 | `domain-modeling` | Vendored from mattpocock/skills (MIT). Build a `CONTEXT.md` glossary and record decisions as ADRs (three gates: hard to reverse, looks odd without background, real tradeoff). Local template additions: `Scope`, `Rejected`, `Revisit when`. |
+| `context-layout` | Where project context lives and which file is its authority: a default placement table (ADR, `CONTEXT.md`, `AGENTS.md`, `docs/`, task directories, one state record, `BACKLOG.md`, `.archive/`, scratch), tasks that move to `tasks/done/<date>-<slug>/` as the PR's last commit, a tidy checkpoint after each sub-goal, and a move/rename/archive procedure. Project rules win; it adds no layout to a repo that does not already use one. |
 | `wait-what` | Vendored from mattpocock/skills (MIT). Explicit-only: re-pitch an unclear agent message in ASD-STE100 plain language. |
 | `grilling` | Interview the user about a plan until you share one understanding. Outline as a design tree, frontier rounds (Matt Pocock's method, MIT), stakes on every question, decide/probe/backlog triage, writes nothing but the outline, lands rulings in the project's action list. Explicit invocation only. |
 
@@ -30,7 +31,7 @@ Two install paths are supported.
 
 **B · Direct plugin discovery** — point Claude Code's plugin discovery at this directory or symlink it into your configured plugins path. The `.claude-plugin/plugin.json` manifest is already present. Use this when you want a local checkout you actively edit.
 
-Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:grilling`, `/hy-skills:retro`, `/hy-skills:my-simplify`, `/hy-skills:research`, `/hy-skills:handoff`, `/hy-skills:domain-modeling`, `/hy-skills:wait-what`.
+Skills are invoked by slash command: `/hy-skills:go`, `/hy-skills:grilling`, `/hy-skills:retro`, `/hy-skills:my-simplify`, `/hy-skills:research`, `/hy-skills:handoff`, `/hy-skills:domain-modeling`, `/hy-skills:context-layout`, `/hy-skills:wait-what`.
 
 ### Codex
 
