@@ -9,6 +9,8 @@ metadata:
 
 Carry an aligned task to a state the user can use directly, and prove it before saying so.
 
+An explicit instruction from the user in this conversation outranks this skill. When they conflict, follow the user and name the part of the skill you departed from.
+
 ## 1. Contract
 
 Before changing anything, state five things in a few lines. The handback mirrors them.
@@ -29,15 +31,17 @@ Before acting, find what the project already says, wherever it keeps it: the rul
 
 Work inside the Boundary. When you find the scope should grow, including an adjacent defect you noticed on the way, report it and leave it; do not grow the scope. When you find a bug that resists the first fix, use the diagnosing-bugs skill instead of guessing. Report material discoveries and changed risk; do not keep a diary.
 
+Keep going until the Outcome is proven or you reach a real stop: an operation the Boundary does not authorize, or nothing left that you can move without the user. A summary that announces your next step, a "continuing unless you object", or a list of choices that block nothing is not a stop, and neither is waiting on something that finishes by itself (a build, CI); make the call and take the step.
+
 ## 4. Prove
 
-A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify. When the proof itself needs an outward-visible operation (a push that deploys, a message sent), that operation belongs in the Boundary: authorized in the contract, or the claim stays unverified.
+A completion claim carries the command you ran and its output. No command, no claim: write "unverified" instead. The evidence comes from the surface the user will see, not from the diff: the actual build, the simulator, the deployed lane, the right workspace. Feed it the inputs its consumer will actually send, such as the user's own words over the real data path; a prepared fixture or a hand-tuned request is a diagnosis, and is labeled as one, not proof. When the claim names several variants the user will meet (each card, each state, each platform), each one needs its own evidence. Before acting on a target, confirm its identity (which app, which workspace, which branch). Cover the failure boundary that would make the claim false. Separate what was verified from what only production can verify. When the proof itself needs an outward-visible operation (a push that deploys, a message sent), that operation belongs in the Boundary: authorized in the contract, or the claim stays unverified.
 
 Once the proof matches the Outcome, stop. Broaden or repeat testing only when a new change, a failure, or an unresolved concern justifies it. Do not write tests that mirror a reversible, low-impact change.
 
 ## 5. Polish and put the world back
 
-Run the project's simplify pass (native Simplify, or the my-simplify skill) on the change, then re-run the proof it touched. Then:
+When the change is more than a few lines, run the project's simplify pass (native Simplify, or the my-simplify skill) on it; if that pass changes code, re-run the part of the proof it touched. Then:
 
 - Remove task-created resources used only for verification when they are no longer needed. Keep resources required for the agreed deliverable available through handback, and report their purpose, access point, and stop or cleanup method. Clean up merged branches and their worktrees when no longer needed for delivery; ask before removing anything dirty or unmerged.
 - Restore task-only changes to borrowed resources to the original recorded in the Boundary. Preserve pre-existing services and user resources unless changing or stopping them is authorized. No recorded original: ask, never guess. Verify by identity (the value, the image tag), not by liveness.

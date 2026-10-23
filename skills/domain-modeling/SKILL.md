@@ -5,6 +5,7 @@ license: MIT
 metadata:
   vendored-from: "github.com/mattpocock/skills@6654f6b skills/engineering/domain-modeling/SKILL.md"
   vendored-on: "2026-09-03"
+  upstream-divergence: "upstream later renamed CONTEXT.md to GLOSSARY.md; this copy keeps CONTEXT.md, the glossary file context-layout names"
 ---
 
 # Domain Modeling

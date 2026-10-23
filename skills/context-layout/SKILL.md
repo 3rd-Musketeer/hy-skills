@@ -1,6 +1,6 @@
 ---
 name: context-layout
-description: Decide where a piece of project context lives (decision, term, pitfall, reference doc, task material, next action, someday idea, retired code, scratch) and which file is its authority; tidy a repo's context after a sub-goal; move, rename, or archive docs without breaking links. Use when unsure where something belongs, when a self-contained sub-goal finishes and its context needs tidying, before moving, renaming, or archiving docs, or when the user says "tidy the context layout" / "整理 context layout". Applies its default layout only in a repo that already uses this kind of layout (tasks/, TODO.md, docs/adr/) or when the user asks for it; elsewhere it follows the repo's own conventions and adds no new structure.
+description: Decide where project context lives and which file is its authority; tidy context after a sub-goal; move, rename, or archive docs without breaking links. Use when unsure where a decision, term, task material, or next action belongs, or when the user says "tidy the context layout" / "整理 context layout".
 metadata:
   short-description: Where project context lives, and keeping it tidy
 ---
@@ -11,7 +11,7 @@ Where context lives decides whether the next agent finds the right answer. This 
 
 ## 1. Project rules win
 
-Read the project's `AGENTS.md` first. Where it names a location, a state record, a completion marker, or a directory name, follow it; everything in sections 2 and 3 is a default the project may override. Apply the defaults only in a repo that already uses this kind of layout (`tasks/`, `TODO.md`, `docs/adr/`) or when the user asks for it. In any other repo, put things where that repo already puts them, and do not introduce `tasks/`, `TODO.md`, or similar unasked.
+An explicit instruction from the user in this conversation outranks this skill. Then read the project's `AGENTS.md`. Where it names a location, a state record, a completion marker, or a directory name, follow it; everything in sections 2 and 3 is a default the project may override. Apply the defaults only in a repo that already uses this kind of layout (`tasks/`, `TODO.md`, `docs/adr/`) or when the user asks for it. In any other repo, put things where that repo already puts them, and do not introduce `tasks/`, `TODO.md`, or similar unasked.
 
 Three principles do not vary:
 
